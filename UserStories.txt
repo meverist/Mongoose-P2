@@ -1,0 +1,35 @@
+BareBones
+	• User must be able to register/login
+		• EE's are added manually
+	• User must be able to view pets + picture
+	• EE must be able to create pet profile
+		• History, shot records, battery life, os
+	• Employee view ALL applications
+	• Employee accepts adoption application
+	• Adopter creates adoption application
+	• After application accepted pet is removed from lists
+
+Goal
+	- EE must be able to add pictures
+	- Adopter schedules apointment
+	- EE must Reject Application
+		• Explain why
+	- Comments must go forward and backwards
+	- Reject all applications when application is accepted
+	- Adopter views all their applications
+	- Adopter can retract application
+	- Cohesive frontpage design
+		• Good UI
+
+Secondary Goals
+	- Employee verifies payments
+	- Random pet of the month
+		○ Pulled from list of adoptables for front page
+	- Full scheduling UI
+	- Adopter "about me" page
+	- Allow different rescues to add pets to website
+	- Tutorial Page for pet care
+	- Help list for owner issues
+	- Links to pet walking services
+	- Links to hospitals and other pet health services
+		○ Based on location
