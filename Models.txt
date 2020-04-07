@@ -1,0 +1,58 @@
+Models
+Pets Table
+	- Surrogate ID -PK
+	- Name
+	- Type
+	- Breed
+	- Age
+	- Weight
+	- Height
+	- Medical Info
+	- About me Section
+	- Owner
+	- Foreign key to picture address table
+
+Pictures Table
+	- Pet ID -FK
+	- Links to pictures
+	- Comments about pictures
+
+------------
+Abstract Users
+	- Surrogate ID -PK
+	- Email
+	- Name
+	- password
+	- Role
+	--------------------
+
+Employee
+	- Surrogate ID -PK
+	- Email
+	- Name
+	- password
+	- Role
+
+Adoptor
+	- Surrogate ID -PK
+	- Email
+	- Name
+	- password
+	- Role
+	- "About me"
+
+Scheduler
+	- PetID -FK
+	- AdoptorID -FK
+	- When you want to view the pet
+
+Application
+	- PetID -FK
+	- AdoptorID -FK
+	- References
+	- How many pets do you own
+	- Do you own children
+	- Current Pets
+	- Comments
+
+
