@@ -1,8 +1,9 @@
 <p>employee-add-pet works!</p>
 <label for="name">Name:</label>
-<input type="text" id="petName">
-<label for="name">Type:</label>
-<select id="petType">type
+<input type="text" id="petName" [(ngModel)] = "petName">
+
+<label for="petType">Type:</label>
+<select id="petType" [(ngModel)] = "petType">
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
     <option value="bird">Bird</option>
@@ -10,18 +11,23 @@
     <option value="mouse">Mouse</option>
     <option value="fish">Fish</option>
 </select>
+
 <label for="breed">Name:</label>
-<input type="text" id="petBreed">
+<input type="text" id="petBreed" [(ngModel)] = "petBreed">
+
 <label for="age">Age:</label>
-<input type="number" id="petAge">
+<input type="number" id="petAge" [(ngModel)] = "petAge">
+
 <label for="weight">Weight:</label>
-<input type="number" id="petWeight">
+<input type="number" id="petWeight" [(ngModel)] = "petWeight">
+
 <label for="medicalinfo">Medical Info:</label>
-<input type="text" id="petMedInfo">
+<input type="text" id="petMedInfo" [(ngModel)] = "petMedInfo">
+
 <label for="aboutme">About Me:</label>
-<input type="text" id="petAboutMe">
+<input type="text" id="petAboutMe" [(ngModel)] = "petAboutMe">
 <label for="owner">Owner:</label>
-<input type="number" id="petOwner">
-<input type="submit">
+<input type="number" id="petOwner" [(ngModel)] = "petOwner">
+<input type="submit" (onclick) = "addPet()">
 
 
