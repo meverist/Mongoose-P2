@@ -1,15 +1,17 @@
 export class Adopter {
 
-    uname :string;
-    email :string;
-    password :string;
-    role :string;
+    username :string;
+    useremail :string;
+    userpassword :string;
+    userrole :string;
+    userinfo :string;
 
-    constructor(uname :string, email :string, password :string, role :string) {
-        this.uname = uname;
-        this.email = email;
-        this.password = password;
-        this.role = role;
+    constructor(username :string, useremail :string, userpassword :string,userrole :string, userinfo :string) {
+        this.username = username;
+        this.useremail = useremail;
+        this.userpassword = userpassword;
+        this.userrole = userrole;
+        this.userinfo = userinfo
     }
 
 

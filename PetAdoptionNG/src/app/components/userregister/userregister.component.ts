@@ -13,42 +13,46 @@ export class UserregisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  uname :string;
-  email :string;
-  password :string;
+  username :string;
+  useremail :string;
+  userpassword :string;
   password2 :string;
-  role :string;
-
+  //There are two roles user and employee
+  userrole :string = "adopter";
+  userinfo :string;
+  
   invalid :boolean = false;
   result :string;
 
+  //Displays what the outcome of the input is.
   createAdopter() {
     if(this.validateInputFields() == 1) {
       this.result = "You have invalid fields!";
     } else if(this.validateInputFields() == 2) {
       this.result = "You confirmation password does not match!";
     } else if(this.validateInputFields() == 3) {
-      let adopter = new Adopter(this.uname, this.email, this.password, this.role);
-      console.log("it was created!");
+      let adopter = new Adopter(this.username, this.useremail, this.userpassword, this.userrole, this.userinfo);
+      console.log(adopter);
     }
   }
 
+  //Makes sure the input fields have to correct input. Including the password checkers
   validateInputFields() :number {
-    console.log(this.uname);
-    console.log(this.email);
-    console.log(this.password);
+    console.log(this.username);
+    console.log(this.useremail);
+    console.log(this.userpassword);
     console.log(this.password2);
-    console.log(this.role);
+    console.log(this.userrole);
 
-    if(this.uname == undefined || this.uname == "" ||
-       this.email == undefined || this.email == "" ||
-       this.password == undefined || this.password == "" ||
+    if(this.username == undefined || this.username == "" ||
+       this.useremail == undefined || this.useremail == "" ||
+       this.userpassword == undefined || this.userpassword == "" ||
        this.password2 == undefined || this.password2 == "" ||
-       this.role == undefined || this.role == "") {
+       this.userinfo == undefined || this.userinfo == "") {
         this.invalid = false;
         console.log("invalid");
         return 1;
-       } else if (this.password != this.password2){
+       } else if (this.userpassword != this.password2){
         console.log("pass no match");
         this.invalid = false;
         return 2;
