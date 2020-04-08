@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from 'src/app/models/Pet';
-import {HttpClient} from '@angular/common/http';
-import { PetServiceService } from 'src/app/Services/pet-service.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-employee-add-pet',
   templateUrl: './employee-add-pet.component.html',
@@ -9,8 +10,10 @@ import { PetServiceService } from 'src/app/Services/pet-service.service';
 })
 export class EmployeeAddPetComponent implements OnInit {
 
-  constructor(private petService: PetServiceService) { }
-
+  constructor(private http:HttpClient) { }
+  
+  private headers = new HttpHeaders({'Content-Type':'application/json'});
+  
   petID:number;
   petName: string;
   petType: string;
@@ -35,15 +38,19 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petMedInfo,
         this.petAboutMe,
         this.petOwner);
-      this.petService.addPet(p).subscribe(
+
+        this.addPetSend(p).subscribe(
+          (response)=>{
+            console.log(response);
+          },
         (response)=>{
-          console.log(response);
-        },
-      (response)=>{
-        console.log("something went !#@$");
-      }
-      );
+          console.log("something went !#@$");
+        }
+        );
     }
+  }
+  addPetSend(p:Pet):Observable<Pet>{
+    return this.http.post<Pet>("http://localhost:8080/Mongoose/employeeAddPet",p,{headers:this.headers})
   }
   validateInputFields(): boolean{
 
