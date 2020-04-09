@@ -6,8 +6,12 @@ import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 
 
+
 import { PetViewComponent } from './components/pet-view/pet-view.component';
 
+
+
+import { EmployeeAddPetComponent } from './components/employee-add-pet/employee-add-pet.component';
 
 import { ViewApplicationsComponent } from './components/view-applications/view-applications.component';
 import { CreateApplicationComponent } from './components/create-application/create-application.component';
@@ -19,10 +23,15 @@ import { UserregisterComponent } from './components/userregister/userregister.co
   declarations: [
     AppComponent,
 
+
     PetViewComponent,
 
     UserregisterComponent,
 
+
+
+    EmployeeAddPetComponent,
+    UserregisterComponent,
 
     ViewApplicationsComponent,
     CreateApplicationComponent,
