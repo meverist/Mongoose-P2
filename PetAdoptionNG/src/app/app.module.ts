@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { EmployeeAddPetComponent } from './components/employee-add-pet/employee-add-pet.component';
+import { ViewApplicationsComponent } from './components/view-applications/view-applications.component';
+import { CreateApplicationComponent } from './components/create-application/create-application.component';
 import { UserregisterComponent } from './components/userregister/userregister.component';
 
 @NgModule({
@@ -12,6 +14,9 @@ import { UserregisterComponent } from './components/userregister/userregister.co
     AppComponent,
     EmployeeAddPetComponent,
     UserregisterComponent,
+    ViewApplicationsComponent,
+    CreateApplicationComponent,
+    UserregisterComponent
   ],
   imports: [
     BrowserModule,
