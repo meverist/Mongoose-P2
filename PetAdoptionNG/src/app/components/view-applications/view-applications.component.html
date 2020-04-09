@@ -8,24 +8,22 @@
     <tr>
     <th>Pet Name</th>
     <th>Adoptor Name</th>
-  
-    <th>Current Pets</th>
+      <th>Current Pets</th>
     <th>Children</th>
     </tr>
     <tr >
         <td>{{a.petName}}</td>
-        <td>{{a.adoptorName}}</td>
-       
-        <td>{{a.currentPets}}</td>
-        <td>{{a.children}}</td>
+        <td>{{a.userName}}</td>
+        <td>{{a.appPetsOwned}}</td>
+        <td>{{a.appChildren}}</td>
     </tr>
     <div>
         <span>references</span>
-        <p>{{a.references}}</p>
+        <p>{{a.appReferences}}</p>
     </div>
     <div>
         <span>Comments</span>
-    <p>{{a.comments}}</p>
+    <p>{{a.appComments}}</p>
     </div>
     <button (click)="acceptApp(a)">Accept</button>
     <button (click)="rejectApp(a)">Reject</button>
