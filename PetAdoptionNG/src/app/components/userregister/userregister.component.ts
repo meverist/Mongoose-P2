@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Adopter } from 'src/app/models/Adoptor';
+import { Adopter } from '../../models/Adoptor';
 
 @Component({
   selector: 'app-userregister',

@@ -4,12 +4,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
+import { ViewApplicationsComponent } from './components/view-applications/view-applications.component';
+import { CreateApplicationComponent } from './components/create-application/create-application.component';
 import { UserregisterComponent } from './components/userregister/userregister.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserregisterComponent,
+    ViewApplicationsComponent,
+    CreateApplicationComponent,
+    UserregisterComponent
   ],
   imports: [
     BrowserModule,
