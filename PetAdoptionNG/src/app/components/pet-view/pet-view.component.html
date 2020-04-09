@@ -1,0 +1,13 @@
+<p>pet-view works!</p>
+<img src="{{pets[index].petPic}}">
+<div>Name:{{pets[index].petName}}</div>	
+<div>Type:{{pets[index].petType}}</div>
+<div>Breed:{{pets[index].petBreed}}</div>
+<div>Pets Age{{pets[index].petAge}}</div>
+<div>Pets Weight{{pets[index].petWeight}}</div>
+<div>Medical Information{{pets[index].petMedInfo}}</div>
+<div>About me{{pets[index].petAboutMe}}</div>
+<div>My Name{{pets[index].petName}}</div>
+
+<button *ngIf="hideNext" (click)="nextPet()"> Next </button>
+<button *ngIf="hidePrev"(click)="prevPet()"> Prev </button>
