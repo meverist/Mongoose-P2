@@ -4,20 +4,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
+
+
 import { PetViewComponent } from './component/pet-view/pet-view.component';
-=======
+
+
+import { ViewApplicationsComponent } from './components/view-applications/view-applications.component';
+import { CreateApplicationComponent } from './components/create-application/create-application.component';
+
 import { UserregisterComponent } from './components/userregister/userregister.component';
->>>>>>> da0cc0653a26b0ddb6b0e796817f966b4d810307
+
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
+
     PetViewComponent
-=======
+
     UserregisterComponent,
->>>>>>> da0cc0653a26b0ddb6b0e796817f966b4d810307
+
+
+    ViewApplicationsComponent,
+    CreateApplicationComponent,
+    UserregisterComponent
+
   ],
   imports: [
     BrowserModule,
