@@ -1,0 +1,96 @@
+CREATE SEQUENCE pet_id
+START WITH 1
+INCREMENT BY 1;
+
+CREATE SEQUENCE user_id
+START WITH 1
+INCREMENT BY 1;
+
+drop table 	SCHEDULER	cascade constraints;
+drop table 	PADUSER	cascade constraints;
+drop table 	PETPICS	cascade constraints;
+drop table 	PET	cascade constraints;
+drop table 	Application	cascade constraints;
+
+CREATE TABLE PADUSER(
+userID Number(10) PRIMARY KEY,
+useremail VARCHAR2(50),
+username VARCHAR2(50),
+userpassword VARCHAR2(50),
+userrole VARCHAR2(20),
+userInfo VARCHAR2(1500)
+);
+
+CREATE TABLE pet(
+petID Number(10) PRIMARY KEY,
+petName Varchar2(50),
+petType Varchar2(50),
+petBreed VarChar2(50),
+petAge Number(10),
+petWeight Number(10),
+petMedInfo Varchar2(200),
+petAboutMe VARCHAR2(1500),
+petOwner Number(10),
+
+CONSTRAINT pets_users 
+FOREIGN KEY (petOWNER) 
+REFERENCES  PADUSER(userID) 
+on delete cascade
+
+);
+
+CREATE TABLE petpics(
+petID Number(10),
+piclink VARCHAR2(800),
+piccomments VARCHAR2(1500),
+
+CONSTRAINT pets_pics 
+FOREIGN KEY (petID) 
+REFERENCES  pet(petID) 
+on delete cascade
+
+);
+
+CREATE TABLE scheduler(
+petID Number(10),
+userID Number(10),
+scheduleTime VARCHAR2(150),
+
+CONSTRAINT pets_schedule 
+FOREIGN KEY (petID) 
+REFERENCES  pet(petID) 
+on delete cascade,
+
+CONSTRAINT users_schedule 
+FOREIGN KEY (userID) 
+REFERENCES  PADUser(userID) 
+on delete cascade
+
+);
+
+Create TABLE application(
+petID Number(10),
+userID Number(10),
+appReferences VARCHAR2(200),
+appPetsOwned VARCHAR2(200),
+appChildren VARCHAR2(200),
+appComments VARCHAR2(200),
+
+CONSTRAINT pets_app 
+FOREIGN KEY (petID) 
+REFERENCES  pet(petID) 
+on delete cascade,
+
+CONSTRAINT users_app 
+FOREIGN KEY (userID) 
+REFERENCES  PADUser(userID) 
+on delete cascade
+
+
+
+);
+
+
+commit;
+
+
