@@ -17,6 +17,7 @@ import { ViewApplicationsComponent } from './components/view-applications/view-a
 import { CreateApplicationComponent } from './components/create-application/create-application.component';
 
 import { UserregisterComponent } from './components/userregister/userregister.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { UserregisterComponent } from './components/userregister/userregister.co
 
     ViewApplicationsComponent,
     CreateApplicationComponent,
-    UserregisterComponent
+    UserregisterComponent,
+    NavbarComponent
 
   ],
   imports: [

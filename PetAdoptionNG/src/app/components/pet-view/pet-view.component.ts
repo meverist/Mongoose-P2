@@ -7,7 +7,7 @@ import { nextTick } from 'q';
   styleUrls: ['./pet-view.component.css']
 })
 export class PetViewComponent implements OnInit {
-index: number = 0;
+ index: number = 0;
  pets: Array<Pet> = [];
  hideNext = true;
  hidePrev = true;
@@ -22,9 +22,9 @@ index: number = 0;
 //this.pets.push(pet1,pet2,pet3);
   }
     nextPet() {
-   if(this.index==this.pets.length-1){
-     this.hideNext=false;
-   }else{
+   if (this.index == this.pets.length - 1) {
+     this.hideNext = false;
+   } else {
       ++this.index;
       this.hidePrev=true;
    }
