@@ -13,7 +13,7 @@ export class EmployeeAddPetComponent implements OnInit {
   constructor(private http:HttpClient) { }
   
   private headers = new HttpHeaders({'Content-Type':'application/json'});
-  
+  //ADDED A NULL TO THE CONSTRUCTOR NEED TO FIGURE OUT A BETTER SOLUTION
   petID:number;
   petName: string;
   petType: string;
@@ -37,7 +37,8 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petWeight,
         this.petMedInfo,
         this.petAboutMe,
-        this.petOwner);
+        this.petOwner,
+       null);
 
         this.addPetSend(p).subscribe(
           (response)=>{
