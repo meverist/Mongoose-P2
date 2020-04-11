@@ -9,5 +9,7 @@ import dev.mongoose.models.Pet;
 public interface PadApplicationRepository extends CrudRepository<PadApplication, Integer>{
 	
 	PadApplication findPadApplicationByPetPetIdAndUserUserId(Integer petId,Integer userId);
+	PadApplication findPadApplicationByPetPetId(Integer petId);
+	PadApplication findPadApplicationByUserUserId(Integer userId);
 
 }
