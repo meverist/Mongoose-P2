@@ -14,5 +14,6 @@ public interface PadUserService{
 	
 	//Custom
 	public PadUser getByuserEmail(String userEmail);
+	public boolean validateUser(String userEmail, String userPassword);
 
 }

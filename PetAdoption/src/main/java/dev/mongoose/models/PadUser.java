@@ -108,11 +108,7 @@ public class PadUser {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((userEmail == null) ? 0 : userEmail.hashCode());
-		result = prime * result + userId;
-		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
-		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
 		result = prime * result + ((userPassword == null) ? 0 : userPassword.hashCode());
-		result = prime * result + ((userRole == null) ? 0 : userRole.hashCode());
 		return result;
 	}
 
@@ -130,29 +126,15 @@ public class PadUser {
 				return false;
 		} else if (!userEmail.equals(other.userEmail))
 			return false;
-		if (userId != other.userId)
-			return false;
-		if (userInfo == null) {
-			if (other.userInfo != null)
-				return false;
-		} else if (!userInfo.equals(other.userInfo))
-			return false;
-		if (userName == null) {
-			if (other.userName != null)
-				return false;
-		} else if (!userName.equals(other.userName))
-			return false;
 		if (userPassword == null) {
 			if (other.userPassword != null)
 				return false;
 		} else if (!userPassword.equals(other.userPassword))
 			return false;
-		if (userRole == null) {
-			if (other.userRole != null)
-				return false;
-		} else if (!userRole.equals(other.userRole))
-			return false;
 		return true;
 	}
+
+
+	
 	
 }
