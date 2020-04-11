@@ -35,8 +35,8 @@ public class PadApplicationController {
 	public PadApplication getPadApplicationById(@PathVariable int padId) {
 		return pas.getPadApplicationById(padId);
 	}
-	@GetMapping(value="/padapplication/")
-	public List<PadApplication> getPadApplicationByUser(@RequestParam Integer userId){
+	@GetMapping(value="/padapplication/userid/{userId}")
+	public List<PadApplication> getPadApplicationByUser(@PathVariable Integer userId){
 		return pas.getPadApplicationByUserId(userId);
 	}
 	@GetMapping(value="/padapplication/")
