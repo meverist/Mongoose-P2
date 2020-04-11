@@ -12,6 +12,7 @@ import javax.persistence.Table;
  * Pets in the shelter(petID,petName,petBreed,petAge,petWeight,petMedInfo,petAboutMe,petOwner)
  * Model for the pets, owners should either reflect a staff member if the pet has yet to be adopted
  * or an adopter. If adopted pets can be dropped if wished. 
+ * Age is in years, weight is in lbs
  * @author Mat/Francisco
  *
  */
