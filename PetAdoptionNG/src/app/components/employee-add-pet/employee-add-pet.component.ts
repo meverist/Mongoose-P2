@@ -23,6 +23,8 @@ export class EmployeeAddPetComponent implements OnInit {
   petMedInfo: string;
   petAboutMe: string;
   petOwner: number;
+  petPic : string;
+
   ngOnInit(): void {
   }
   addPet()
@@ -38,7 +40,7 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petMedInfo,
         this.petAboutMe,
         this.petOwner,
-       null);
+        this.petPic);
 
         this.addPetSend(p).subscribe(
           (response)=>{

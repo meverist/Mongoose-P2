@@ -1,0 +1,12 @@
+<h2>Log In</h2>
+
+<input type="email" [(ngModel)] = "useremail" placeholder="Email"> <br>
+<input type="password" [(ngModel)] = "userpassword" placeholder="Password"> <br>
+<button (click) = "logIn()">Log in</button>
+
+<button (click) = "goAdopter()">Adopter</button>
+<button (click) = "goEmployee()">Employee</button>
+
+<!-- <p *ngIf="!invalid">{{result}}</p> -->
+<p>{{result}}</p>
+
