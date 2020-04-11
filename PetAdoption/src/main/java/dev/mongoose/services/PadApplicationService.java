@@ -14,5 +14,7 @@ public interface PadApplicationService {
 	
 	//custom
 	public PadApplication getPadApplicationBypetIdAnduserId(Integer petId, Integer userId);
-	
+	public boolean deleteAppByPetExceptUser(PadApplication padApplication);
+	public List<PadApplication> getPadApplicationByPetId(Integer petId);
+	public List<PadApplication> getPadApplicationByUserId(Integer userId);
 }

@@ -41,24 +41,19 @@ public class PadUserController {
 	}
 	
 	@PostMapping(value="/paduser/login", consumes="application/json")
-	public String getPadUser(@RequestBody String userEmail, String userPassword, ModelMap model) {
+	public PadUser getPadUser(@RequestBody PadUser padUser) {
 		
-		if(!us.validateUser(userEmail, userPassword)) {
-			model.put("errorMessage", "Invalid Credentials");
-			return "paduser/login";
-		}
-
-		PadUser loginUser = us.getByuserEmail(userEmail);
-		
-		if(model.getAttribute("userId")==null) {
-			model.addAttribute("userId", loginUser.getUserId());
+		if(!us.validateUser(padUser.getUserEmail(), padUser.getUserPassword())) {
+			
+			return null;
 		}else {
-			model.replace("userId", loginUser.getUserId());
+
+		PadUser loginUser = us.getByuserEmail(padUser.getUserEmail());
+		
+		
+		
+		return loginUser;
 		}
-		
-		
-		
-		return "Welcome";
 	}
 	/**
 	 * Function to update user profiles
