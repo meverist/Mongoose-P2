@@ -41,6 +41,11 @@ public class PetController {
 		}
 		
 	}
+	@PostMapping(value="/pet/update")
+	public Pet adoptPet(@RequestBody Pet pet) {
+		
+		return ps.createOrUpdatePet(pet);
+	}
 	
 	
 	
