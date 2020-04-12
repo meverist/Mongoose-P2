@@ -30,12 +30,12 @@ export class LogInService {
 
   //Log in 
   checkAdopter(adop: Adopter) :Observable<Adopter> {
-    return this.http.post<Adopter>("", adop, {headers: this.headers});
+    return this.http.post<Adopter>("http://localhost:8080/paduser/login", adop, {headers: this.headers});
   }
 
   //Register
   addAdopter(adop: Adopter) :Observable<Adopter> {
-    return this.http.post<Adopter>("", adop, {headers: this.headers});
+    return this.http.post<Adopter>("http://localhost:8080/paduser", adop, {headers: this.headers});
   }
 
 }

@@ -39,9 +39,11 @@ export class UserregisterComponent implements OnInit {
     } else if(this.validateInputFields() == 2) {
       this.result = "You confirmation password does not match!";
     } else if(this.validateInputFields() == 3) {
-      let adopter = new Adopter(this.username, this.useremail, this.userpassword, this.userrole, this.userinfo);
-      this.logService.checkAdopter(adopter).subscribe(
+      let adopter = new Adopter(this.useremail, this.userinfo, this.username, this.userpassword, this.userrole);
+      console.log(adopter);
+      this.logService.addAdopter(adopter).subscribe(
         (resp) => {
+          console.log("Was sent");
           console.log(resp);
           this.router.navigate(['/login']);
         },
