@@ -58,25 +58,24 @@ export class LoginComponent implements OnInit {
     if(!this.valid()) {
       this.result = "Your email or password does not exist. Try again!";
     } else {
-      var adopter = new Adopter("sending", this.useremail, this.userpassword, "Adopter", "sending");
+      var adopter = new Adopter(this.useremail, "info", "hold", this.userpassword, "Adopter");
       console.log(adopter);
       this.sendToParent.emit(adopter);
-      // this.logService.checkAdopter(adopter).subscribe(
-      //   (resp) => {
-      //     console.log(resp);
-
-      //     adopter = resp;
-      //     if(adopter.userrole == 'employee') {
-      //       this.router.navigate(['/empl-screen']);
-      //     } else {
-      //       this.router.navigate(['/adop-screen']);
-      //     }
-      //   },
-      //   (resp) => {
-      //     console.log("Failed to add Auzorithe the user!");
-      //     console.log(resp);
-      //   }
-      // );
+      this.logService.checkAdopter(adopter).subscribe(
+        (resp) => {
+          console.log(resp);
+          adopter = resp;
+          if(adopter.userRole == 'employee') {
+            this.router.navigate(['/empl-screen']);
+          } else {
+            this.router.navigate(['/adop-screen']);
+          }
+        },
+        (resp) => {
+          console.log("Failed to add Auzorithe the user!");
+          console.log(resp);
+        }
+      );
     }
   }
 
