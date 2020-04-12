@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +27,7 @@ public class PadUserController {
 	 * @param padUser
 	 * @return PadUser
 	 */
+	@CrossOrigin
 	@RequestMapping(value="/paduser", method=RequestMethod.POST, consumes="application/json")
 	public PadUser createPadUser(@RequestBody PadUser padUser) {
 		System.out.println(padUser);
@@ -40,18 +42,14 @@ public class PadUserController {
 		return us.allPadUsers();
 	}
 	
+	@CrossOrigin
 	@PostMapping(value="/paduser/login", consumes="application/json")
 	public PadUser getPadUser(@RequestBody PadUser padUser) {
-		
+		System.out.println(padUser);
 		if(!us.validateUser(padUser.getUserEmail(), padUser.getUserPassword())) {
-			
 			return null;
 		}else {
-
-		PadUser loginUser = us.getByuserEmail(padUser.getUserEmail());
-		
-		
-		
+			PadUser loginUser = us.getByuserEmail(padUser.getUserEmail());
 		return loginUser;
 		}
 	}
