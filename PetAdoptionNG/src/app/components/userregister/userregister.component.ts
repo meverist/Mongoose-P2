@@ -1,5 +1,12 @@
+/**
+ * Francisco Radilla Greer
+ * This will be used to register a new adotper
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Adopter } from '../../models/Adoptor';
+import { LogInService } from 'src/app/services/log-in.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userregister',
@@ -8,7 +15,8 @@ import { Adopter } from '../../models/Adoptor';
 })
 export class UserregisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router,
+    private logService :LogInService) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +26,7 @@ export class UserregisterComponent implements OnInit {
   userpassword :string;
   password2 :string;
   //There are two roles user and employee
-  userrole :string = "adopter";
+  userrole :string = "Adopter";
   userinfo :string;
   
   invalid :boolean = false;
@@ -31,8 +39,19 @@ export class UserregisterComponent implements OnInit {
     } else if(this.validateInputFields() == 2) {
       this.result = "You confirmation password does not match!";
     } else if(this.validateInputFields() == 3) {
-      let adopter = new Adopter(this.username, this.useremail, this.userpassword, this.userrole, this.userinfo);
+      let adopter = new Adopter(this.useremail, this.userinfo, this.username, this.userpassword, this.userrole);
       console.log(adopter);
+      this.logService.addAdopter(adopter).subscribe(
+        (resp) => {
+          console.log("Was sent");
+          console.log(resp);
+          this.router.navigate(['/login']);
+        },
+        (resp) => {
+          console.log("Failed to add Adopter");
+          console.log(resp);
+        }
+      );
     }
   }
 
