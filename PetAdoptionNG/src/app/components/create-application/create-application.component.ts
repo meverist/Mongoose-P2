@@ -22,6 +22,8 @@ export class CreateApplicationComponent implements OnInit {
   children :string;
   comments :string;
 
+  //Changes the userApp variable to contain the application details
+  //Will need to be sent to the backend
   submitApp(){
 
     this.userApp = new Application(this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
@@ -29,6 +31,16 @@ export class CreateApplicationComponent implements OnInit {
     console.log(this.userApp);
 
   }
+  //Probably will need to be deleted later, this validates the pet
+  //your creating the ID for
+  petIDValidator(){
 
+    this.petID = Math.round(this.petID);
 
+    if(this.petID <= 0 ){
+      
+      this.petID = 1;
+    }
+
+  }
 }

@@ -1,24 +1,25 @@
 export class Application {
-
+//Aplication model, PetName and Username are foreign keys
 petID :number;
 petName :string;
-adoptorID :number;
-adoptorName :string;
-references :string;
-currentPets :string;
-children :string;
-comments :string;
+userID :number;
+userName :string;
+appReferences :string;
+appPetsOwned :string;
+appChildren :string;
+appComments :string;
 
-constructor(petID :number,petName :string, adoptorID :number, adoptorName :string, references :string, currentPets :string,children :string, comments :string){
+constructor(petID :number,petName :string, userID :number, userName :string, appReferences :string,
+    appPetsOwned :string,appChildren :string, appComments :string){
 
 this.petID = petID;
 this.petName = petName;
-this.adoptorID = adoptorID;
-this.adoptorName = adoptorName;
-this.references = references;
-this.currentPets = currentPets;
-this.children = children;
-this.comments = comments;
+this.userID = userID;
+this.userName = userName;
+this.appReferences = appReferences;
+this.appPetsOwned = appPetsOwned;
+this.appChildren = appChildren;
+this.appComments = appComments;
 
 }
 

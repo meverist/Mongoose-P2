@@ -15,7 +15,7 @@ export class ViewApplicationsComponent implements OnInit {
 
   applications :Array<Application>=[];
 
-
+  //Testing funciton, can remove once databse functionality has been brought in.
   createApps() {
 
     let app1 :Application = new Application(1,"Pepper",1,"Mat","Everyone","none","none", "I need 1 dog");
@@ -31,13 +31,13 @@ export class ViewApplicationsComponent implements OnInit {
 
 
   }
-
+  //Takes the current applicaiton in the list that was accepted
   acceptApp(appAcc :Application){
 
     console.log(appAcc);
 
   }
-
+  //Takes the current application in the list and rejects it. 
   rejectApp(rejApp :Application){
 
       console.log(rejApp);
