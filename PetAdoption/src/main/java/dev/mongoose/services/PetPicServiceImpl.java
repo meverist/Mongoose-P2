@@ -3,10 +3,12 @@ package dev.mongoose.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.mongoose.models.PetPic;
 import dev.mongoose.repositories.PetPicRepository;
 
+@Service
 public class PetPicServiceImpl implements PetPicService {
 
     @Autowired
@@ -21,9 +23,9 @@ public class PetPicServiceImpl implements PetPicService {
 	return ppr.findById(petId).get();
     }
     @Override
-    public List<PetPic> getAllPetsPic()
+    public List<PetPic> getAllPetsPic(Integer petId)
     {
-	return (List<PetPic>) ppr.findAll();
+	return (List<PetPic>) ppr.findAllByPetPetId(petId);
     }
     @Override
     public boolean deletePetPic(PetPic petPic)

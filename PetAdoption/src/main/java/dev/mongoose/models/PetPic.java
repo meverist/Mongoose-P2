@@ -2,8 +2,12 @@ package dev.mongoose.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Id;
 
 /**
  * One foreign key to pet; A pet should be able to be created without a picture.
@@ -17,47 +21,77 @@ import javax.persistence.Table;
 public class PetPic {
 
     @Id
-    @Column(name = "petID", updatable = false)
-    int petID;
+    @GeneratedValue()
+    @Column(name = "petpicID", updatable = false)
+    private int petpicID;
     @Column(name = "piclink")
-    String piclink;
+    private String piclink;
     @Column(name = "piccomments")
-    String piccomments;
+    private String piccomments;
 
-    public int getPetID() {
-	return petID;
-    }
-    public void setPetID(int petID) {
-	this.petID = petID;
-    }
-    public String getPiclink() {
-	return piclink;
-    }
-    public void setPiclink(String piclink) {
-	this.piclink = piclink;
-    }
-    public String getPiccomments() {
-	return piccomments;
-    }
-    public void setPiccomments(String piccomments) {
-	this.piccomments = piccomments;
-    }
-    public PetPic(String piclink, String piccomments) {
-	super();
-	this.piclink = piclink;
-	this.piccomments = piccomments;
-    }
+    @ManyToOne
+    @JoinColumn(name = "petId")
+    private Pet pet;
+
     public PetPic() {
 	super();
     }
-    public PetPic(int petID, String piclink, String piccomments) {
+
+    public PetPic(String piclink, String piccomments, Pet pet) {
 	super();
-	this.petID = petID;
 	this.piclink = piclink;
 	this.piccomments = piccomments;
+	this.pet = pet;
     }
+
+    public PetPic(int petpicID, String piclink, String piccomments, Pet pet) {
+	super();
+	this.petpicID = petpicID;
+	this.piclink = piclink;
+	this.piccomments = piccomments;
+	this.pet = pet;
+    }
+
+    public int getPetPicID() {
+	return petpicID;
+    }
+
+    public int getPetpicID() {
+	return petpicID;
+    }
+
+    public void setPetpicID(int petpicID) {
+	this.petpicID = petpicID;
+    }
+
+    public String getPiclink() {
+	return piclink;
+    }
+
+    public void setPiclink(String piclink) {
+	this.piclink = piclink;
+    }
+
+    public String getPiccomments() {
+	return piccomments;
+    }
+
+    public void setPiccomments(String piccomments) {
+	this.piccomments = piccomments;
+    }
+
+    public Pet getPet() {
+	return pet;
+    }
+
+    public void setPet(Pet pet) {
+	this.pet = pet;
+    }
+
     @Override
     public String toString() {
-	return "PetPics [petID=" + petID + ", piclink=" + piclink + ", piccomments=" + piccomments + "]";
+	return "PetPic [petpicID=" + petpicID + ", piclink=" + piclink + ", piccomments=" + piccomments + ", pet=" + pet
+		+ "]";
     }
+
 }

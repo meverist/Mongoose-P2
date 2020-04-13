@@ -10,7 +10,7 @@ public interface PetPicService {
 
     public PetPic getPetPic(int petId);
 
-    public List<PetPic> getAllPetsPic();
+    public List<PetPic> getAllPetsPic(Integer petId);
 
     public boolean deletePetPic(PetPic petPic);
 }
