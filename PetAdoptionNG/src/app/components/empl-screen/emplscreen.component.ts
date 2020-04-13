@@ -21,7 +21,7 @@ export class EmplscreenComponent implements OnInit {
 
   ngOnInit(): void {
     var hold;
-    this.data.currentMessage.subscribe(info => hold = info);
+    this.data.userCurrentMessage.subscribe(info => hold = info);
     //console.log(hold);
     this.person = JSON.parse(hold).userName;
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Application } from '../../models/application';
-import { NgModel } from '@angular/forms';
+
+import { UserinfoService } from 'src/app/services/userinfo.service';
 
 @Component({
   selector: 'app-create-application',
@@ -9,9 +10,14 @@ import { NgModel } from '@angular/forms';
 })
 export class CreateApplicationComponent implements OnInit {
 
-  constructor() { }
+  pet :string;
+
+  constructor(private data :UserinfoService) { }
 
   ngOnInit(): void {
+    var hold;
+    this.data.petCurrentMessage.subscribe(info => hold = info);
+    this.pet = JSON.parse(hold).petName;
   }
 
   userApp :Application;
