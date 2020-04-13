@@ -57,7 +57,7 @@ public class PadUser {
 
 	public PadUser() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public int getUserId() {
