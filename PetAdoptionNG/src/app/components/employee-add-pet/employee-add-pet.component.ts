@@ -42,6 +42,8 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petOwner,
         this.petPic);
 
+        console.log(p);
+
         this.addPetSend(p).subscribe(
           (response)=>{
             console.log(response);
@@ -53,7 +55,7 @@ export class EmployeeAddPetComponent implements OnInit {
     }
   }
   addPetSend(p:Pet):Observable<Pet>{
-    return this.http.post<Pet>("http://localhost:8080/Mongoose/employeeAddPet",p,{headers:this.headers})
+    return this.http.post<Pet>("http://localhost:8080/Mongoose/employee-add-pet",p,{headers:this.headers})
   }
   validateInputFields(): boolean{
 
