@@ -1,7 +1,12 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Adopter } from '../../models/Adoptor';
 import {  Router } from '@angular/router'   //allow for component to change component step 1
 import { LogInService } from '../../services/log-in.service';
+
+import { UserinfoService } from '../../services/userinfo.service';
+
+
+
 
 
 @Component({
@@ -20,7 +25,8 @@ export class LoginComponent implements OnInit {
    */
   constructor(
     public router: Router,     //step 2
-    private logService :LogInService
+    private logService :LogInService,
+    private data :UserinfoService
   ) { }
 
   ngOnInit(): void {
@@ -39,15 +45,7 @@ export class LoginComponent implements OnInit {
   invalid :boolean = false;
   result :string;
 
-  @Output() sendToParent = new EventEmitter<Adopter>();
 
-  goAdopter() {
-    this.router.navigate(['/adop-screen']);   //step 3
-  }
-
-  goEmployee() {
-    this.router.navigate(['/empl-screen']);
-  }
 
   /**
    * This method will be used to get the input from the web page and sent it to the backend.
@@ -59,13 +57,13 @@ export class LoginComponent implements OnInit {
       this.result = "Your email or password does not exist. Try again!";
     } else {
       var adopter = new Adopter(this.useremail, "info", "hold", this.userpassword, "Adopter");
-      console.log(adopter);
-      this.sendToParent.emit(adopter);
+
       this.logService.checkAdopter(adopter).subscribe(
         (resp) => {
           console.log(resp);
           adopter = resp;
-          if(adopter.userRole == 'employee') {
+          this.data.changeMessage(adopter);
+          if(adopter.userRole == 'Employee') {
             this.router.navigate(['/empl-screen']);
           } else {
             this.router.navigate(['/adop-screen']);
@@ -73,6 +71,7 @@ export class LoginComponent implements OnInit {
         },
         (resp) => {
           console.log("Failed to add Auzorithe the user!");
+          this.result = "Invalid Email/Password!";
           console.log(resp);
         }
       );

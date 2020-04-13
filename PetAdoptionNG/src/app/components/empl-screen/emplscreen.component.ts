@@ -1,5 +1,11 @@
+/**
+ * Francisco Radilla Greer 
+ * This typescript file is to change between all the componets for the Employee.
+ */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { UserinfoService } from 'src/app/services/userinfo.service';
 
 @Component({
   selector: 'app-emplscreen',
@@ -8,9 +14,16 @@ import { Router } from '@angular/router';
 })
 export class EmplscreenComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  person :string;
+
+  constructor(public router: Router,
+              private data :UserinfoService) { }
 
   ngOnInit(): void {
+    var hold;
+    this.data.currentMessage.subscribe(info => hold = info);
+    //console.log(hold);
+    this.person = JSON.parse(hold).userName;
   }
 
   viewApp() {
