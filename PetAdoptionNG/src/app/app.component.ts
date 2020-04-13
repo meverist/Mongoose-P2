@@ -1,5 +1,6 @@
 import { Component, ApplicationInitStatus } from '@angular/core';
-import { Adopter } from './models/Adoptor';
+import { UserinfoService } from './services/userinfo.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,25 +10,15 @@ import { Adopter } from './models/Adoptor';
 export class AppComponent {
   title = 'PetAdoptionNG';
 
-  displayAdop :boolean = false;
-  displayEmpl :boolean = false;
+  info :string;
+  person :string;
 
-  display :boolean;
+  constructor(private data :UserinfoService) {}
 
-  displaylog :boolean = false;
-
-  displayLog() {
-    console.log(this.displaylog);
-    this.displaylog = !this.displaylog;
+  ngOnit() {
+    this.data.currentMessage.subscribe(info => this.info = info);
+    console.log(this.info); 
   }
 
-  //This function will act like a listener for the emit value
-  GetLogVal(person :Adopter) {
-    console.log("Hello");
-    if(person) {
-      console.log("Data sent to parent!");
-      console.log(person)
-    }
-  }
 }
 

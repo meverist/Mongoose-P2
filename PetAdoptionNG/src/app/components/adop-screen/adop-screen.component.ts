@@ -5,6 +5,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { UserinfoService } from 'src/app/services/userinfo.service';
+
 @Component({
   selector: 'app-adop-screen',
   templateUrl: './adop-screen.component.html',
@@ -12,9 +14,16 @@ import { Router } from '@angular/router';
 })
 export class AdopScreenComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  person :string;
+
+  constructor(public router: Router,
+              private data :UserinfoService) { }
 
   ngOnInit(): void {
+    var hold;
+    this.data.currentMessage.subscribe(info => hold = info);
+    //console.log(hold);
+    this.person = JSON.parse(hold).userName;
   }
 
   createApplication() {
