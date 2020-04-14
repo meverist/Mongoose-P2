@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Pet} from '../../models/Pet';
-import { nextTick } from 'q';
+
 @Component({
   selector: 'app-pet-view',
   templateUrl: './pet-view.component.html',

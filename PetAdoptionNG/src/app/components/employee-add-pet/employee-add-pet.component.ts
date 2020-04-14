@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Pet } from 'src/app/models/Pet';
+import { Pet } from '../../models/Pet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -37,8 +37,9 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petWeight,
         this.petMedInfo,
         this.petAboutMe,
-        this.petOwner);
-
+        this.petOwner,
+        this.petPic);
+        
         this.addPetSend(p).subscribe(
           (response)=>{
             console.log(response);
