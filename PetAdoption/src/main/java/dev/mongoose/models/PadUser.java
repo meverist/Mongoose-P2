@@ -24,9 +24,9 @@ public class PadUser {
 	@Column(name="userid", updatable=false)
 	@GeneratedValue()
 	private int userId;
-	@Column(name="useremail")
+	@Column(name="useremail", unique=true)
 	private String userEmail;
-	@Column(name="username", unique=true)
+	@Column(name="username")
 	private String userName;
 	@Column(name="userpassword")
 	private String userPassword;
