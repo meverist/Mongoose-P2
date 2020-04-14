@@ -3,6 +3,8 @@ import { Application } from '../../models/application';
 import { NgModel } from '@angular/forms';
 import { LogInService } from '../../services/log-in.service';
 
+import { UserinfoService } from 'src/app/services/userinfo.service';
+
 @Component({
   selector: 'app-create-application',
   templateUrl: './create-application.component.html',
@@ -10,9 +12,13 @@ import { LogInService } from '../../services/log-in.service';
 })
 export class CreateApplicationComponent implements OnInit {
 
-  constructor(private callService: LogInService) { }
+  constructor(private callService: LogInService, private data :UserinfoService) { }
 
   ngOnInit(): void {
+    var hold;
+    this.data.petCurrentMessage.subscribe(info => hold = info);
+    this.petID = JSON.parse(hold).petID;
+    this.pet = JSON.parse(hold).petName;
   }
 
   userApp :Application;
@@ -22,11 +28,12 @@ export class CreateApplicationComponent implements OnInit {
   currentPets :string;
   children :string;
   comments :string;
-
+  pet :string;
   //Changes the userApp variable to contain the application details
   //Will need to be sent to the backend
   submitApp(){
-
+    var hold;
+    this.data.petCurrentMessage.subscribe(info => hold = info);
     this.userApp = new Application(undefined,this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
 
     this.callService.makeApplication(this.userApp).subscribe(
