@@ -1,16 +1,17 @@
 <p>create-application works!</p>
 
 <div>
-    <div>
-        <span>Children </span>
-        <input [(ngModel)] = "children" type="number">
-    </div>
+    
     <div>   
         <span>Pet ID </span>
-    <input [(ngModel)] = "petID" type="number" placeholder={{petID}}> <h3>{{pet}}</h3>
+    <input [(ngModel)] = "petID" type="number" (keyup)="petIDValidator()">
     </div>
     <div>
-        <span>Refrences </span>
+        <span>Children </span>
+        <textarea [(ngModel)] = "children" cols="50" rows="5" ></textarea>
+    </div>
+    <div>
+        <span>References </span>
     <textarea [(ngModel)] = "references" cols="50" rows="5"></textarea>
     </div>
     <div>
