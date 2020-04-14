@@ -17,6 +17,7 @@ export class CreateApplicationComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.petCurrentMessage.subscribe(info => hold = info);
+    this.petID = JSON.parse(hold).petID;
     this.pet = JSON.parse(hold).petName;
   }
 
@@ -29,7 +30,8 @@ export class CreateApplicationComponent implements OnInit {
   comments :string;
 
   submitApp(){
-
+    var hold;
+    this.data.petCurrentMessage.subscribe(info => hold = info);
     this.userApp = new Application(this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
 
     console.log(this.userApp);

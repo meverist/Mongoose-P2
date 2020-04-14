@@ -37,4 +37,10 @@ export class EmplscreenComponent implements OnInit {
   viewPets() {
     this.router.navigate(['/pet-view']);
   }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
 }

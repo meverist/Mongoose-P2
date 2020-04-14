@@ -37,4 +37,10 @@ export class AdopScreenComponent implements OnInit {
     //WOP
   }
 
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
+
 }
