@@ -1,5 +1,6 @@
 import { Component, OnInit, ApplicationInitStatus } from '@angular/core';
 import { Application } from '../../models/application';
+import {LogInService } from '../../services/log-in.service';
 
 @Component({
   selector: 'app-view-applications',
@@ -8,9 +9,11 @@ import { Application } from '../../models/application';
 })
 export class ViewApplicationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private callService: LogInService) { }
 
   ngOnInit(): void {
+
+    this.createApps();
   }
 
   applications :Array<Application>=[];
@@ -18,29 +21,45 @@ export class ViewApplicationsComponent implements OnInit {
   //Testing funciton, can remove once databse functionality has been brought in.
   createApps() {
 
-    let app1 :Application = new Application(1,"Pepper",1,"Mat","Everyone","none","none", "I need 1 dog");
+    this.callService.allApplication().subscribe(
+      (response) => {
+        this.applications = response;
+      },
+      (response) => {
+        console.log("Cannot retrieve applicaitons")
+      }
 
-    
-    let app2 :Application = new Application(1,"Missy",1,"Own1","Everyone","cats","2", "I need 2 dog");
-    let app3 :Application = new Application(1,"Tanner",1,"Own2","Everyone","birds","3", "I need 3 dog");
-    let app4 :Application = new Application(1,"Zoey",1,"Own3","Everyone","none","5", "I need 4 dog");
-    let app5 :Application = new Application(1,"Raya",1,"Own4","Everyone","none","10", "I need 5 dog");
-
-    this.applications.push(app1,app2,app3,app4,app5);
-
+    )
 
 
   }
   //Takes the current applicaiton in the list that was accepted
   acceptApp(appAcc :Application){
 
-    console.log(appAcc);
+    this.callService.deleteAllButApplication(appAcc.petID, appAcc.userID).subscribe(
+
+      (response) =>{
+      console.log(response);
+      },
+      (response) => {
+        console.log(response);
+      }
+    )
 
   }
   //Takes the current application in the list and rejects it. 
   rejectApp(rejApp :Application){
 
-      console.log(rejApp);
+     this.callService.deleteApplicaiton(rejApp.appId).subscribe(
+      (response) =>{
+        console.log(response);
+        },
+        (response) => {
+          console.log(response);
+        }
+
+
+     )
 
   }
 

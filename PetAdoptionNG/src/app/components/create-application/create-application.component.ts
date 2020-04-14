@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Application } from '../../models/application';
 import { NgModel } from '@angular/forms';
+import { LogInService } from '../../services/log-in.service';
 
 @Component({
   selector: 'app-create-application',
@@ -9,7 +10,7 @@ import { NgModel } from '@angular/forms';
 })
 export class CreateApplicationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private callService: LogInService) { }
 
   ngOnInit(): void {
   }
@@ -26,9 +27,14 @@ export class CreateApplicationComponent implements OnInit {
   //Will need to be sent to the backend
   submitApp(){
 
-    this.userApp = new Application(this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
+    this.userApp = new Application(undefined,this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
 
-    console.log(this.userApp);
+    this.callService.makeApplication(this.userApp).subscribe(
+      (response) => {this.userApp = response},
+      (response) => {console.log("error")}
+
+
+    )
 
   }
   //Probably will need to be deleted later, this validates the pet
