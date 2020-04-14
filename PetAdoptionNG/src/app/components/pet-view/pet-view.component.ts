@@ -15,11 +15,19 @@ export class PetViewComponent implements OnInit {
  
   ngOnInit(): void {
 
+<<<<<<< HEAD
 //let pet1: Pet = new Pet(1,"Bo","dog","lab",3,50,"healthy","I love to play","pic.com");
 //let pet2: Pet = new Pet(1,"Zo","doog","laab",30,55,"healthys","I love to plays","pic.coms");
 
 //let pet3: Pet = new Pet(1,"Lo","dooog","laaab",31,56,"healthyss","I love to playss","pic.comss");
 //this.pets.push(pet1,pet2,pet3);
+=======
+let pet1: Pet = new Pet(1,"Bo","dog","lab",3,50,"healthy","I love to play",1,"pic.com");
+let pet2: Pet = new Pet(1,"Zo","doog","laab",30,55,"healthys","I love to plays",1,"pic.coms");
+
+let pet3: Pet = new Pet(1,"Lo","dooog","laaab",31,56,"healthyss","I love to playss",1,"pic.comss");
+this.pets.push(pet1,pet2,pet3);
+>>>>>>> f245883fcf5be21e0114b3dd67093d1c43742642
   }
     nextPet() {
    if (this.index == this.pets.length - 1) {
