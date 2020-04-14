@@ -3,11 +3,10 @@ package dev.mongoose.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
 
 /**
  * One foreign key to pet; A pet should be able to be created without a picture.

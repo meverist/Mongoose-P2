@@ -18,18 +18,19 @@ public class PetPicServiceImpl implements PetPicService {
     public PetPic createOrUpdatePetPic(PetPic petPic) {
 	return ppr.save(petPic);
     }
+
     @Override
     public PetPic getPetPic(int petId) {
 	return ppr.findById(petId).get();
     }
+
     @Override
-    public List<PetPic> getAllPetsPic(Integer petId)
-    {
+    public List<PetPic> getAllPetsPic(Integer petId) {
 	return (List<PetPic>) ppr.findAllByPetPetId(petId);
     }
+
     @Override
-    public boolean deletePetPic(PetPic petPic)
-    {
+    public boolean deletePetPic(PetPic petPic) {
 	try {
 	    ppr.delete(petPic);
 	    return true;
