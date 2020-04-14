@@ -1,26 +1,31 @@
-<p>view-applications works!</p>
+
 
 <div >
 
-    <button (click)="createApps()">Populate table</button>
-
-<Table *ngFor="let a of applications" >
+<table *ngFor="let a of applications" >
     <tr>
     <th>Pet Name</th>
     <th>Adoptor Name</th>
-    <th>References</th>
-    <th>Current Pets</th>
+      <th>Current Pets</th>
+    <th>Children</th>
     </tr>
     <tr >
         <td>{{a.petName}}</td>
-        <td>{{a.adoptorName}}</td>
-        <td>{{a.references}}</td>
-        <td>{{a.currentPets}}</td>
+        <td>{{a.userName}}</td>
+        <td>{{a.appPetsOwned}}</td>
+        <td>{{a.appChildren}}</td>
     </tr>
-    <p>{{a.comments}}</p>
+    <div>
+        <span>references</span>
+        <p>{{a.appReferences}}</p>
+    </div>
+    <div>
+        <span>Comments</span>
+    <p>{{a.appComments}}</p>
+    </div>
     <button (click)="acceptApp(a)">Accept</button>
     <button (click)="rejectApp(a)">Reject</button>
-</Table>
+</table>
     
 
 

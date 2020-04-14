@@ -21,8 +21,7 @@ export class AdopScreenComponent implements OnInit {
 
   ngOnInit(): void {
     var hold;
-    this.data.currentMessage.subscribe(info => hold = info);
-    //console.log(hold);
+    this.data.userCurrentMessage.subscribe(info => hold = info);
     this.person = JSON.parse(hold).userName;
   }
 
@@ -36,6 +35,12 @@ export class AdopScreenComponent implements OnInit {
 
   createAppointment() {
     //WOP
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
   }
 
 }
