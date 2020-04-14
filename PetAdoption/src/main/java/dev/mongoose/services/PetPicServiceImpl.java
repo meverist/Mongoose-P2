@@ -21,7 +21,7 @@ public class PetPicServiceImpl implements PetPicService {
 
     @Override
     public PetPic getPetPic(int petId) {
-	return ppr.findById(petId).get();
+	return ppr.findPetPicByPetPetId(petId);
     }
 
     @Override

@@ -24,6 +24,7 @@ public class PetPicController {
     @PostMapping(value = "/petpic", consumes = "application/json")
     public PetPic createPetPic(@RequestBody PetPic petPic) {
 
+	System.out.println("Receiving Post Request");
 	return pps.createOrUpdatePetPic(petPic);
     }
 
