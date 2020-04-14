@@ -26,7 +26,7 @@ public class PadUser {
 	private int userId;
 	@Column(name="useremail")
 	private String userEmail;
-	@Column(name="username")
+	@Column(name="username", unique=true)
 	private String userName;
 	@Column(name="userpassword")
 	private String userPassword;

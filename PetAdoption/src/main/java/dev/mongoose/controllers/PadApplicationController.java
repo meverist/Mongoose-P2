@@ -21,11 +21,12 @@ public class PadApplicationController {
 	
 	@Autowired
 	PadApplicationService pas;
+	
+	
 	@CrossOrigin
 	@PostMapping(value="/padapplication", consumes="application/json")
 	public PadApplication createPadApplication(@RequestBody PadApplication padApp) {
 		return pas.createPadApplication(padApp);
-		
 	}
 	@CrossOrigin
 	@GetMapping(value="/padapplication")
@@ -49,15 +50,15 @@ public class PadApplicationController {
 		
 	}
 	@CrossOrigin
-	@DeleteMapping(value="/padapplication")
-	public boolean deleteApplication(@RequestBody PadApplication padApplication) {
-		return pas.deletePadApplication(padApplication);
+	@DeleteMapping(value="/padapplication/{padId}")
+	public boolean deleteApplication(@PathVariable Integer padId) {
+		return pas.deletePadApplication(pas.getPadApplicationById(padId));
 			
 	}
 	@CrossOrigin
 	@DeleteMapping(value="/padapplication/excluding")
-	public boolean deleteApplicationsByPet(@RequestBody PadApplication padApplication) {
-		return pas.deleteAppByPetExceptUser(padApplication);
+	public boolean deleteApplicationsByPet(@RequestParam Integer petId, Integer userId) {
+		return pas.deleteAppByPetExceptUser(pas.getPadApplicationBypetIdAnduserId(petId, petId));
 		
 	}
 
