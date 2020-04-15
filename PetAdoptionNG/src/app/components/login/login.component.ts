@@ -89,5 +89,8 @@ export class LoginComponent implements OnInit {
       return this.invalid;
     }
   }
-
+  userregister()
+  {
+    this.router.navigate(['/userregister']);
+  }
 }

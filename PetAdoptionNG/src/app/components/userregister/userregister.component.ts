@@ -83,5 +83,4 @@ export class UserregisterComponent implements OnInit {
 
     return null;
   }
-
 }
