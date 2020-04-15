@@ -9,6 +9,7 @@
         <input type="password" [(ngModel)] = "userpassword" id="inputPassword" class="form-control mt-3" placeholder="Password" required>
         <p *ngif="!invalid" style="margin-top: 10px;">{{result}}</p>
         <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "logIn()">Sign In</button>
+        <a class="mt-3 nav-link" href="#" (click)="userregister">Create an account</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2020 Mongoose</p>
     </form>
 </div>
