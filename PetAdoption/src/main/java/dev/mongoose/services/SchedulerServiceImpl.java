@@ -52,19 +52,19 @@ try {
 			return false;
 		}
 	}
-		
+}		
 	
-
-	@Override
-	public Scheduler getSchedulerByUser(Integer userid) {
-		
-		return null;
-	}
-
-	@Override
-	public Scheduler getSchedulerByPet(Integer petid) {
-		
-		return null;
-	}
-
-}
+//
+//	@Override
+//	public Scheduler getSchedulerByUser(Integer userid) {
+//		
+//		return sr.findByUserId(userid);
+//	}
+//
+//	@Override
+//	public Scheduler getSchedulerByPet(Integer petid) {
+//		
+//		return sr.findByPetId(petid);
+//	}
+//
+//}

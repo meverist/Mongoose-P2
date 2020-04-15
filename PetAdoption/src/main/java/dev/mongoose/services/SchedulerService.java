@@ -13,6 +13,6 @@ public interface SchedulerService {
 	public boolean deleteScheduler(Scheduler delete);
 	
 	
-	public Scheduler getSchedulerByUser(Integer userid);
-	public Scheduler getSchedulerByPet(Integer petid);
+	//public Scheduler getSchedulerByUser(Integer userid);
+	//public Scheduler getSchedulerByPet(Integer petid);
 }
