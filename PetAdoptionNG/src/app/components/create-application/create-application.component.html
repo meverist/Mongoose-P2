@@ -1,31 +1,18 @@
-<h3>Adopting {{pet}}</h3>
+<h3>Adopting {{peti.petName}}</h3>
 
 <div>
-    
-    <div>   
-        <span>Pet ID </span>
-    <input [(ngModel)] = "petID" type="number" (keyup)="petIDValidator()">
-    </div>
-    <div>
-        <span>Children </span>
-        <textarea [(ngModel)] = "children" cols="50" rows="5" ></textarea>
-    </div>
-    <div>
-        <span>References </span>
-    <textarea [(ngModel)] = "references" cols="50" rows="5"></textarea>
-    </div>
-    <div>
-        <span>Current Pets </span>
-    <textarea [(ngModel)]="currentPets" cols="50" rows="5"></textarea>
-    </div>
+    <p>Children </p>
+    <input [(ngModel)] = "appChildren" type="number">
 
-    <div>
-        <span>Comments </span>
-        <textarea [(ngModel)]="comments" cols="50" rows="5"></textarea>
-    </div>
-    
+    <p>Refrences </p>
+    <textarea [(ngModel)] = "appReferences" cols="50" rows="5"></textarea>
+
+    <p>Current Pets </p>
+    <textarea [(ngModel)]="appPetsOwned" cols="50" rows="5"></textarea>
+
+    <p>Comments</p>
+    <textarea [(ngModel)]="appComments" cols="50" rows="5"></textarea>
 
     <button (click)="submitApp()">Submit</button>
-
-
+    <p>{{message}}</p>
 </div>

@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Application } from '../../models/application';
-import { NgModel } from '@angular/forms';
-import { LogInService } from '../../services/log-in.service';
+import { Adopter } from 'src/app/models/Adoptor';
+import { Pet } from 'src/app/models/Pet';
+
+import { Router } from '@angular/router';
 
 import { UserinfoService } from 'src/app/services/userinfo.service';
+import { LogInService } from 'src/app/services/log-in.service';
+
 
 @Component({
   selector: 'app-create-application',
@@ -12,48 +16,51 @@ import { UserinfoService } from 'src/app/services/userinfo.service';
 })
 export class CreateApplicationComponent implements OnInit {
 
-  constructor(private callService: LogInService, private data :UserinfoService) { }
+  constructor(private data :UserinfoService, public router: Router, private logService :LogInService) { }
 
   ngOnInit(): void {
     var hold;
     this.data.petCurrentMessage.subscribe(info => hold = info);
-    this.petID = JSON.parse(hold).petID;
-    this.pet = JSON.parse(hold).petName;
+    this.peti = JSON.parse(hold);
+    
+    this.data.userCurrentMessage.subscribe(info => hold = info);
+    this.user = JSON.parse(hold);
   }
 
   userApp :Application;
 
-  petID: number;
-  references :string;
-  currentPets :string;
-  children :string;
-  comments :string;
-  pet :string;
-  //Changes the userApp variable to contain the application details
-  //Will need to be sent to the backend
+  appReferences :string;
+  appPetsOwned :string;
+  appChildren :string;
+  appComments :string;
+  user :Adopter;
+  peti :Pet;
+
+  message :string;
+
   submitApp(){
-    var hold;
-    this.data.petCurrentMessage.subscribe(info => hold = info);
-    this.userApp = new Application(undefined,this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
+    this.userApp = new Application(this.appReferences,
+                                   this.appPetsOwned,
+                                   this.appChildren,
+                                   this.appComments,
+                                   this.user,
+                                   this.peti);
+    console.log(this.userApp);
 
-    this.callService.makeApplication(this.userApp).subscribe(
-      (response) => {this.userApp = response},
-      (response) => {console.log("error")}
-
-
+    this.logService.makeApplication(this.userApp).subscribe(
+      (resp) => {
+        console.log("Application was sent");
+        if (this.user.userRole == 'Adopter') {
+          this.router.navigate(['/adop-screen']);
+        } else {
+          this.router.navigate(['/empl-screen']);
+        }
+      },
+      (resp) => {
+        console.log("Failed to add Application");
+        this.message = "Failed to apply";
+      }
     )
-
   }
-  //Probably will need to be deleted later, this validates the pet
-  //your creating the ID for
-  petIDValidator(){
 
-    this.petID = Math.round(this.petID);
-
-    if(this.petID <= 0 ){
-      
-      this.petID = 1;
-    }
-
-  }
 }

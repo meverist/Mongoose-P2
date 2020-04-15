@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { Pet } from "src/app/models/Pet";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Router } from '@angular/router';
+
+import { Pet } from "src/app/models/Pet";
 import { Adopter } from "src/app/models/Adoptor";
+
 import { LogInService } from "../../services/log-in.service";
 
 @Component({
@@ -11,10 +14,8 @@ import { LogInService } from "../../services/log-in.service";
   styleUrls: ["./employee-add-pet.component.css"],
 })
 export class EmployeeAddPetComponent implements OnInit {
-  constructor(private callService: LogInService) {}
+  constructor(public router: Router, private callService: LogInService) {}
 
-  
-  
   ngOnInit(): void {}
 
   petID: number;
@@ -29,7 +30,7 @@ export class EmployeeAddPetComponent implements OnInit {
   petPic: string;
   owner: Adopter;
 
-
+  message :string;
 
   addPet() {
     console.log("called add pet");
@@ -43,17 +44,19 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petWeight,
         this.petMedInfo,
         this.petAboutMe,
-        this.petOwner,
         this.petPic,
-        this.owner
+        null
       )
 
       this.callService.createPet(p).subscribe(
         (response) => {
           console.log(response);
+          this.router.navigate(['/empl-screen']);
+
         },
         (response) => {
           console.log("failure " + response);
+          this.message = "Failed to add pet";
         }
       );
     }
