@@ -67,27 +67,33 @@ export class LogInService {
     
     return this.http.delete(this.url+"/padapplication/excluding", {params: params});
   }
+
+  //Successful Test 4/14/2020
   makeApplication(app: Application) :Observable<Application>{
 
     return this.http.post<Application>(this.url+'/padapplication',app,{headers: this.headers});
 
   }
-  //Untested 4/13/2020
+
+  //Successful Test 4/14/2020
   createPet(pet: Pet) :Observable<Pet>{
 
     return this.http.post<Pet>(this.url+"/pet", pet, {headers: this.headers});
 
   }
-  //Untested 4/13/2020
+  //WIP
   retrievePet(petId: number) :Observable<Pet> {
     return this.http.get<Pet>(this.url+"/pet/"+petId);
   }
+
   //Untested 4/13/2020
   updatePet(pet: Pet) :Observable<Pet> {
 
     return this.http.post<Pet>(this.url+"/pet/update",pet, {headers: this.headers});
 
   }
+
+  //Successful Test 4/14/2020
   retrieveAllPets() :Observable<Pet[]> {
 
 

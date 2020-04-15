@@ -36,30 +36,30 @@ export class ViewApplicationsComponent implements OnInit {
   //Takes the current applicaiton in the list that was accepted
   acceptApp(appAcc :Application){
 
-    this.callService.deleteAllButApplication(appAcc.petID, appAcc.userID).subscribe(
+    // this.callService.deleteAllButApplication(appAcc.petID, appAcc.userID).subscribe(
 
-      (response) =>{
-      console.log(response);
-      },
-      (response) => {
-        console.log(response);
-      }
-    )
+    //   (response) =>{
+    //   console.log(response);
+    //   },
+    //   (response) => {
+    //     console.log(response);
+    //   }
+    // )
 
   }
   //Takes the current application in the list and rejects it. 
   rejectApp(rejApp :Application){
 
-     this.callService.deleteApplicaiton(rejApp.appId).subscribe(
-      (response) =>{
-        console.log(response);
-        },
-        (response) => {
-          console.log(response);
-        }
+    //  this.callService.deleteApplicaiton(rejApp.appId).subscribe(
+    //   (response) =>{
+    //     console.log(response);
+    //     },
+    //     (response) => {
+    //       console.log(response);
+    //     }
 
 
-     )
+    //  )
 
   }
 
