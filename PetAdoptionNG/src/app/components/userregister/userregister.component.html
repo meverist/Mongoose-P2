@@ -4,15 +4,15 @@
         <a class="navbar-brand" href="#" style="font-family: 'Akronim', cursive; color: #ae7800; font-size: 25px;">Mongoose</a>
         <h1 class="font-weight-normal h3 mb-1 mt-2" style="font-family: 'Adamina', serif; font-size: 25px;">Registration</h1>
         <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" [(ngModel)] = "username" id="inputUsername" class="form-control mt-3" placeholder="Username" required autofocus>
+        <input type="text" [(ngModel)] = "username" [ngModelOptions]="{standalone: true}" id="inputUsername" class="form-control mt-3" placeholder="Username" required autofocus>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" [(ngModel)] = "useremail" id="inputEmail" class="form-control mt-3" placeholder="Email address" required autofocus>
+        <input type="email" [(ngModel)] = "useremail" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control mt-3" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" [(ngModel)] = "userpassword" id="inputPassword" class="form-control mt-3" placeholder="Password" required>
+        <input type="password" [(ngModel)] = "userpassword" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control mt-3" placeholder="Password" required>
         <label for="inputConfirmPassword" class="sr-only">Confirm password</label>
-        <input type="password"  [(ngModel)] = "password2" id="inputConfirmPassword" class="form-control mt-3" placeholder="Confirm password" required>
-        <p *ngif="!invalid" style="margin-top: 10px;">{{result}}</p>
+        <input type="password"  [(ngModel)] = "password2" [ngModelOptions]="{standalone: true}" id="inputConfirmPassword" class="form-control mt-3" placeholder="Confirm password" required>
         <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "createAdopter()">Sign Up</button>
+        <p *ngIf="!invalid" style="margin-top: 10px;">{{result}}</p>
         <p class="mt-5 mb-3 text-muted">&copy; 2020 Mongoose</p>
     </form>
 </div>

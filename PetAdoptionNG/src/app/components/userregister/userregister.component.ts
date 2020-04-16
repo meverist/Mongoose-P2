@@ -27,7 +27,7 @@ export class UserregisterComponent implements OnInit {
   password2 :string;
   //There are two roles user and employee
   userrole :string = "Adopter";
-  userinfo :string;
+  userinfo :string = "empty";
   
   invalid :boolean = false;
   result :string;
@@ -57,17 +57,17 @@ export class UserregisterComponent implements OnInit {
 
   //Makes sure the input fields have to correct input. Including the password checkers
   validateInputFields() :number {
-    console.log(this.username);
-    console.log(this.useremail);
-    console.log(this.userpassword);
-    console.log(this.password2);
-    console.log(this.userrole);
+    //console.log(this.username);
+    //console.log(this.useremail);
+    //console.log(this.userpassword);
+    //console.log(this.password2);
+    //console.log(this.userrole);
 
     if(this.username == undefined || this.username == "" ||
        this.useremail == undefined || this.useremail == "" ||
        this.userpassword == undefined || this.userpassword == "" ||
-       this.password2 == undefined || this.password2 == "" ||
-       this.userinfo == undefined || this.userinfo == "") {
+       this.password2 == undefined || this.password2 == "" 
+       ) {
         this.invalid = false;
         console.log("invalid");
         return 1;

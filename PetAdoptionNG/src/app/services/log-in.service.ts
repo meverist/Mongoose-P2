@@ -51,7 +51,7 @@ export class LogInService {
     return this.http.get<Application[]>(this.url+"/padapplication/find/?appstatus=pending")
   }
 
-  //Get application by User -- Untested 4/13/2020
+  //Get application by User -- tested 4/15/2020
   userApplication(userId: number) :Observable<Application[]>{
     return this.http.get<Application[]>(this.url+"/padapplication/userid/"+userId)
 
@@ -95,6 +95,10 @@ export class LogInService {
   //Successful Test 4/14/2020
   retrieveAllPets() :Observable<Pet[]> {  
     return this.http.get<Pet[]>(this.url+"/pet");
+  }
+
+  retrieveAllPetsNoOwner() :Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.url+"/pet/get");
   }
 
   //2 test 1 successful 1 failed when a application is all ready connected to pet

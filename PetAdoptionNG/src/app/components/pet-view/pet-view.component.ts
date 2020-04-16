@@ -81,7 +81,7 @@ export class PetViewComponent implements OnInit {
    }
 
    popPetArray() {
-    this.serviceCaller.retrieveAllPets().subscribe(
+    this.serviceCaller.retrieveAllPetsNoOwner().subscribe(
       (response) => {
         this.pets = response;
         console.log(this.pets);
