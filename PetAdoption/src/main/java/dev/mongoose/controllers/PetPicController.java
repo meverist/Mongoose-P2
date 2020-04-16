@@ -25,10 +25,10 @@ public class PetPicController {
 	return pps.createOrUpdatePetPic(petPic);
     }
 
-    @GetMapping(value = "/petspic/search/{petId}")
+    @GetMapping(value = "/petpics/search/{petId}")
     public List<PetPic> getAllPetsPic(@PathVariable Integer petId) {
 
-	// Iterable <Integer> petID = new Iterable;
+	
 	return pps.getAllPetsPic(petId);
     }
     @GetMapping(value = "/petpic/{petId}")
