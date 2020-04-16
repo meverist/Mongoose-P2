@@ -3,7 +3,10 @@ package dev.mongoose.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.ui.ModelMap;
+=======
+>>>>>>> BackendMaster
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,12 +39,16 @@ public class PadUserController {
 	/**
 	 * Function to log in a user, put mapped for secrecy
 	 */
+	@CrossOrigin
 	@GetMapping(value="paduser")
 	public List<PadUser> getAllPadUser() {
 		
 		return us.allPadUsers();
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> BackendMaster
 	@CrossOrigin
 	@PostMapping(value="/paduser/login", consumes="application/json")
 	public PadUser getPadUser(@RequestBody PadUser padUser) {
@@ -56,6 +63,7 @@ public class PadUserController {
 	/**
 	 * Function to update user profiles
 	 */
+	@CrossOrigin
 	@PostMapping(value="/paduser/update", consumes="application/json")
 	public PadUser updatePadUser(@RequestBody PadUser change) {
 		return us.updatePadUser(change);

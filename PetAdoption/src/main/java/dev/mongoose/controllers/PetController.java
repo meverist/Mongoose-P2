@@ -3,6 +3,7 @@ package dev.mongoose.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,20 +18,20 @@ public class PetController {
 
 	@Autowired
 	PetService ps;
-	
+	@CrossOrigin
 	@PostMapping(value="/pet", consumes="application/json")
 	public Pet createPet(@RequestBody Pet pet) {
 		
 		return ps.createOrUpdatePet(pet);
 		
 	}
-	
+	@CrossOrigin
 	@GetMapping(value="/pet")
 	public List<Pet> getAllPets(){
 		
 		return ps.getAllPets();
 	}
-	
+	@CrossOrigin
 	@GetMapping(value="/pet/{petId}")
 	public Pet getPetById(@PathVariable Integer petId) {
 		
@@ -40,6 +41,12 @@ public class PetController {
 			return ps.getPet(petId);
 		}
 		
+	}
+	@CrossOrigin
+	@PostMapping(value="/pet/update")
+	public Pet adoptPet(@RequestBody Pet pet) {
+		
+		return ps.createOrUpdatePet(pet);
 	}
 	
 	
