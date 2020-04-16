@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Id;
+
+
 
 /**
  * One foreign key to pet; A pet should be able to be created without a picture.
@@ -20,8 +23,8 @@ import javax.persistence.Table;
 public class PetPic {
 
     @Id
-    @GeneratedValue()
     @Column(name = "petpicID", updatable = false)
+    @GeneratedValue()
     private int petpicID;
     @Column(name = "piclink")
     private String piclink;
@@ -29,7 +32,7 @@ public class PetPic {
     private String piccomments;
 
     @ManyToOne
-    @JoinColumn(name = "petId")
+    @JoinColumn(name = "petid")
     private Pet pet;
 
     public PetPic() {
