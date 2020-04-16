@@ -1,15 +1,16 @@
 package dev.mongoose.repositories;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import dev.mongoose.models.PadApplication;
-import dev.mongoose.models.PadUser;
-import dev.mongoose.models.Pet;
 
 public interface PadApplicationRepository extends CrudRepository<PadApplication, Integer>{
 	
 	PadApplication findPadApplicationByPetPetIdAndUserUserId(Integer petId,Integer userId);
-	PadApplication findPadApplicationByPetPetId(Integer petId);
-	PadApplication findPadApplicationByUserUserId(Integer userId);
+	List<PadApplication> findPadApplicationByPetPetId(Integer petId);
+	List<PadApplication> findPadApplicationByappstatus(String status);
+	List<PadApplication> findPadApplicationByUserUserId(Integer userId);
 
 }

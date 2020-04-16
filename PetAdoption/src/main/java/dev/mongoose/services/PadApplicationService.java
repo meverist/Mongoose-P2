@@ -17,4 +17,5 @@ public interface PadApplicationService {
 	public boolean deleteAppByPetExceptUser(PadApplication padApplication);
 	public List<PadApplication> getPadApplicationByPetId(Integer petId);
 	public List<PadApplication> getPadApplicationByUserId(Integer userId);
+	public List<PadApplication> getAppByStatus(String status);
 }
