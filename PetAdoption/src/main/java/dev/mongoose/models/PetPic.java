@@ -8,6 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+
+
+
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -24,8 +27,8 @@ import org.hibernate.annotations.OnDeleteAction;
 public class PetPic {
 
     @Id
-    @GeneratedValue()
     @Column(name = "petpicID", updatable = false)
+    @GeneratedValue()
     private int petpicID;
     @Column(name = "piclink")
     private String piclink;
@@ -35,6 +38,7 @@ public class PetPic {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "petId")
+
     private Pet pet;
 
     public PetPic() {

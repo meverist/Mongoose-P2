@@ -11,6 +11,7 @@ import dev.mongoose.repositories.PetPicRepository;
 @Service
 public class PetPicServiceImpl implements PetPicService {
 
+
 	@Autowired
 	PetPicRepository ppr;
 
@@ -38,5 +39,6 @@ public class PetPicServiceImpl implements PetPicService {
 			e.printStackTrace();
 			return false;
 		}
+
 	}
 }

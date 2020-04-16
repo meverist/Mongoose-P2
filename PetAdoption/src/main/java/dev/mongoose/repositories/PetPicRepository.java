@@ -10,5 +10,6 @@ import dev.mongoose.models.PetPic;
 @Repository
 public interface PetPicRepository extends CrudRepository<PetPic, Integer> {
 
+    PetPic findPetPicByPetPetId(Integer petId);
     List<PetPic> findAllByPetPetId(Integer petId);
 }
