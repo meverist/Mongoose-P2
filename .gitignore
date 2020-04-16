@@ -1,2 +1,3 @@
 /.metadata/
-PetAdoption/src/main/resources/application.properties
+*.class
+*.jar
