@@ -30,7 +30,7 @@ export class LogInService {
 
   constructor(private http :HttpClient) {
     this.url = "http://localhost:8080";
-   }
+  }
 
   private headers = new HttpHeaders({'content-Type':'application/json'});
 
@@ -43,24 +43,28 @@ export class LogInService {
   addAdopter(adop: Adopter) :Observable<Adopter> {
     return this.http.post<Adopter>(this.url+"/paduser", adop, {headers: this.headers});
   }
-  //Get all applications  -- Untested 4/13/2020
+
+  //Get all applications  -- tested 4/15/2020
   allApplication() :Observable<Application[]> {
-    return this.http.get<Application[]>(this.url+"/padapplication");
+    //return this.http.get<Application[]>(this.url+"/padapplication");
+    //updated version so that it only gets applications that are pending
+    return this.http.get<Application[]>(this.url+"/padapplication/find/?appstatus=pending")
   }
+
   //Get application by User -- Untested 4/13/2020
   userApplication(userId: number) :Observable<Application[]>{
-    return this.http.get<Application[]>(this.url+"/padapplication/"+userId)
+    return this.http.get<Application[]>(this.url+"/padapplication/userid/"+userId)
 
   }
-  //NOT GOING TO WORK HOW I HAVE IT SETUP BACKEND, NEEDS A REWORK
-  //Untested 4/13/2020
+
+  //Successful tested 4/15/2020
   deleteApplicaiton(padId: number) :Observable<Object>{
-    return this.http.delete(this.url+"/padapplicaiton/"+padId);
+    return this.http.delete(this.url+"/padapplication/"+padId);
   }
-  //Delete application by userID and petID
-  //Untested 4/13/2020
+
+  //Delete all applications that have this pet id but does not have both the pet id and user id.
+  //Successfull tested 4/15/2020
   deleteAllButApplication(petId: number, userId: number) :Observable<Object> {
-    
     let params = new HttpParams;
     params = params.append('petId', petId.toString());
     params = params.append('userId', userId.toString());
@@ -70,39 +74,37 @@ export class LogInService {
 
   //Successful Test 4/14/2020
   makeApplication(app: Application) :Observable<Application>{
-
     return this.http.post<Application>(this.url+'/padapplication',app,{headers: this.headers});
-
   }
 
   //Successful Test 4/14/2020
   createPet(pet: Pet) :Observable<Pet>{
-
     return this.http.post<Pet>(this.url+"/pet", pet, {headers: this.headers});
-
   }
+
   //WIP
   retrievePet(petId: number) :Observable<Pet> {
     return this.http.get<Pet>(this.url+"/pet/"+petId);
   }
 
-  //Untested 4/13/2020
+  //Successful tested 4/13/2020
   updatePet(pet: Pet) :Observable<Pet> {
-
     return this.http.post<Pet>(this.url+"/pet/update",pet, {headers: this.headers});
-
   }
 
   //Successful Test 4/14/2020
-  retrieveAllPets() :Observable<Pet[]> {
-
-
+  retrieveAllPets() :Observable<Pet[]> {  
     return this.http.get<Pet[]>(this.url+"/pet");
-
   }
 
+  //2 test 1 successful 1 failed when a application is all ready connected to pet
+  deletePet(petId :number) :Observable<Object> {
+    console.log(this.url);
+    return this.http.delete(this.url + "/pet/"+petId);
+  }
 
-
-
+  updateApp(app: Application) :Observable<Application> {
+    return this.http.post<Application>(this.url+"/padapplication/update", app, {headers: this.headers});
+  }
 
 }

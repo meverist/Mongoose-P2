@@ -2,7 +2,7 @@ import { Adopter } from './Adoptor'
 
 export class Pet{
     
-    petID:number;
+    petId:number;
     petName: string;
     petType: string;
     petBreed: string;
@@ -11,11 +11,11 @@ export class Pet{
     petMedInfo: string;
     petAboutMe: string;
     petPic: string;
-    owner: Adopter;
+    petOwner: Adopter;
 
     constructor(petID:number, petName: string, petType: string, petBreed: string,petAge: number, petWeight: number,petMedInfo: string, petAboutMe: string, petPic:string, owner:Adopter)
     {
-    this.petID = petID;
+    this.petId = petID;
     this.petName = petName;
     this.petType = petType;
     this.petBreed = petBreed;
@@ -24,7 +24,7 @@ export class Pet{
     this.petMedInfo = petMedInfo;
     this.petAboutMe = petAboutMe;
     this.petPic = petPic;
-    this.owner = owner;
+    this.petOwner = owner;
     }
 
 }

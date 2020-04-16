@@ -3,14 +3,18 @@
 
 <div>
 <!-- <img src="{{pets[index].petPic}}"> -->
-<div>Name:{{pets[index].petName}}</div>	
-<div>Type:{{pets[index].petType}}</div>
-<div>Breed:{{pets[index].petBreed}}</div>
-<div>Pets Age{{pets[index].petAge}}</div>
-<div>Pets Weight{{pets[index].petWeight}}</div>
-<div>Medical Information{{pets[index].petMedInfo}}</div>
-<div>About me{{pets[index].petAboutMe}}</div>
+<div>Name: {{pets[index].petName}}</div>	
+<div>Type: {{pets[index].petType}}</div>
+<div>Breed: {{pets[index].petBreed}}</div>
+<div>Pets Age: {{pets[index].petAge}}</div>
+<div>Pets Weight: {{pets[index].petWeight}}</div>
+<div>Medical Information: {{pets[index].petMedInfo}}</div>
+<div>About me: {{pets[index].petAboutMe}}</div>
 </div>
-<button *ngIf="hideNext" (click)="nextPet()"> Next </button>
-<button (click)="adoptMe()">Adopt</button>
-<button *ngIf="hidePrev"(click)="prevPet()"> Prev </button>
+<ul>
+    <li><button *ngIf="hideNext" (click)="nextPet()"> Next </button></li>
+    <li *ngIf=!isEmployee><button (click)="adoptMe()">Adopt</button></li>
+    <li *ngIf=isEmployee><button (click)="reject()">Remove Animal</button></li>
+    <li><button *ngIf="hidePrev"(click)="prevPet()"> Prev </button></li>
+</ul>
+<p>{{message}}</p>
