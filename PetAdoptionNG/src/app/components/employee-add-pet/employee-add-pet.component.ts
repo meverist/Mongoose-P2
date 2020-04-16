@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { Pet } from "src/app/models/Pet";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Router } from '@angular/router';
+
+import { Pet } from "src/app/models/Pet";
 import { Adopter } from "src/app/models/Adoptor";
+
 import { LogInService } from "../../services/log-in.service";
 import { PetPic } from "src/app/models/PetPic";
 
@@ -12,7 +15,7 @@ import { PetPic } from "src/app/models/PetPic";
   styleUrls: ["./employee-add-pet.component.css"],
 })
 export class EmployeeAddPetComponent implements OnInit {
-  constructor(private callService: LogInService) {}
+  constructor(public router: Router, private callService: LogInService) {}
 
   ngOnInit(): void {}
 
@@ -81,7 +84,6 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petWeight,
         this.petMedInfo,
         this.petAboutMe,
-        this.petOwner,
         this.petPic,
         this.owner
       );
@@ -92,7 +94,8 @@ export class EmployeeAddPetComponent implements OnInit {
           this.uploadFile();
         },
         (response) => {
-          console.log("failure " + response);
+          console.log(response);
+         
         }
       );
 

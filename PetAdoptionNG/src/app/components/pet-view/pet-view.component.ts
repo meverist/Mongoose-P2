@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Pet} from '../../models/Pet';
+import { Router } from '@angular/router';
+
+import { Pet } from '../../models/Pet';
+
 import {LogInService} from '../../services/log-in.service';
 import { UserinfoService } from 'src/app/services/userinfo.service';
+import { Adopter } from 'src/app/models/Adoptor';
 
 @Component({
   selector: 'app-pet-view',
@@ -12,24 +16,33 @@ import { UserinfoService } from 'src/app/services/userinfo.service';
 
 export class PetViewComponent implements OnInit {
 
-  constructor(private data :UserinfoService, private serviceCaller: LogInService) { }
+  constructor(private data :UserinfoService, public router: Router, private serviceCaller: LogInService) { }
  
   ngOnInit(): void {
-    let pet1: Pet = new Pet(1,"Bo","dog","lab",3,50,"healthy","I love to play",1,"pic.com",null);
-    let pet2: Pet = new Pet(1,"Zo","doog","laab",30,55,"healthys","I love to plays",1,"pic.coms",null);
-    let pet3: Pet = new Pet(1,"Lo","dooog","laaab",31,56,"healthyss","I love to playss",1,"pic.comss",null);
+    var hold;
+    this.data.userCurrentMessage.subscribe(info => hold = info);
+    this.user = JSON.parse(hold);
+    
+    if(this.user.userRole == 'Employee') {
+      console.log("Yep employee");
+      this.isEmployee = true;
+    } else {
+      this.isEmployee = false;
+    }
 
     this.popPetArray();
   }
 
-  
   index: number = 0;
   pets: Array<Pet> = [];
   hideNext = true;
   hidePrev = true;
 
+  user :Adopter;
+  isEmployee :boolean;
+  message :string;
 
-    nextPet() {
+  nextPet() {
    if(this.index==this.pets.length-1){
      this.hideNext=false;
    }else{
@@ -40,6 +53,7 @@ export class PetViewComponent implements OnInit {
 
   adoptMe() {
     this.data.changePetMessage(this.pets[this.index]);
+    this.router.navigate(['/create-application']);
   }
 
   prevPet(){
@@ -51,11 +65,26 @@ export class PetViewComponent implements OnInit {
     }
    }
 
-   popPetArray() {
+   reject() {
+    
+    this.serviceCaller.deletePet(this.pets[this.index].petId).subscribe(
+      
+      (response) => {
+        console.log(response);
+        this.message = "Deletion successful"
+      },
+      (response) => {
+        console.log("Deletion error");
+        this.message = "Deletion Failed!";
+      }
+    )
+   }
 
+   popPetArray() {
     this.serviceCaller.retrieveAllPets().subscribe(
       (response) => {
         this.pets = response;
+        console.log(this.pets);
       },
       (response) => {
         console.log("server error");

@@ -1,29 +1,27 @@
+import { Pet } from './Pet';
+import { Adopter } from './Adoptor';
 
 
 export class Application {
 //Aplication model, PetName and Username are foreign keys
-appId: number;
-petID :number;
-petName :string;
-userID :number;
-userName :string;
-appReferences :string;
+appId :number;
+appReference :string;
 appPetsOwned :string;
 appChildren :string;
-appComments :string;
+appComment :string;
+appstatus :string;
+user :Adopter;
+pet :Pet;
 
-constructor(appId: number,petID :number,petName :string, userID :number, userName :string, appReferences :string,
-    appPetsOwned :string,appChildren :string, appComments :string){
-this.appId = appId;
-this.petID = petID;
-this.petName = petName;
-this.userID = userID;
-this.userName = userName;
-this.appReferences = appReferences;
-this.appPetsOwned = appPetsOwned;
-this.appChildren = appChildren;
-this.appComments = appComments;
-
+constructor(appId :number, appReferences :string, appPetsOwned :string, appChildren :string, appComments :string, appStatus :string, user :Adopter, pet :Pet){
+    this.appId = appId;
+    this.appReference = appReferences;
+    this.appPetsOwned = appPetsOwned;
+    this.appChildren = appChildren;
+    this.appComment = appComments;
+    this.appstatus = appStatus;
+    this.user = user;
+    this.pet = pet;
 }
 
 

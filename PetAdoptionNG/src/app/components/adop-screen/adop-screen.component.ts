@@ -37,6 +37,10 @@ export class AdopScreenComponent implements OnInit {
     //WOP
   }
 
+  viewApplications() {
+    this.router.navigate(['/view-applications']);
+  }
+
   logOut() {
     this.data.changeUserMessage(null);
     this.data.changePetMessage(null);

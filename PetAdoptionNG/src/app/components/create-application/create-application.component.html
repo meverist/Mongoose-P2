@@ -1,4 +1,4 @@
-<p>create-application works!</p>
+<h3>Adopting {{peti.petName}}</h3>
 
 <div>
     <p>Please tell us a little about yourself!</p>
@@ -25,7 +25,12 @@
     </div>
     
 
+    <p>Current Pets </p>
+    <textarea [(ngModel)]="appPetsOwned" cols="50" rows="5"></textarea>
+
+    <p>Comments</p>
+    <textarea [(ngModel)]="appComments" cols="50" rows="5"></textarea>
+
     <button (click)="submitApp()">Submit</button>
-
-
+    <p>{{message}}</p>
 </div>

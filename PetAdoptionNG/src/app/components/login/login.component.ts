@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Adopter } from '../../models/Adoptor';
 import {  Router } from '@angular/router'   //allow for component to change component step 1
-import { LogInService } from '../../services/log-in.service';
 
+import { Adopter } from '../../models/Adoptor';
+
+import { LogInService } from '../../services/log-in.service';
 import { UserinfoService } from '../../services/userinfo.service';
 
 @Component({
@@ -88,5 +89,8 @@ export class LoginComponent implements OnInit {
       return this.invalid;
     }
   }
-
+  userregister()
+  {
+    this.router.navigate(['/userregister']);
+  }
 }
