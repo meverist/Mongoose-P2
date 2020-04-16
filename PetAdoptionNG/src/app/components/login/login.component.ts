@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Adopter } from '../../models/Adoptor';
 import {  Router } from '@angular/router'   //allow for component to change component step 1
+
+import { Adopter } from '../../models/Adoptor';
+
 import { LogInService } from '../../services/log-in.service';
-
 import { UserinfoService } from '../../services/userinfo.service';
-
-
-
-
 
 @Component({
   selector: 'app-login',
@@ -45,8 +42,6 @@ export class LoginComponent implements OnInit {
   invalid :boolean = false;
   result :string;
 
-
-
   /**
    * This method will be used to get the input from the web page and sent it to the backend.
    * Once a object reuslt is returned we use that to send it to the next component.
@@ -62,7 +57,7 @@ export class LoginComponent implements OnInit {
         (resp) => {
           console.log(resp);
           adopter = resp;
-          this.data.changeMessage(adopter);
+          this.data.changeUserMessage(adopter);
           if(adopter.userRole == 'Employee') {
             this.router.navigate(['/empl-screen']);
           } else {
@@ -94,5 +89,8 @@ export class LoginComponent implements OnInit {
       return this.invalid;
     }
   }
-
+  userregister()
+  {
+    this.router.navigate(['/userregister']);
+  }
 }

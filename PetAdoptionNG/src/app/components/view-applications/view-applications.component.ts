@@ -1,5 +1,10 @@
 import { Component, OnInit, ApplicationInitStatus } from '@angular/core';
 import { Application } from '../../models/application';
+import { Router } from '@angular/router';
+
+import { LogInService } from '../../services/log-in.service';
+import { UserinfoService } from 'src/app/services/userinfo.service';
+import { Adopter } from 'src/app/models/Adoptor';
 
 @Component({
   selector: 'app-view-applications',
@@ -8,39 +13,103 @@ import { Application } from '../../models/application';
 })
 export class ViewApplicationsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private data :UserinfoService,
+              public router: Router,
+              private callService: LogInService) { }
+
+  user :Adopter;
+  isEmployee :boolean;
 
   ngOnInit(): void {
+    var hold;
+    this.data.userCurrentMessage.subscribe(info => hold = info);
+    this.user = JSON.parse(hold);
+    
+    if(this.user.userRole == 'Employee') {
+      this.isEmployee = true;
+      this.viewEApps();
+    } else {
+      this.isEmployee = false;
+      this.viewAApps();
+    }
+
+    
   }
 
   applications :Array<Application>=[];
 
-
-  createApps() {
-
-    let app1 :Application = new Application(1,"Pepper",1,"Mat","Everyone","none","none", "I need 1 dog");
-
-    
-    let app2 :Application = new Application(1,"Missy",1,"Own1","Everyone","cats","2", "I need 2 dog");
-    let app3 :Application = new Application(1,"Tanner",1,"Own2","Everyone","birds","3", "I need 3 dog");
-    let app4 :Application = new Application(1,"Zoey",1,"Own3","Everyone","none","5", "I need 4 dog");
-    let app5 :Application = new Application(1,"Raya",1,"Own4","Everyone","none","10", "I need 5 dog");
-
-    this.applications.push(app1,app2,app3,app4,app5);
-
-
-
+  //Testing funciton, can remove once databse functionality has been brought in.
+  viewEApps() {
+    this.callService.allApplication().subscribe(
+      (response) => {
+        this.applications = response;
+      },
+      (response) => {
+        console.log("Cannot retrieve applicaitons")
+      }
+    )
   }
 
+  viewAApps() {
+    this.callService.userApplication(this.user.userId).subscribe(
+      (response) => {
+        this.applications = response;
+      },
+      (response) => {
+        console.log("Cannot retrieve applicaitons")
+      }
+    )
+  }
+
+  //Takes the current applicaiton in the list that was accepted
   acceptApp(appAcc :Application){
+    this.callService.deleteAllButApplication(appAcc.pet.petId, appAcc.user.userId).subscribe(
+      (response) =>{
+        console.log("Successfully deleted");
+      },
+      (response) => {
+        console.log(response);
+      }
+    );
 
-    console.log(appAcc);
+    var user = appAcc.user;
+    var pet = appAcc.pet;
 
+    pet.petOwner = user;
+
+    this.callService.updatePet(pet).subscribe(
+      (response) =>{
+        console.log(response);
+      },
+      (response) => {
+        console.log(response);
+      }
+    );
+
+    appAcc.appstatus = "approved";
+
+    this.callService.updateApp(appAcc).subscribe(
+      (response) =>{
+        console.log(response);
+      },
+      (response) => {
+        console.log(response);
+      }
+    );
   }
 
+  //Takes the current application in the list and rejects it. 
   rejectApp(rejApp :Application){
 
-      console.log(rejApp);
+     this.callService.deleteApplicaiton(rejApp.appId).subscribe(
+      (response) =>{
+        console.log("Deletion was successful");
+        //location.reload();
+        },
+        (response) => {
+          console.log(response);
+        }
+     )
 
   }
 

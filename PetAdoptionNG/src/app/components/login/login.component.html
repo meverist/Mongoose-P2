@@ -1,8 +1,15 @@
-<h2>Log In</h2>
-
-<input type="email" [(ngModel)] = "useremail" placeholder="Email"> <br>
-<input type="password" [(ngModel)] = "userpassword" placeholder="Password"> <br>
-<button (click) = "logIn()">Log in</button>
-
-<p>{{result}}</p>
-
+<div class="bg-light border-dark container d-flex justify-content-center mt-5 pt-5 shadow-lg text-center text-lg-center text-md-center text-sm-center text-xl-center" style="width: 40%;">
+    <form class="form-signin">
+        <img src="assets/images/logo.png" class="img-fluid" width="40">
+        <a class="navbar-brand" href="#" style="font-family: 'Akronim', cursive; color: #ae7800; font-size: 25px;">Mongoose</a>
+        <h1 class="font-weight-normal h3 mb-1 mt-2" style="font-family: 'Adamina', serif; font-size: 25px;">Please Sign In</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" [(ngModel)] = "useremail" id="inputEmail" class="form-control mt-3" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" [(ngModel)] = "userpassword" id="inputPassword" class="form-control mt-3" placeholder="Password" required>
+        <p *ngif="!invalid" style="margin-top: 10px;">{{result}}</p>
+        <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "logIn()">Sign In</button>
+        <a class="mt-3 nav-link" href="#" (click)="userregister">Create an account</a>
+        <p class="mt-5 mb-3 text-muted">&copy; 2020 Mongoose</p>
+    </form>
+</div>

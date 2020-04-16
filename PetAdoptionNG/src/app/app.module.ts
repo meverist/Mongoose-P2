@@ -9,13 +9,9 @@ import { EmployeeAddPetComponent } from './components/employee-add-pet/employee-
 import { ViewApplicationsComponent } from './components/view-applications/view-applications.component';
 import { CreateApplicationComponent } from './components/create-application/create-application.component';
 import { UserregisterComponent } from './components/userregister/userregister.component';
-<<<<<<< HEAD
-import { NavbarComponent } from './components/navbar/navbar.component';
-=======
 import { LoginComponent } from './components/login/login.component';
 import { AdopScreenComponent } from './components/adop-screen/adop-screen.component';
 import { EmplscreenComponent } from './components/empl-screen/emplscreen.component';
->>>>>>> f245883fcf5be21e0114b3dd67093d1c43742642
 
 import { HttpClientModule } from '@angular/common/http';
 import { LogInService } from './services/log-in.service';
@@ -29,16 +25,10 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     EmployeeAddPetComponent,
     ViewApplicationsComponent,
     CreateApplicationComponent,
-<<<<<<< HEAD
-    UserregisterComponent,
-    NavbarComponent
-
-=======
     LoginComponent,
     AdopScreenComponent,
     EmplscreenComponent,
     WelcomeComponent
->>>>>>> f245883fcf5be21e0114b3dd67093d1c43742642
   ],
   imports: [
     BrowserModule,
