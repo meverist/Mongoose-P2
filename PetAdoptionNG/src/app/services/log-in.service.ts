@@ -52,7 +52,7 @@ export class LogInService {
     return this.http.get<Application[]>(this.url+"/padapplication/find/?appstatus=pending")
   }
 
-  //Get application by User -- Untested 4/13/2020
+  //Get application by User -- tested 4/15/2020
   userApplication(userId: number) :Observable<Application[]>{
     return this.http.get<Application[]>(this.url+"/padapplication/userid/"+userId)
 
@@ -105,6 +105,16 @@ export class LogInService {
     
     return this.http.post<Object>("https://api.imgur.com/3/album", obj ,{headers: this.headerImgur})
 
+  }
+
+  retrieveAllPetsNoOwner() :Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.url+"/pet/get");
+  }
+
+  //2 test 1 successful 1 failed when a application is all ready connected to pet
+  deletePet(petId :number) :Observable<Object> {
+    console.log(this.url);
+    return this.http.delete(this.url + "/pet/"+petId);
   }
   uploadImg(string :any) :Observable<Object>{
 
