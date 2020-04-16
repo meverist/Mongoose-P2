@@ -20,6 +20,7 @@ import { Observable } from 'rxjs';
 import { Adopter } from '../models/Adoptor'
 import { Application } from '../models/application'
 import { Pet } from '../models/Pet'
+import { PetPic } from '../models/PetPic'
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class LogInService {
    }
 
   private headers = new HttpHeaders({'content-Type':'application/json'});
-
+  private headerImgur = new HttpHeaders({'Authorization': 'Client-ID 3c09ec7282cf370'}); 
   //Log in  -- Tested 4/13/2020
   checkAdopter(adop: Adopter) :Observable<Adopter> {
     return this.http.post<Adopter>(this.url+"/paduser/login", adop, {headers: this.headers});
@@ -94,9 +95,33 @@ export class LogInService {
     return this.http.get<Pet[]>(this.url+"/pet");
 
   }
+  //Goal is to create a new pet album when creating a pet
+
+  createAlbum(petId :number) :Observable<Object> {
+
+    let obj :string =  "{'title':"+petId+"}";
+    
+    return this.http.post<Object>("https://api.imgur.com/3/album", obj ,{headers: this.headerImgur})
+
+  }
+  uploadImg(string :any) :Observable<Object>{
+
+    return this.http.post<Object>("https://api.imgur.com/3/image/", string , {headers: this.headerImgur})
 
 
+  }
+  createPetPic(petpic :PetPic) :Observable<PetPic> {
 
+    return this.http.post<PetPic>(this.url+"/petpic", petpic, {headers: this.headers})
+
+
+  }
+  retrievePetPics(petId :number) :Observable<PetPic[]> {
+
+    return this.http.get<PetPic[]>(this.url+"/petpics/search/"+petId);
+
+
+  }
 
 
 }

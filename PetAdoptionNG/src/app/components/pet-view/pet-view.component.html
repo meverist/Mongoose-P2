@@ -1,17 +1,45 @@
+<div class="media">
+  <img
+    src="{{ pets[index].petPic }}"
+    class="align-self-center mr-3"
+    alt="Error Displaying Picture"
+  />
 
+  <div>
+    <H3>Pet Bio</H3>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td>{{ pets[index].petName }}</td>
+      </tr>
+      <tr>
+        <td>Type:</td>
+        <td>{{ pets[index].petType }}</td>
+      </tr>
+      <tr>
+        <td>Breed:</td>
+        <td>{{ pets[index].petBreed }}</td>
+      </tr>
+      <tr>
+        <td>Pets Age</td>
+        <td>{{ pets[index].petAge }}</td>
+      </tr>
+      <tr>
+        <td>Pets Weight</td>
+        <td>{{ pets[index].petWeight }}</td>
+      </tr>
+      <tr>
+        <td>Medical Information</td>
+        <td>{{ pets[index].petMedInfo }}</td>
+      </tr>
+      <tr>
+        <td>About me</td>
+        <td>{{ pets[index].petAboutMe }}</td>
+      </tr>
 
-
-<div>
-<img src="{{pets[index].petPic}}">
-<div>Name:{{pets[index].petName}}</div>	
-<div>Type:{{pets[index].petType}}</div>
-<div>Breed:{{pets[index].petBreed}}</div>
-<div>Pets Age{{pets[index].petAge}}</div>
-<div>Pets Weight{{pets[index].petWeight}}</div>
-<div>Medical Information{{pets[index].petMedInfo}}</div>
-<div>About me{{pets[index].petAboutMe}}</div>
-<div>My Name{{pets[index].petName}}</div>
+    </table>
+  </div>
 </div>
-<button *ngIf="hideNext" (click)="nextPet()"> Next </button>
+<button *ngIf="hideNext" (click)="nextPet()">Next</button>
 <button (click)="adoptMe()">Adopt</button>
-<button *ngIf="hidePrev"(click)="prevPet()"> Prev </button>
+<button *ngIf="hidePrev" (click)="prevPet()">Prev</button>

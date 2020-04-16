@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Adopter } from "src/app/models/Adoptor";
 import { LogInService } from "../../services/log-in.service";
+import { PetPic } from 'src/app/models/PetPic';
 
 @Component({
   selector: "app-employee-add-pet",
@@ -13,8 +14,6 @@ import { LogInService } from "../../services/log-in.service";
 export class EmployeeAddPetComponent implements OnInit {
   constructor(private callService: LogInService) {}
 
-  
-  
   ngOnInit(): void {}
 
   petID: number;
@@ -29,10 +28,40 @@ export class EmployeeAddPetComponent implements OnInit {
   petPic: string;
   owner: Adopter;
 
+  petpicture: PetPic;
+  petRet: Pet;
+  file: Blob;
+  imgurPic: Object;
 
+  fileEvent(fileInput) {
+    var file = fileInput.target.files[0];
+    this.file = file;
+    
+    var reader = new FileReader();
+    var result;
+    reader.readAsBinaryString(file);
+
+    reader.onload = function () {
+      result = reader.result;
+    };
+  }
+
+  uploadFile() {
+    this.callService.uploadImg(this.file).subscribe(
+      (result) => {
+        
+        this.imgurPic = result;
+        console.log(this.imgurPic);
+      },
+      (result) => {
+        console.log("Failure");
+      }
+    );
+  }
 
   addPet() {
-    console.log("called add pet");
+    //Uploads the file
+    this.uploadFile();
     if (this.validateInputFields()) {
       let p = new Pet(
         this.petID,
@@ -46,16 +75,38 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petOwner,
         this.petPic,
         this.owner
-      )
-
+      );
+      
       this.callService.createPet(p).subscribe(
         (response) => {
-          console.log(response);
+          this.petRet = response;
         },
         (response) => {
           console.log("failure " + response);
         }
       );
+
+      //Checks to make sure youve made a picture on IMGUR
+      console.log("imgurPic"+this.imgurPic);
+      if(this.imgurPic["status"]==200){
+      this.petpicture = new PetPic(undefined,this.imgurPic["data"]["link"],null,this.petRet)
+
+      this.callService.createPetPic(this.petpicture).subscribe(
+        (result) => {
+          console.log(result);
+        }
+
+      )
+
+
+
+      }
+      
+
+
+
+
+
     }
   }
 
@@ -73,13 +124,12 @@ export class EmployeeAddPetComponent implements OnInit {
       this.petMedInfo == "" ||
       this.petAboutMe == undefined ||
       this.petAboutMe == ""
-    ) 
-    {
+    ) {
       console.log("Invalid Inputs");
       return false;
-    } else{
-    console.log("valid Inputs");
-    return true;
+    } else {
+      console.log("valid Inputs");
+      return true;
     }
   }
 }

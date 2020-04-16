@@ -21,7 +21,7 @@ export class CreateApplicationComponent implements OnInit {
     this.pet = JSON.parse(hold).petName;
   }
 
-  userApp :Application;
+  userApp :Application ;
 
   petID: number;
   references :string;
@@ -31,10 +31,16 @@ export class CreateApplicationComponent implements OnInit {
   pet :string;
   //Changes the userApp variable to contain the application details
   //Will need to be sent to the backend
+  
+
+
+
   submitApp(){
     var hold;
     this.data.petCurrentMessage.subscribe(info => hold = info);
-    this.userApp = new Application(undefined,this.petID,null,0,null,this.references,this.currentPets,this.children,this.comments);
+    //this.userApp = new Application(undefined,this.petID,undefined,userid,username,appreferences,apppetsowned,appchildre,appcomments);
+
+
 
     this.callService.makeApplication(this.userApp).subscribe(
       (response) => {this.userApp = response},

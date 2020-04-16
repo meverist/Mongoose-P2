@@ -1,3 +1,5 @@
+
+
 export class Application {
 //Aplication model, PetName and Username are foreign keys
 appId: number;
