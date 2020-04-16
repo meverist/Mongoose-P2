@@ -1,32 +1,30 @@
 
 
 <div >
-
-<table *ngFor="let a of applications" >
-    <tr>
-    <th>Pet Name</th>
-    <th>Adoptor Name</th>
-      <th>Current Pets</th>
-    <th>Children</th>
-    </tr>
-    <tr >
-        <td>{{a.petName}}</td>
-        <td>{{a.userName}}</td>
-        <td>{{a.appPetsOwned}}</td>
-        <td>{{a.appChildren}}</td>
-    </tr>
-    <div>
-        <span>references</span>
-        <p>{{a.appReferences}}</p>
-    </div>
-    <div>
-        <span>Comments</span>
-    <p>{{a.appComments}}</p>
-    </div>
-    <button (click)="acceptApp(a)">Accept</button>
-    <button (click)="rejectApp(a)">Reject</button>
-</table>
-    
-
-
+    <table *ngFor="let a of applications" >
+        <tr>
+            <th>Pet Name</th>
+            <th>Adoptor Name</th>
+            <th>Current Pets</th>
+            <th>Children</th>
+            <th>Status</th>
+        </tr>
+        <tr >
+            <td>{{a.pet.petName}}</td>
+            <td>{{a.user.userName}}</td>
+            <td>{{a.appPetsOwned}}</td>
+            <td>{{a.appChildren}}</td>
+            <td>{{a.appstatus}}</td>
+        </tr>
+        <div *ngIf=isEmployee>
+            <p>References: {{a.appReference}}</p>
+        </div>
+        <div *ngIf=isEmployee>
+            <p>Comments: {{a.appComment}}</p>
+        </div>
+        <ul *ngIf=isEmployee>
+            <li><button (click)="acceptApp(a)">Accept</button></li>
+            <li><button (click)="rejectApp(a)">Reject</button></li>
+        </ul>
+    </table>
 </div>

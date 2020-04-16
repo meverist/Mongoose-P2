@@ -6,6 +6,7 @@ import { Pet } from '../../models/Pet';
 
 import {LogInService} from '../../services/log-in.service';
 import { UserinfoService } from 'src/app/services/userinfo.service';
+import { Adopter } from 'src/app/models/Adoptor';
 
 @Component({
   selector: 'app-pet-view',
@@ -18,6 +19,17 @@ export class PetViewComponent implements OnInit {
   constructor(private data :UserinfoService, public router: Router, private serviceCaller: LogInService) { }
  
   ngOnInit(): void {
+    var hold;
+    this.data.userCurrentMessage.subscribe(info => hold = info);
+    this.user = JSON.parse(hold);
+    
+    if(this.user.userRole == 'Employee') {
+      console.log("Yep employee");
+      this.isEmployee = true;
+    } else {
+      this.isEmployee = false;
+    }
+
     this.popPetArray();
   }
 
@@ -25,6 +37,10 @@ export class PetViewComponent implements OnInit {
   pets: Array<Pet> = [];
   hideNext = true;
   hidePrev = true;
+
+  user :Adopter;
+  isEmployee :boolean;
+  message :string;
 
   nextPet() {
    if(this.index==this.pets.length-1){
@@ -47,6 +63,21 @@ export class PetViewComponent implements OnInit {
     --this.index;
       this.hideNext=true;
     }
+   }
+
+   reject() {
+    
+    this.serviceCaller.deletePet(this.pets[this.index].petId).subscribe(
+      
+      (response) => {
+        console.log(response);
+        this.message = "Deletion successful"
+      },
+      (response) => {
+        console.log("Deletion error");
+        this.message = "Deletion Failed!";
+      }
+    )
    }
 
    popPetArray() {

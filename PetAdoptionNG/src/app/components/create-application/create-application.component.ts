@@ -39,10 +39,12 @@ export class CreateApplicationComponent implements OnInit {
   message :string;
 
   submitApp(){
-    this.userApp = new Application(this.appReferences,
+    this.userApp = new Application(null,
+                                   this.appReferences,
                                    this.appPetsOwned,
                                    this.appChildren,
                                    this.appComments,
+                                   "pending",
                                    this.user,
                                    this.peti);
     console.log(this.userApp);
