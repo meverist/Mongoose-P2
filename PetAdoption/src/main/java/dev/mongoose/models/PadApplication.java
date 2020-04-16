@@ -3,7 +3,6 @@ package dev.mongoose.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,6 +30,8 @@ public class PadApplication {
 	private String appChildren;
 	@Column(name="appcomment")
 	private String appComment;
+	@Column(name="appstatus")
+	private String appstatus;
 	
 	@ManyToOne
 	@JoinColumn(name="userId")
@@ -44,25 +45,27 @@ public class PadApplication {
 		// TODO Auto-generated constructor stub
 	}
 
+	public PadApplication(String appReference, String appPetsOwned, String appChildren, String appComment,
+			String appstatus, PadUser user, Pet pet) {
+		super();
+		this.appReference = appReference;
+		this.appPetsOwned = appPetsOwned;
+		this.appChildren = appChildren;
+		this.appComment = appComment;
+		this.appstatus = appstatus;
+		this.user = user;
+		this.pet = pet;
+	}
+
 	public PadApplication(int appId, String appReference, String appPetsOwned, String appChildren, String appComment,
-			PadUser user, Pet pet) {
+			String appstatus, PadUser user, Pet pet) {
 		super();
 		this.appId = appId;
 		this.appReference = appReference;
 		this.appPetsOwned = appPetsOwned;
 		this.appChildren = appChildren;
 		this.appComment = appComment;
-		this.user = user;
-		this.pet = pet;
-	}
-
-	public PadApplication(String appReference, String appPetsOwned, String appChildren, String appComment, PadUser user,
-			Pet pet) {
-		super();
-		this.appReference = appReference;
-		this.appPetsOwned = appPetsOwned;
-		this.appChildren = appChildren;
-		this.appComment = appComment;
+		this.appstatus = appstatus;
 		this.user = user;
 		this.pet = pet;
 	}
@@ -107,6 +110,14 @@ public class PadApplication {
 		this.appComment = appComment;
 	}
 
+	public String getAppstatus() {
+		return appstatus;
+	}
+
+	public void setAppstatus(String appstatus) {
+		this.appstatus = appstatus;
+	}
+
 	public PadUser getUser() {
 		return user;
 	}
@@ -125,11 +136,9 @@ public class PadApplication {
 
 	@Override
 	public String toString() {
-		return "Application [appId=" + appId + ", appReference=" + appReference + ", appPetsOwned=" + appPetsOwned
-				+ ", appChildren=" + appChildren + ", appComment=" + appComment + ", user=" + user + ", pet=" + pet
-				+ "]";
+		return "PadApplication [appId=" + appId + ", appReference=" + appReference + ", appPetsOwned=" + appPetsOwned
+				+ ", appChildren=" + appChildren + ", appComment=" + appComment + ", appstatus=" + appstatus + ", user="
+				+ user + ", pet=" + pet + "]";
 	}
-
-	
 	
 }

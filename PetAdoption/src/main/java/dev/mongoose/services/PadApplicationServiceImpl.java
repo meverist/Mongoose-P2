@@ -53,14 +53,12 @@ public class PadApplicationServiceImpl implements PadApplicationService {
 
 	@Override
 	public boolean deleteAppByPetExceptUser(PadApplication padApplication) {
-
+		
 		int petId = padApplication.getPet().getPetId();
 				
 		List<PadApplication> petList = this.getPadApplicationByPetId(petId);
 		
-		
 		for(PadApplication pa : petList) {
-			
 				if(!(pa.equals(padApplication))) {
 					try {
 					par.delete(pa);
@@ -68,9 +66,7 @@ public class PadApplicationServiceImpl implements PadApplicationService {
 						e.printStackTrace();
 						return false;
 					}
-				}
-			
-			
+				}	
 		}
 		return true;
 		
@@ -84,6 +80,10 @@ public class PadApplicationServiceImpl implements PadApplicationService {
 	@Override
 	public List<PadApplication> getPadApplicationByUserId(Integer userId) {
 		return (List<PadApplication>) par.findPadApplicationByUserUserId(userId);
+	}
+	
+	public List<PadApplication> getAppByStatus(String status) {
+		return (List<PadApplication>) par.findPadApplicationByappstatus(status);
 	}
 	
 

@@ -3,6 +3,10 @@ package dev.mongoose.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+import org.springframework.ui.ModelMap;
+=======
+>>>>>>> BackendMaster
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,19 +45,18 @@ public class PadUserController {
 		
 		return us.allPadUsers();
 	}
+<<<<<<< HEAD
+	
+=======
+>>>>>>> BackendMaster
 	@CrossOrigin
 	@PostMapping(value="/paduser/login", consumes="application/json")
 	public PadUser getPadUser(@RequestBody PadUser padUser) {
-		
+		System.out.println(padUser);
 		if(!us.validateUser(padUser.getUserEmail(), padUser.getUserPassword())) {
-			
 			return null;
 		}else {
-
-		PadUser loginUser = us.getByuserEmail(padUser.getUserEmail());
-		
-		
-		
+			PadUser loginUser = us.getByuserEmail(padUser.getUserEmail());
 		return loginUser;
 		}
 	}
