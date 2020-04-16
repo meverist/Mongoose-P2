@@ -11,8 +11,8 @@ public interface SchedulerService {
 	public List<Scheduler> allScheduler();
 	public Scheduler updateScheduler(Scheduler change);
 	public boolean deleteScheduler(Scheduler delete);
+	public Scheduler getSchedulerByUser(Integer userid);
+	public Scheduler getSchedulerByPet(Integer petid);
 	
 	
-	//public Scheduler getSchedulerByUser(Integer userid);
-	//public Scheduler getSchedulerByPet(Integer petid);
 }

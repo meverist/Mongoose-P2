@@ -27,26 +27,26 @@ private String time;
 private String date;
 @ManyToOne
 @JoinColumn(name="petid")
-private Pet petId;
+private Pet pet;
 @ManyToOne
 @JoinColumn(name="userid")
-private PadUser userId;
+private PadUser user;
 
 public Scheduler(int schId, String time, String date, Pet petId, PadUser userId) {
 	super();
 	this.schId = schId;
 	this.time = time;
 	this.date = date;
-	this.petId = petId;
-	this.userId = userId;
+	this.pet = petId;
+	this.user = userId;
 }
 
 public Scheduler(String time, String date, Pet petId, PadUser userId) {
 	super();
 	this.time = time;
 	this.date = date;
-	this.petId = petId;
-	this.userId = userId;
+	this.pet = petId;
+	this.user = userId;
 }
 
 public Scheduler() {
@@ -79,24 +79,24 @@ public void setDate(String date) {
 }
 
 public Pet getPetId() {
-	return petId;
+	return pet;
 }
 
 public void setPetId(Pet petId) {
-	this.petId = petId;
+	this.pet = petId;
 }
 
 public PadUser getUserId() {
-	return userId;
+	return user;
 }
 
 public void setUserId(PadUser userId) {
-	this.userId = userId;
+	this.user = userId;
 }
 
 @Override
 public String toString() {
-	return "Scheduler [schId=" + schId + ", time=" + time + ", date=" + date + ", petId=" + petId + ", userId=" + userId
+	return "Scheduler [schId=" + schId + ", time=" + time + ", date=" + date + ", petId=" + pet + ", userId=" + user
 			+ "]";
 }
 
