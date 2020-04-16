@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import dev.mongoose.models.Scheduler;
 import dev.mongoose.repositories.SchedulerRepository;
+
 @Service
 public class SchedulerServiceImpl implements SchedulerService {
 
-@Autowired 
-SchedulerRepository sr;
-	
+	@Autowired
+	SchedulerRepository sr;
+
 	public SchedulerServiceImpl() {
 
 	}
@@ -31,40 +32,37 @@ SchedulerRepository sr;
 
 	@Override
 	public List<Scheduler> allScheduler() {
-		
+
 		return (List<Scheduler>) sr.findAll();
 	}
 
 	@Override
 	public Scheduler updateScheduler(Scheduler change) {
-		
+
 		return sr.save(change);
 	}
 
 	@Override
 	public boolean deleteScheduler(Scheduler delete) {
-try {
-			
+		try {
 			sr.delete(delete);
 			return true;
-		}catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-}		
-	
-//
-//	@Override
-//	public Scheduler getSchedulerByUser(Integer userid) {
-//		
-//		return sr.findByUserId(userid);
-//	}
-//
-//	@Override
-//	public Scheduler getSchedulerByPet(Integer petid) {
-//		
-//		return sr.findByPetId(petid);
-//	}
-//
-//}
+
+	@Override
+	public Scheduler getSchedulerByUser(Integer userid) {
+
+		return sr.findByUserUserId(userid);
+	}
+
+	@Override
+	public Scheduler getSchedulerByPet(Integer petid) {
+
+		return sr.findByPetPetId(petid);
+	}
+
+}

@@ -3,11 +3,13 @@ package dev.mongoose.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 /***
  * Pets in the shelter(petID,petName,petBreed,petAge,petWeight,petMedInfo,petAboutMe,petOwner)
  * Model for the pets, owners should either reflect a staff member if the pet has yet to be adopted
@@ -42,6 +44,7 @@ public class Pet {
 //	private int petOwner;
 //	Testing to see if join column works if everything is working delete these lines
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="userId")
 	private PadUser petOwner;
 	

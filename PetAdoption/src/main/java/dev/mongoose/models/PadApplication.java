@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 /**
  * Applications for the users to adopt pets, requires a pet and user to create. 
  * Private vars(appReference,appPetsOwned,appChildren,appComment,user,pet)
@@ -37,6 +40,7 @@ public class PadApplication {
 	@JoinColumn(name="userId")
 	private PadUser user;
 	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="petId")
 	private Pet pet;
 	

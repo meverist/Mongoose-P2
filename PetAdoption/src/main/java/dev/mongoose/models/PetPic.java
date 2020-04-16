@@ -7,8 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Id;
 
+
+
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 /**
@@ -32,7 +36,9 @@ public class PetPic {
     private String piccomments;
 
     @ManyToOne
-    @JoinColumn(name = "petid")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "petId")
+
     private Pet pet;
 
     public PetPic() {

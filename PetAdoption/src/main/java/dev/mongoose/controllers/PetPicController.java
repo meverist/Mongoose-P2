@@ -28,6 +28,7 @@ public class PetPicController {
 	return pps.createOrUpdatePetPic(petPic);
     }
 
+
     @CrossOrigin
     @GetMapping(value = "/petspic/search/{petId}")
     public List<PetPic> getAllPetsPic(@PathVariable Integer petId) {
