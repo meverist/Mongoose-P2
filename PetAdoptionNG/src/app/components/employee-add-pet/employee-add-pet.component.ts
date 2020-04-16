@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Adopter } from "src/app/models/Adoptor";
 import { LogInService } from "../../services/log-in.service";
-import { PetPic } from 'src/app/models/PetPic';
+import { PetPic } from "src/app/models/PetPic";
 
 @Component({
   selector: "app-employee-add-pet",
@@ -36,7 +36,7 @@ export class EmployeeAddPetComponent implements OnInit {
   fileEvent(fileInput) {
     var file = fileInput.target.files[0];
     this.file = file;
-    
+
     var reader = new FileReader();
     var result;
     reader.readAsBinaryString(file);
@@ -49,19 +49,28 @@ export class EmployeeAddPetComponent implements OnInit {
   uploadFile() {
     this.callService.uploadImg(this.file).subscribe(
       (result) => {
-        
         this.imgurPic = result;
-        console.log(this.imgurPic);
+        this.addPetPic();
+        
       },
       (result) => {
-        console.log("Failure");
+        
+        this.imgurPic = result;
+        
+        
       }
     );
   }
 
   addPet() {
-    //Uploads the file
-    this.uploadFile();
+    
+      this.CreatePet();
+      
+     
+    
+  }
+  CreatePet(){
+
     if (this.validateInputFields()) {
       let p = new Pet(
         this.petID,
@@ -76,34 +85,40 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petPic,
         this.owner
       );
-      
+
       this.callService.createPet(p).subscribe(
         (response) => {
           this.petRet = response;
+          this.uploadFile();
         },
         (response) => {
           console.log("failure " + response);
         }
       );
 
-      //Checks to make sure youve made a picture on IMGUR
-      console.log("imgurPic"+this.imgurPic);
-      if(this.imgurPic["status"]==200){
-      this.petpicture = new PetPic(undefined,this.imgurPic["data"]["link"],null,this.petRet)
-
-      this.callService.createPetPic(this.petpicture).subscribe(
-        (result) => {
-          console.log(result);
-        }
-
-      )
-
-
-
       }
-      
+
+    }
+  addPetPic(){
+
+    if(this.petRet != undefined){
+
+      this.petpicture = new PetPic(
+        undefined,
+        this.imgurPic["data"]["link"],
+        null,
+        this.petRet
+      );
+        this.callService.createPetPic(this.petpicture).subscribe(
+          (result) => {
+            
+          },(result)=>{
+            console.log(result);
+          }
 
 
+
+        );
 
 
 

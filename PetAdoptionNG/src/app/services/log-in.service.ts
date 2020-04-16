@@ -118,7 +118,7 @@ export class LogInService {
   }
   retrievePetPics(petId :number) :Observable<PetPic[]> {
 
-    return this.http.get<PetPic[]>(this.url+"/petpics/search/"+petId);
+    return this.http.get<PetPic[]>(this.url+"/petpic/search/"+petId);
 
 
   }
