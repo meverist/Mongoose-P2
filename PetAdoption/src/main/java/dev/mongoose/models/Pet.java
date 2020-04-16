@@ -40,9 +40,7 @@ public class Pet {
 	private String petMedInfo;
 	@Column(name="petaboutme")
 	private String petAboutMe;
-//	@Column(name="petOwner")
-//	private int petOwner;
-//	Testing to see if join column works if everything is working delete these lines
+
 	@ManyToOne
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name="userId")

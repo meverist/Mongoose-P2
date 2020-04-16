@@ -56,6 +56,10 @@ public class PetController {
 		
 		return ps.deletePet(ps.getPet(petId));
 	}
-	
+	@CrossOrigin
+	@GetMapping(value="/pet/get")
+	public List<Pet> getPetByOwner(){
+		return ps.getPetsByOwner(null);
+	}
 	
 }

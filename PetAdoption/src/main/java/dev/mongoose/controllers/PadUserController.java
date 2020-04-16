@@ -36,7 +36,7 @@ public class PadUserController {
 	 * Function to log in a user, put mapped for secrecy
 	 */
 	@CrossOrigin
-	@GetMapping(value="paduser")
+	@GetMapping(value="/paduser")
 	public List<PadUser> getAllPadUser() {
 		
 		return us.allPadUsers();
