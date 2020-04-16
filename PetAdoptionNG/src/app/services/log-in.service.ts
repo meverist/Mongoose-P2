@@ -51,7 +51,7 @@ export class LogInService {
     return this.http.get<Application[]>(this.url+"/padapplication/find/?appstatus=pending")
   }
 
-  //Get application by User -- Untested 4/13/2020
+  //Get application by User -- tested 4/15/2020
   userApplication(userId: number) :Observable<Application[]>{
     return this.http.get<Application[]>(this.url+"/padapplication/userid/"+userId)
 
