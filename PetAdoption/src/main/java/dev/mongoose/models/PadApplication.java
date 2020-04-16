@@ -34,7 +34,19 @@ public class PadApplication {
 	private String appChildren;
 	@Column(name="appcomment")
 	private String appComment;
+	@Column(name="appstatus")
+	private String appstatus;
 	
+	
+	
+	public String getAppstatus() {
+		return appstatus;
+	}
+
+	public void setAppstatus(String appstatus) {
+		this.appstatus = appstatus;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private PadUser user;
@@ -48,25 +60,30 @@ public class PadApplication {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+
+	public PadApplication(String appReference, String appPetsOwned, String appChildren, String appComment,
+			String appstatus, PadUser user, Pet pet) {
+		super();
+		this.appReference = appReference;
+		this.appPetsOwned = appPetsOwned;
+		this.appChildren = appChildren;
+		this.appComment = appComment;
+		this.appstatus = appstatus;
+		this.user = user;
+		this.pet = pet;
+	}
+
 	public PadApplication(int appId, String appReference, String appPetsOwned, String appChildren, String appComment,
-			PadUser user, Pet pet) {
+			String appstatus, PadUser user, Pet pet) {
 		super();
 		this.appId = appId;
 		this.appReference = appReference;
 		this.appPetsOwned = appPetsOwned;
 		this.appChildren = appChildren;
 		this.appComment = appComment;
-		this.user = user;
-		this.pet = pet;
-	}
-
-	public PadApplication(String appReference, String appPetsOwned, String appChildren, String appComment, PadUser user,
-			Pet pet) {
-		super();
-		this.appReference = appReference;
-		this.appPetsOwned = appPetsOwned;
-		this.appChildren = appChildren;
-		this.appComment = appComment;
+		this.appstatus = appstatus;
 		this.user = user;
 		this.pet = pet;
 	}

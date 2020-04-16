@@ -11,5 +11,5 @@ public interface PadApplicationRepository extends CrudRepository<PadApplication,
 	PadApplication findPadApplicationByPetPetIdAndUserUserId(Integer petId,Integer userId);
 	PadApplication findPadApplicationByPetPetId(Integer petId);
 	PadApplication findPadApplicationByUserUserId(Integer userId);
-
+	PadApplication findPadApplicationByappstatus(String status);
 }

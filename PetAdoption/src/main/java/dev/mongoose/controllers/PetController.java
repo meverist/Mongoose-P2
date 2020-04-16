@@ -19,6 +19,7 @@ public class PetController {
 
 	@Autowired
 	PetService ps;
+	
 	@CrossOrigin
 	@PostMapping(value="/pet", consumes="application/json")
 	public Pet createPet(@RequestBody Pet pet) {

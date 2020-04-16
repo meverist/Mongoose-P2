@@ -61,5 +61,11 @@ public class PadApplicationController {
 		return pas.deleteAppByPetExceptUser(pas.getPadApplicationBypetIdAnduserId(petId, petId));
 		
 	}
+	@CrossOrigin
+	@GetMapping(value="/padapplication/find")
+	public List<PadApplication> getAppbyStatus(@RequestParam String appstatus){
+		return pas.getPadAppByStatus(appstatus);
+		
+	}
 
 }

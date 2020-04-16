@@ -85,6 +85,11 @@ public class PadApplicationServiceImpl implements PadApplicationService {
 	public List<PadApplication> getPadApplicationByUserId(Integer userId) {
 		return (List<PadApplication>) par.findPadApplicationByUserUserId(userId);
 	}
+
+	@Override
+	public List<PadApplication> getPadAppByStatus(String status) {
+		return (List<PadApplication>) par.findPadApplicationByappstatus(status);
+	}
 	
 
 }

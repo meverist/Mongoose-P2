@@ -38,7 +38,6 @@ public class PetPic {
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "petId")
-
     private Pet pet;
 
     public PetPic() {
