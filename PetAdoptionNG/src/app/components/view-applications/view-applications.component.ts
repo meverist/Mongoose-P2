@@ -126,6 +126,10 @@ export class ViewApplicationsComponent implements OnInit {
     this.router.navigate(['/pet-view']);
   }
 
+  account() {
+    this.router.navigate(['/account']);
+  }
+
   logOut() {
     this.data.changeUserMessage(null);
     this.data.changePetMessage(null);

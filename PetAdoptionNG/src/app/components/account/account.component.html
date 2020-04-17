@@ -1,0 +1,26 @@
+<div class="bg-light border-dark container d-flex justify-content-center mt-5 pt-5 shadow-lg text-center text-lg-center text-md-center text-sm-center text-xl-center" style="width: 40%;">
+    <form class="form-signin">
+        <img src="assets/images/logo.png" class="img-fluid" width="40">
+        <a class="navbar-brand" href="#" style="font-family: 'Akronim', cursive; color: #ae7800; font-size: 25px;">Mongoose</a>
+        <h1 class="font-weight-normal h3 mb-1 mt-2" style="font-family: 'Adamina', serif; font-size: 25px;">Account Update</h1>
+        
+        <label for="Current Password" class="sr-only">Current Password</label>
+        <input type="password" [(ngModel)] = "currPass" [ngModelOptions]="{standalone: true}" id="currentPassword" class="form-control mt-3" placeholder="Current password" required autofocus>
+        <label for="New Password" class="sr-only">New Password</label>
+        <input type="password" [(ngModel)] = "newPass" [ngModelOptions]="{standalone: true}" id="newPassword" class="form-control mt-3" placeholder="New password" required autofocus>
+        <label for="New Password" class="sr-only">New Password</label>
+        <input type="password" [(ngModel)] = "newPass2" [ngModelOptions]="{standalone: true}" id="newPassword2" class="form-control mt-3" placeholder="Confirm password" required autofocus>
+        <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "updatePass()">Change Password</button>
+        <p style="margin-top: 10px;">{{message}}</p>
+
+
+        <label for="About Me" class="sr-only">About me</label>
+        <textarea rows="4" class="form-control mb-0 mt-4" id="aboutme" [(ngModel)]="aboutme" [ngModelOptions]="{standalone: true}" placeholder="About Me"></textarea>
+        <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "updateAboutme()">Add</button>
+        <p style="margin-top: 10px;">{{message2}}</p>
+        <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "logOf()">Log Of</button>
+        <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "return()">Return</button>
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2020 Mongoose</p>
+    </form>
+</div>

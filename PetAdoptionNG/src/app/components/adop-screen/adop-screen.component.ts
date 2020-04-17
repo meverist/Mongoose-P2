@@ -47,4 +47,8 @@ export class AdopScreenComponent implements OnInit {
     this.router.navigate(['/welcome']);
   }
 
+  account() {
+    this.router.navigate(['account']);
+  }
+
 }

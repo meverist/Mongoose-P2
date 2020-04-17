@@ -13,8 +13,6 @@ import { UserinfoService } from 'src/app/services/userinfo.service';
 })
 export class EmplscreenComponent implements OnInit {
 
-  person :string;
-
   constructor(public router: Router,
               private data :UserinfoService) { }
 
@@ -23,6 +21,8 @@ export class EmplscreenComponent implements OnInit {
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.person = JSON.parse(hold).userName;
   }
+
+  person :string;
 
   viewApp() {
     this.router.navigate(['/view-applications']);
@@ -34,6 +34,10 @@ export class EmplscreenComponent implements OnInit {
 
   viewPets() {
     this.router.navigate(['/pet-view']);
+  }
+
+  account() {
+    this.router.navigate(['/account']);
   }
 
   logOut() {

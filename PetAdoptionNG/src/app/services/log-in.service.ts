@@ -42,6 +42,7 @@ export class LogInService {
   }
 
   //Register -- Tested 4/13/2020
+  //Will be using to update and change the user info
   addAdopter(adop: Adopter) :Observable<Adopter> {
     return this.http.post<Adopter>(this.url+"/paduser", adop, {headers: this.headers});
   }
