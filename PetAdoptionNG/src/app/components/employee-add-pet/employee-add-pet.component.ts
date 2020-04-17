@@ -44,7 +44,39 @@ export class EmployeeAddPetComponent implements OnInit {
   petPic: string;
   owner: Adopter;
 
-  message :string;
+  petpicture: PetPic;
+  petRet: Pet;
+  file: Blob;
+  imgurPic: Object;
+
+  fileEvent(fileInput) {
+    var file = fileInput.target.files[0];
+    this.file = file;
+
+    var reader = new FileReader();
+    var result;
+    reader.readAsBinaryString(file);
+
+    reader.onload = function () {
+      result = reader.result;
+    };
+  }
+
+  uploadFile() {
+    this.callService.uploadImg(this.file).subscribe(
+      (result) => {
+        this.imgurPic = result;
+        this.addPetPic();
+        
+      },
+      (result) => {
+        
+        this.imgurPic = result;
+        
+        
+      }
+    );
+  }
 
 
   fileEvent(fileInput) {
@@ -70,11 +102,14 @@ export class EmployeeAddPetComponent implements OnInit {
     );
   }
   addPet() {
-    this.CreatePet()
+    
+      this.CreatePet();
+      
+     
+    
   }
-    CreatePet()
-    {
-    console.log("called add pet");
+  CreatePet(){
+
     if (this.validateInputFields()) {
       let p = new Pet(
         this.petID,
@@ -88,18 +123,44 @@ export class EmployeeAddPetComponent implements OnInit {
         this.petPic,
         this.owner
       );
+
       this.callService.createPet(p).subscribe(
         (response) => {
-          console.log(response);
-          this.router.navigate(['/empl-screen']);
           this.petRet = response;
           this.uploadFile();
         },
         (response) => {
-          console.log("failure " + response);
-          this.message = "Failed to add pet";
+          console.log(response);
+         
         }
       );
+
+      }
+
+    }
+  addPetPic(){
+
+    if(this.petRet != undefined){
+
+      this.petpicture = new PetPic(
+        undefined,
+        this.imgurPic["data"]["link"],
+        null,
+        this.petRet
+      );
+        this.callService.createPetPic(this.petpicture).subscribe(
+          (result) => {
+            
+          },(result)=>{
+            console.log(result);
+          }
+
+
+
+        );
+
+
+
     }
   }
   addPetPic(){
@@ -132,13 +193,12 @@ export class EmployeeAddPetComponent implements OnInit {
       this.petMedInfo == "" ||
       this.petAboutMe == undefined ||
       this.petAboutMe == ""
-    ) 
-    {
+    ) {
       console.log("Invalid Inputs");
       return false;
-    } else{
-    console.log("valid Inputs");
-    return true;
+    } else {
+      console.log("valid Inputs");
+      return true;
     }
   }
   viewApp() {

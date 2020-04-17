@@ -1,17 +1,26 @@
 <h3>Adopting {{peti.petName}}</h3>
 
 <div>
-    <p>Children </p>
-    <input [(ngModel)] = "appChildren" type="number">
+    <p>Please tell us a little about yourself!</p>
 
-    <p>Refrences </p>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Children</label>
+        <textarea [(ngModel)] = "appChildren" cols="50" rows="5" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">References</label>
     <textarea [(ngModel)] = "appReferences" cols="50" rows="5"></textarea>
-
-    <p>Current Pets </p>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Current Pets</label>
     <textarea [(ngModel)]="appPetsOwned" cols="50" rows="5"></textarea>
+    </div>
 
-    <p>Comments</p>
-    <textarea [(ngModel)]="appComments" cols="50" rows="5"></textarea>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Comments</label>
+        <textarea [(ngModel)]="appComments" cols="50" rows="5"></textarea>
+    </div>
+    
 
     <button (click)="submitApp()">Submit</button>
     <p>{{message}}</p>
