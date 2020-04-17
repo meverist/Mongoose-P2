@@ -17,10 +17,6 @@ export class ViewApplicationsComponent implements OnInit {
               public router: Router,
               private callService: LogInService) { }
 
-  user :Adopter;
-  isEmployee :boolean;
-  person :string;
-  a: Application;
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
@@ -35,13 +31,19 @@ export class ViewApplicationsComponent implements OnInit {
       this.viewAApps();
     }
   }
+  user :Adopter;
+ 
   applications :Array<Application>=[];
+
+  isEmployee :boolean;
+  person :string;
 
   //Testing funciton, can remove once databse functionality has been brought in.
   viewEApps() {
     this.callService.allApplication().subscribe(
       (response) => {
         this.applications = response;
+        //console.log(this.applications);
       },
       (response) => {
         console.log("Cannot retrieve applications")
@@ -110,6 +112,7 @@ export class ViewApplicationsComponent implements OnInit {
         }
      )
   }
+
   //basic navigation functions
   viewApp() {
     this.router.navigate(['/view-applications']);

@@ -25,6 +25,7 @@ export class EmployeeAddPetComponent implements OnInit {
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.person = JSON.parse(hold).userName;
   }
+
   petpicture: PetPic;
   petRet: Pet;
   file: Blob;
@@ -57,26 +58,7 @@ export class EmployeeAddPetComponent implements OnInit {
       result = reader.result;
     };
   }
-  uploadFile() {
-    this.callService.uploadImg(this.file).subscribe(
-      (result) => {
-        this.imgurPic = result;
-        this.addPetPic();
-        
-      },
-      (result) => {
-        
-        this.imgurPic = result; 
-      }
-    );
-  }
-  addPet() {
-    
-      this.CreatePet();
-      
-     
-    
-  }
+
   CreatePet(){
 
     if (this.validateInputFields()) {
@@ -96,6 +78,7 @@ export class EmployeeAddPetComponent implements OnInit {
       this.callService.createPet(p).subscribe(
         (response) => {
           this.petRet = response;
+          console.log(this.petRet);
           this.uploadFile();
         },
         (response) => {
@@ -103,8 +86,23 @@ export class EmployeeAddPetComponent implements OnInit {
           
         }
       );
-      }
     }
+  }
+
+  uploadFile() {
+    this.callService.uploadImg(this.file).subscribe(
+      (result) => {
+        this.imgurPic = result;
+        this.addPetPic();
+        
+      },
+      (result) => {
+        
+        this.imgurPic = result; 
+      }
+    );
+  }
+
   addPetPic(){
     if(this.petRet != undefined){
       this.petpicture = new PetPic(
@@ -123,20 +121,16 @@ export class EmployeeAddPetComponent implements OnInit {
         );
     }
   }
+
   validateInputFields(): boolean {
     if (
-      this.petName == "" ||
-      this.petName == undefined ||
-      this.petType == undefined ||
-      this.petType == "" ||
-      this.petBreed == undefined ||
-      this.petBreed == "" ||
+      this.petName == undefined || this.petName == "" ||
+      this.petType == undefined || this.petType == "" ||
+      this.petBreed == undefined || this.petBreed == "" ||
       this.petAge == undefined ||
       this.petWeight == undefined ||
-      this.petMedInfo == undefined ||
-      this.petMedInfo == "" ||
-      this.petAboutMe == undefined ||
-      this.petAboutMe == ""
+      this.petMedInfo == undefined || this.petMedInfo == "" ||
+      this.petAboutMe == undefined || this.petAboutMe == ""
     ) {
       console.log("Invalid Inputs");
       return false;
@@ -145,6 +139,7 @@ export class EmployeeAddPetComponent implements OnInit {
       return true;
     }
   }
+
   viewApp() {
     this.router.navigate(['/view-applications']);
   }
