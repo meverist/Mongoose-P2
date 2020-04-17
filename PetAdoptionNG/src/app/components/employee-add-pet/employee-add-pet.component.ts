@@ -19,8 +19,6 @@ export class EmployeeAddPetComponent implements OnInit {
   constructor(public router: Router, private callService: LogInService,
     private data :UserinfoService) {}
 
-    person :string;
-
   ngOnInit(): void {
 
     var hold;
@@ -44,10 +42,8 @@ export class EmployeeAddPetComponent implements OnInit {
   petPic: string;
   owner: Adopter;
 
-  petpicture: PetPic;
-  petRet: Pet;
-  file: Blob;
-  imgurPic: Object;
+  person :string;
+  message: string;
 
   fileEvent(fileInput) {
     var file = fileInput.target.files[0];
@@ -61,7 +57,6 @@ export class EmployeeAddPetComponent implements OnInit {
       result = reader.result;
     };
   }
-
   uploadFile() {
     this.callService.uploadImg(this.file).subscribe(
       (result) => {
@@ -71,33 +66,7 @@ export class EmployeeAddPetComponent implements OnInit {
       },
       (result) => {
         
-        this.imgurPic = result;
-        
-        
-      }
-    );
-  }
-
-
-  fileEvent(fileInput) {
-
-    var file = fileInput.target.files[0];
-    this.file = file;
-    var reader = new FileReader();
-    var result;
-    reader.readAsBinaryString(file);
-    reader.onload = function () {
-      result = reader.result;
-    };
-  }
-  uploadFile() {
-    this.callService.uploadImg(this.file).subscribe(
-      (result) => {
-        this.imgurPic = result;
-        this.addPetPic();
-      },
-      (result) => {
-        this.imgurPic = result;
+        this.imgurPic = result; 
       }
     );
   }
@@ -131,38 +100,11 @@ export class EmployeeAddPetComponent implements OnInit {
         },
         (response) => {
           console.log(response);
-         
+          
         }
       );
-
       }
-
     }
-  addPetPic(){
-
-    if(this.petRet != undefined){
-
-      this.petpicture = new PetPic(
-        undefined,
-        this.imgurPic["data"]["link"],
-        null,
-        this.petRet
-      );
-        this.callService.createPetPic(this.petpicture).subscribe(
-          (result) => {
-            
-          },(result)=>{
-            console.log(result);
-          }
-
-
-
-        );
-
-
-
-    }
-  }
   addPetPic(){
     if(this.petRet != undefined){
       this.petpicture = new PetPic(
@@ -173,8 +115,10 @@ export class EmployeeAddPetComponent implements OnInit {
       );
         this.callService.createPetPic(this.petpicture).subscribe(
           (result) => {
+            this.message = "Successfully added pet";
           },(result)=>{
             console.log(result);
+            this.message = "Could not add pet";
           }
         );
     }

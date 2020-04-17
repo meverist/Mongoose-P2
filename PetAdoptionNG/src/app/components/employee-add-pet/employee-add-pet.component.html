@@ -30,9 +30,9 @@
             <div class="d-flex flex-nowrap form-row justify-content-around">
                 <div class="col-md-10 mr-2">
                     <label for="inputPetName" class="sr-only">Pet's Name</label>
-                    <input type="text" [(ngmodel)]="petName" [ngmodeloptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetName" placeholder="Pet's Name"/>
+                    <input type="text" [(ngModel)]="petName" [ngModelOptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetName" placeholder="Pet's Name"/>
                     <label for="inputPetType" class="sr-only">Type</label>
-                    <select [(ngmodel)]="petType" [ngmodeloptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetType" placeholder="Password">
+                    <select [(ngModel)]="petType" [ngModelOptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetType" placeholder="Password">
                         <option value="dog">Dog</option>                                 
                         <option value="cat">Cat</option>                                 
                         <option value="bird">Bird</option>                                 
@@ -42,17 +42,17 @@
                         <option value="other">Other</option>
                     </select>
                     <label for="inputBreed" class="sr-only">Breed</label>
-                    <input type="text" [(ngmodel)]="petBreed" [ngmodeloptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputBreed" placeholder="Breed"/>
+                    <input type="text" [(ngModel)]="petBreed" [ngModelOptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputBreed" placeholder="Breed"/>
                     <label for="inputPetAge" class="sr-only">Age</label>
-                    <input type="number" [(ngmodel)]="petAge" [ngmodeloptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetAge" placeholder="Age"/>
+                    <input type="number" [(ngModel)]="petAge" [ngModelOptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetAge" placeholder="Age"/>
                     <label for="inputPetWeight" class="sr-only">Weight</label>
-                    <input type="number" [(ngmodel)]="petWeight" [ngmodeloptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetWeight" placeholder="Weight"/> 
+                    <input type="number" [(ngModel)]="petWeight" [ngModelOptions]="{standalone: true}" class="form-control mb-4 mt-4" id="inputPetWeight" placeholder="Weight"/> 
                 </div>
                 <div class="col-md-10 ml-2">
                     <label for="petMedInfo" class="sr-only">Medical:</label>
-                    <textarea rows="4" class="form-control mb-0 mt-4" id="petMedInfo" [(ngmodel)]="petMedInfo" [ngmodeloptions]="{standalone: true}" placeholder="Medical Info"></textarea>
+                    <textarea rows="4" class="form-control mb-0 mt-4" id="petMedInfo" [(ngModel)]="petMedInfo" [ngModelOptions]="{standalone: true}" placeholder="Medical Info"></textarea>
                     <label for="petAboutMe" class="sr-only">About Me:</label>
-                    <textarea rows="4" class="form-control mt-3" id="petAboutMe" [(ngmodel)]="petAboutMe" [ngmodeloptions]="{standalone: true}" placeholder="About Me"></textarea>
+                    <textarea rows="4" class="form-control mt-3" id="petAboutMe" [(ngModel)]="petAboutMe" [ngModelOptions]="{standalone: true}" placeholder="About Me"></textarea>
                     <div class="custom-file mt-3"> 
                         <input type="file" class="custom-file-input mt-4 pb-3 text-left" id="custom-file1" accept="image/*" (change)="fileEvent($event)"> 
                         <label class="custom-file-label text-left" for="custom-file1">Upload Picture    </label>                                 
