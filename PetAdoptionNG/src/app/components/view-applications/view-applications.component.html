@@ -16,20 +16,20 @@
                 <a class="nav-link" (click)="viewPets()">View Pets</a> 
             </li>
             <li class="mr-3 nav-item"> 
-                <a class="nav-link" (click)="viewApps()">View Applications</a> 
+                <a class="nav-link" (click)="viewApp()">View Applications</a> 
             </li>                     
         </ul>                 
     </div>
     <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}                             </a> 
 </nav>
-<div class="container-fluid d-block shadow-none text-center vh-100 w-auto" style="object-fit: cover; background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.71) 18.3185%, rgb(255, 255, 255) 63%, rgba(255, 255, 255, 0.3) 100%);">
+<div class="container-fluid d-block shadow-none text-center vh-100 w-auto" style="background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.71) 18.6682%, rgba(255, 255, 255, 0.74) 63.2028%, rgba(255, 255, 255, 0.3) 100%); background-size: cover;">
     <div class="font-italic justify-content-center no-gutters row">
         <div class="col-md-4 d-flex justify-content-center mb-3 mt-5 pb-4 pt-4 text-black-50" style="background: linear-gradient(rgb(255, 255, 255) 10.1224%, rgba(255, 255, 255, 0) 100%);">
             <h3 class="font-weight-bold text-uppercase">Applications</h3> 
         </div>
     </div>
     <div class="bg-white mb-3 mt-3 no-gutters row shadow">
-        <table class="table" *ngfor="let a of applications"> 
+        <table class="table" *ngFor="let a of applications"> 
             <thead style="background-color: #ececec;"> 
                 <tr class="text-uppercase" style="font-size: 20px;"> 
                     <th>Pet Name</th>
@@ -49,7 +49,7 @@
                 </tr>                         
             </tbody>
         </table>
-        <div class="d-flex flex-fill mt-5 row row-cols-2" *ngif="isEmployee">
+        <div class="d-flex flex-fill mt-5 row row-cols-2" *ngIf="isEmployee">
             <div class="col-lg-6 ml-4 text-left" style="font-size: 20px; font-weight: bold;">
                 <p>References: {{a.appReference}}</p>
                 <p>Comments: {{a.appComment}}</p>

@@ -20,6 +20,7 @@ export class ViewApplicationsComponent implements OnInit {
   user :Adopter;
   isEmployee :boolean;
   person :string;
+  a: Application;
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
