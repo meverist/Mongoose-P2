@@ -22,7 +22,7 @@ export class PetViewComponent implements OnInit {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.user = JSON.parse(hold);
-    
+    this.person = JSON.parse(hold).userName;
     if(this.user.userRole == 'Employee') {
       console.log("Yep employee");
       this.isEmployee = true;
@@ -41,6 +41,7 @@ export class PetViewComponent implements OnInit {
   user :Adopter;
   isEmployee :boolean;
   message :string;
+  person:string;
 
   nextPet() {
    if(this.index==this.pets.length-1){
