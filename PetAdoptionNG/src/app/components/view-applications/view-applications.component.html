@@ -1,30 +1,64 @@
-
-
-<div >
-    <table *ngFor="let a of applications" >
-        <tr>
-            <th>Pet Name</th>
-            <th>Adoptor Name</th>
-            <th>Current Pets</th>
-            <th>Children</th>
-            <th>Status</th>
-        </tr>
-        <tr >
-            <td>{{a.pet.petName}}</td>
-            <td>{{a.user.userName}}</td>
-            <td>{{a.appPetsOwned}}</td>
-            <td>{{a.appChildren}}</td>
-            <td>{{a.appstatus}}</td>
-        </tr>
-        <div *ngIf=isEmployee>
-            <p>References: {{a.appReference}}</p>
+<nav class="bg-light navbar navbar-expand-lg navbar-light"> 
+    <a class="navbar-brand" href="#" style="font-family: 'Akronim', cursive; color: #ae7800;"><img src="assets/images/logo.png" class="img-fluid" width="40">Mongoose</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler38" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation"> 
+        <span class="navbar-toggler-icon"></span> 
+    </button>
+    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink39"> 
+        <a class="dropdown-item">Account</a> 
+        <a class="dropdown-item" (click)="logOut()">Sign Out</a> 
+    </div>
+    <div class="collapse font-weight-bold lead navbar-collapse text-monospace" id="navbarToggler38"> 
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> 
+            <li class="ml-3 mr-3 nav-item"> 
+                <a class="nav-link" (click)="addPet()">Add Pet</a> 
+            </li>
+            <li class="mr-3 nav-item"> 
+                <a class="nav-link" (click)="viewPets()">View Pets</a> 
+            </li>
+            <li class="mr-3 nav-item"> 
+                <a class="nav-link" (click)="viewApp()">View Applications</a> 
+            </li>                     
+        </ul>                 
+    </div>
+    <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}                             </a> 
+</nav>
+<div class="container-fluid d-block shadow-none text-center vh-100 w-auto" style="background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.71) 18.6682%, rgba(255, 255, 255, 0.74) 63.2028%, rgba(255, 255, 255, 0.3) 100%); background-size: cover;">
+    <div class="font-italic justify-content-center no-gutters row">
+        <div class="col-md-4 d-flex justify-content-center mb-3 mt-5 pb-4 pt-4 text-black-50" style="background: linear-gradient(rgb(255, 255, 255) 10.1224%, rgba(255, 255, 255, 0) 100%);">
+            <h3 class="font-weight-bold text-uppercase">Applications</h3> 
         </div>
-        <div *ngIf=isEmployee>
-            <p>Comments: {{a.appComment}}</p>
+    </div>
+    <div class="bg-white mb-3 mt-3 no-gutters row shadow">
+        <table class="table" *ngFor="let a of applications"> 
+            <thead style="background-color: #ececec;"> 
+                <tr class="text-uppercase" style="font-size: 20px;"> 
+                    <th>Pet Name</th>
+                    <th>Adopter</th>
+                    <th>Current Pets</th>
+                    <th>Children</th>
+                    <th>Status</th>
+                </tr>                         
+            </thead>                     
+            <tbody style="font-size: 20px; font-weight: bolder; line-height: 60px;"> 
+                <tr class=""> 
+                    <td>{{a.pet.petName}}</td>
+                    <td>{{a.user.userName}}</td>
+                    <td>{{a.appPetsOwned}}</td>
+                    <td>{{a.appChildren}}</td>
+                    <td>{{a.appstatus}}</td>
+                </tr>                         
+            </tbody>
+        </table>
+        <div class="d-flex flex-fill mt-5 row row-cols-2" *ngIf="isEmployee">
+            <div class="col-lg-6 ml-4 text-left" style="font-size: 20px; font-weight: bold;">
+                <p>References: {{a.appReference}}</p>
+                <p>Comments: {{a.appComment}}</p>
+            </div>
+            <div class="col-lg-5">
+                <button type="button" class="bg-primary btn btn-light font-weight-bold lead ml-3 mr-3 p-2 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="acceptApp(a)">Accept</button>
+                <button type="button" class="bg-primary btn btn-light font-weight-bold ml-3 mr-3 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="rejectApp(a)">Reject</button>
+            </div>
         </div>
-        <ul *ngIf=isEmployee>
-            <li><button (click)="acceptApp(a)">Accept</button></li>
-            <li><button (click)="rejectApp(a)">Reject</button></li>
-        </ul>
-    </table>
+    </div>
 </div>
+<p class="text-body text-center">&copy; Mongoose 2020</p>

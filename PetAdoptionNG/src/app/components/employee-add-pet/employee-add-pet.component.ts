@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 
 import { Pet } from "src/app/models/Pet";
 import { Adopter } from "src/app/models/Adoptor";
-
+import { UserinfoService } from 'src/app/services/userinfo.service';
 import { LogInService } from "../../services/log-in.service";
 import { PetPic } from "src/app/models/PetPic";
+import { createComponent } from '@angular/compiler/src/core';
 
 @Component({
   selector: "app-employee-add-pet",
@@ -15,9 +16,19 @@ import { PetPic } from "src/app/models/PetPic";
   styleUrls: ["./employee-add-pet.component.css"],
 })
 export class EmployeeAddPetComponent implements OnInit {
-  constructor(public router: Router, private callService: LogInService) {}
+  constructor(public router: Router, private callService: LogInService,
+    private data :UserinfoService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    var hold;
+    this.data.userCurrentMessage.subscribe(info => hold = info);
+    this.person = JSON.parse(hold).userName;
+  }
+  petpicture: PetPic;
+  petRet: Pet;
+  file: Blob;
+  imgurPic: Object;
 
   petID: number;
   petName: string;
@@ -31,10 +42,8 @@ export class EmployeeAddPetComponent implements OnInit {
   petPic: string;
   owner: Adopter;
 
-  petpicture: PetPic;
-  petRet: Pet;
-  file: Blob;
-  imgurPic: Object;
+  person :string;
+  message: string;
 
   fileEvent(fileInput) {
     var file = fileInput.target.files[0];
@@ -48,7 +57,6 @@ export class EmployeeAddPetComponent implements OnInit {
       result = reader.result;
     };
   }
-
   uploadFile() {
     this.callService.uploadImg(this.file).subscribe(
       (result) => {
@@ -58,13 +66,10 @@ export class EmployeeAddPetComponent implements OnInit {
       },
       (result) => {
         
-        this.imgurPic = result;
-        
-        
+        this.imgurPic = result; 
       }
     );
   }
-
   addPet() {
     
       this.CreatePet();
@@ -95,17 +100,13 @@ export class EmployeeAddPetComponent implements OnInit {
         },
         (response) => {
           console.log(response);
-         
+          
         }
       );
-
       }
-
     }
   addPetPic(){
-
     if(this.petRet != undefined){
-
       this.petpicture = new PetPic(
         undefined,
         this.imgurPic["data"]["link"],
@@ -114,20 +115,14 @@ export class EmployeeAddPetComponent implements OnInit {
       );
         this.callService.createPetPic(this.petpicture).subscribe(
           (result) => {
-            
+            this.message = "Successfully added pet";
           },(result)=>{
             console.log(result);
+            this.message = "Could not add pet";
           }
-
-
-
         );
-
-
-
     }
   }
-
   validateInputFields(): boolean {
     if (
       this.petName == "" ||
@@ -150,4 +145,22 @@ export class EmployeeAddPetComponent implements OnInit {
       return true;
     }
   }
+  viewApp() {
+    this.router.navigate(['/view-applications']);
+  }
+
+  addPets() {
+    this.router.navigate(['/employee-add-pet']);
+  }
+
+  viewPets() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
+  
 }
