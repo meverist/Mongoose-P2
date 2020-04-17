@@ -25,6 +25,7 @@ export class CreateApplicationComponent implements OnInit {
     
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.user = JSON.parse(hold);
+    this.person = JSON.parse(hold);
   }
 
   userApp :Application ;
@@ -36,6 +37,7 @@ export class CreateApplicationComponent implements OnInit {
   user :Adopter;
   peti :Pet;
 
+  person:string;
   message :string;
 
   submitApp(){
@@ -59,10 +61,31 @@ export class CreateApplicationComponent implements OnInit {
         }
       },
       (resp) => {
-        console.log("Failed to add Application");
-        this.message = "Failed to apply";
+        console.log("Failed to add application");
+        this.message = "Failed to add application";
       }
     )
+  }
+  createApplication() {
+    this.router.navigate(['/create-application']);
+  } 
+
+  petView() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  createAppointment() {
+    //WOP
+  }
+
+  viewApplications() {
+    this.router.navigate(['/view-applications']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
   }
 
 }
