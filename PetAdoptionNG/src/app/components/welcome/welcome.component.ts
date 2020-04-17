@@ -8,18 +8,16 @@ import { Router } from '@angular/router';
 })
 export class WelcomeComponent implements OnInit {
 
-  constructor(public router: Router) { 
-    
-  }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
-  login()
-  {
+
+  login() {
     this.router.navigate(['/login']);
   }
-  userregister()
-  {
+
+  userregister() {
     this.router.navigate(['/userregister']);
   }
 

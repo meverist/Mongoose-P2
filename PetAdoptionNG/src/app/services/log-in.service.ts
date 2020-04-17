@@ -97,6 +97,10 @@ export class LogInService {
     return this.http.get<Pet[]>(this.url+"/pet");
   }
 
+  retrieveAllPetsNoOwner() :Observable<Pet[]> {
+    return this.http.get<Pet[]>(this.url+"/pet/get");
+  }
+
   //2 test 1 successful 1 failed when a application is all ready connected to pet
   deletePet(petId :number) :Observable<Object> {
     console.log(this.url);
