@@ -77,7 +77,10 @@ export class LogInService {
   makeApplication(app: Application) :Observable<Application>{
     return this.http.post<Application>(this.url+'/padapplication',app,{headers: this.headers});
   }
-
+  //Is calling the same thing as make app, Added by Mat, didnt come though in git pull for some reason
+  updateApp(app: Application) :Observable<Application>{
+    return this.http.post<Application>(this.url+"/padapplication",app,{headers: this.headers});
+  }
   //Successful Test 4/14/2020
   createPet(pet: Pet) :Observable<Pet>{
     return this.http.post<Pet>(this.url+"/pet", pet, {headers: this.headers});
