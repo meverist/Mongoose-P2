@@ -27,7 +27,7 @@ export class CreateApplicationComponent implements OnInit {
     this.user = JSON.parse(hold);
   }
 
-  userApp :Application;
+  userApp :Application ;
 
   appReferences :string;
   appPetsOwned :string;

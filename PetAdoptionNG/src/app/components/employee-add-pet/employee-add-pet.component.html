@@ -1,33 +1,79 @@
-<p>employee-add-pet works!</p>
-<label for="name">Name:</label>
-<input type="text" id="petName" [(ngModel)] = "petName">
+<div class="align-self-center">
+  <div
+    class="container align-middle w-50 p-3 border border-info rounded"
+    id="main"
+  >
+    <h1 class="d-flex justify-content-center">Pet Registration</h1>
+    <div class="form-group row">
+      <label for="PetName" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="petName" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="PetType" class="col-sm-2 col-form-label">Type</label>
+      <div class="col-sm-10">
+        <select class="custom-select my-1 mr-sm-2" [(ngModel)]="petType">
+          <option value="dog">Dog</option>
+          <option value="cat">Cat</option>
+          <option value="bird">Bird</option>
+          <option value="reptile">Reptile</option>
+          <option value="mouse">Mouse</option>
+          <option value="fish">Fish</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
 
-<label for="petType">Type:</label>
-<select id="petType" [(ngModel)] = "petType">
-    <option value="dog">Dog</option>
-    <option value="cat">Cat</option>
-    <option value="bird">Bird</option>
-    <option value="reptile">Reptile</option>
-    <option value="mouse">Mouse</option>
-    <option value="fish">Fish</option>
-</select>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Breed</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="petBreed" />
+      </div>
+    </div>
 
-<label for="breed">Breed:</label>
-<input type="text" id="petBreed" [(ngModel)] = "petBreed">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Age</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="petAge" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Weight</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="petWeight" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label"
+        >Medical Info</label
+      >
+      <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="petMedInfo" />
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="About Me!" class="col-sm-2 col-form-label">About me!</label>
+      <div class="col-sm-10">
+        <textarea
+          rows="4"
+          cols="50"
+          class="form-control"
+          aria-label="With textarea"
+          [(ngModel)]="petAboutMe"
+        ></textarea>
+      </div>
+    </div>
+    <div>
+      <input type="file" accept="image/*" (change)="fileEvent($event)" />
+    </div>
 
-<label for="age">Age:</label>
-<input type="number" id="petAge" [(ngModel)] = "petAge">
-
-<label for="weight">Weight:</label>
-<input type="number" id="petWeight" [(ngModel)] = "petWeight">
-
-<label for="medicalinfo">Medical Info:</label>
-<input type="text" id="petMedInfo" [(ngModel)] = "petMedInfo">
-
-<label for="aboutme">About Me:</label>
-<input type="text" id="petAboutMe" [(ngModel)] = "petAboutMe">
-
-<button (click) = "addPet()">Submit</button> 
-<h3>{{message}}</h3>
-
-
+    <button
+      type="button"
+      class="btn btn-outline-info btn-block"
+      (click)="addPet()"
+    >
+      Submit
+    </button>
+  </div>
+</div>
