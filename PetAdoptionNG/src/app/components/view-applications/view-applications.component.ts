@@ -36,7 +36,17 @@ export class ViewApplicationsComponent implements OnInit {
   applications :Array<Application>=[];
 
   isEmployee :boolean;
+  view :boolean = false;
   person :string;
+
+  message1 :string; //for employee message
+  message2 :string; //for adopter message
+
+  //Variable so that the adopter can change information
+  appReferences :string;
+  appPetsOwned :string;
+  appChildren :string;
+  appComments :string;
 
   //Testing funciton, can remove once databse functionality has been brought in.
   viewEApps() {
@@ -101,16 +111,47 @@ export class ViewApplicationsComponent implements OnInit {
 
   //Takes the current application in the list and rejects it. 
   rejectApp(rejApp :Application){
-
+    if(rejApp.appstatus != 'approved') {
      this.callService.deleteApplicaiton(rejApp.appId).subscribe(
       (response) =>{
         console.log("Deletion was successful");
-        //location.reload();
+        this.message1 = "Application was successful deleted";
+        this.message2 = "Application was successful deleted";
         },
         (response) => {
           console.log(response);
         }
-     )
+     );
+    } else {
+      this.message1 = "Can not remove!";
+      this.message2 = "Can not remove!";
+      console.log("Cannot remove");
+    }
+  }
+
+  //Used to display the update boxes or not
+  updateApp() {
+    this.view = !this.view;
+  }
+
+  submitApp(upjApp :Application) {
+    upjApp.appChildren = this.appChildren;
+    upjApp.appPetsOwned = this.appPetsOwned;
+    upjApp.appReference = this.appReferences;
+    upjApp.appComment = this.appComments; 
+
+    console.log(upjApp);
+
+    this.callService.makeApplication(upjApp).subscribe(
+      (resp) => {
+        console.log("Application was sent");
+        this.message2 = "Application updated successfully!";
+      },
+      (resp) => {
+        console.log("Failed to add application");
+        this.message2 = "Failed to add application";
+      }
+    );
   }
 
   //basic navigation functions
