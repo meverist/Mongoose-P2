@@ -26,8 +26,13 @@ export class PetViewComponent implements OnInit {
     this.data.userCurrentMessage.subscribe((info) => (hold = info));
     console.log(hold);
     this.user = JSON.parse(hold);
+<<<<<<< HEAD
 
     if (this.user.userRole == "Employee") {
+=======
+    this.person = JSON.parse(hold).userName;
+    if(this.user.userRole == 'Employee') {
+>>>>>>> FrontendMaster
       this.isEmployee = true;
     } else {
       this.isEmployee = false;
@@ -53,6 +58,8 @@ export class PetViewComponent implements OnInit {
     "comment",
     null
   );
+
+  person:string;
 
   nextPet() {
     if (this.index == this.pets.length - 1) {
@@ -133,5 +140,25 @@ export class PetViewComponent implements OnInit {
         console.log("server error");
       }
     );
+   }
+   viewApp() {
+    this.router.navigate(['/view-applications']);
+  }
+
+  addPet() {
+    this.router.navigate(['/employee-add-pet']);
+  }
+
+  viewPets() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
+  createAppointment() {
+    //WOP
   }
 }
