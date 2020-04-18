@@ -54,7 +54,15 @@ public class PadUserServiceImpl implements PadUserService {
 	@Override
 	public boolean validateUser(String userEmail, String userPassword) {
 
+		if(userEmail == null || userPassword == null) {
+			return false;
+		}
+		
 		PadUser valUser = pur.findByuserEmail(userEmail);
+		
+		if(valUser == null) {
+			return false;
+		}
 		
 		if(valUser.getUserPassword()!= null && valUser.getUserPassword().equalsIgnoreCase(userPassword)) {
 			return true;
