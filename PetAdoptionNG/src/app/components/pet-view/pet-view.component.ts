@@ -144,4 +144,7 @@ export class PetViewComponent implements OnInit {
   createAppointment() {
     //WOP
   }
+  account() {
+    this.router.navigate(['/account']);
+  }
 }
