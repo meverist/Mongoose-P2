@@ -64,8 +64,9 @@ export class CreateApplicationComponent implements OnInit {
         console.log("Failed to add application");
         this.message = "Failed to add application";
       }
-    )
+    );
   }
+
   createApplication() {
     this.router.navigate(['/create-application']);
   } 

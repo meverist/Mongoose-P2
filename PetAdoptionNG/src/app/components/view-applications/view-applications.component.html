@@ -10,7 +10,7 @@
     <div class="collapse font-weight-bold lead navbar-collapse text-monospace" id="navbarToggler38"> 
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="!isEmployee"> 
             <li class="ml-3 mr-3 nav-item"> 
-                <a class="nav-link" (click)="viewPets()">View Pets</a> 
+                <a class="nav-link" (click)="viewPets()">Browse Pets</a> 
             </li>
             <li class="mr-3 nav-item"> 
                 <a class="nav-link" (click)="createAppointment()" >My Appointments</a> 
@@ -68,6 +68,32 @@
                 <div class="col-lg-5">
                     <button type="button" class="bg-primary btn btn-light font-weight-bold lead ml-3 mr-3 p-2 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="acceptApp(app)">Accept</button>
                     <button type="button" class="bg-primary btn btn-light font-weight-bold ml-3 mr-3 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="rejectApp(app)">Reject</button>
+                    <h3>{{message1}}</h3>
+                </div>
+            </div>
+            <div class="d-flex flex-fill mt-5 row row-cols-2" *ngIf="!isEmployee">
+                <div class="col-lg-5">
+                    <button type="button" class="bg-primary btn btn-light font-weight-bold lead ml-3 mr-3 p-2 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="updateApp()">updateApp</button>
+                    <button type="button" class="bg-primary btn btn-light font-weight-bold ml-3 mr-3 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="rejectApp(app)">Reject</button>
+                    <h3>{{message2}}</h3>
+                </div>
+                <div class="col-lg-6 ml-4 text-left" style="font-size: 20px; font-weight: bold;" *ngIf="view">
+                    <div class="d-flex flex-nowrap form-row justify-content-around">
+                        <div class="col-md-10 mr-2">
+                            <label for="children" class="sr-only">Current Children</label>
+                            <textarea rows="4" class="form-control mb-0 mt-4" id="children" [(ngModel)]="appChildren" [ngModelOptions]="{standalone: true}" placeholder={{app.appChildren}}></textarea>
+                            <label for="pets" class="sr-only">Current Pets</label>
+                            <textarea rows="4" class="form-control mb-0 mt-4" id="pets" [(ngModel)]="appPetsOwned" [ngModelOptions]="{standalone: true}" placeholder= {{app.appPetsOwned}}></textarea> 
+                        </div>
+                        <div class="col-md-10 ml-2">
+                            <label for="references" class="sr-only">References</label>
+                            <textarea rows="4" class="form-control mb-0 mt-4" id="references" [(ngModel)]="appReferences" [ngModelOptions]="{standalone: true}" placeholder= {{app.appReference}}></textarea>
+                            <label for="comments" class="sr-only">Comments</label>
+                            <textarea rows="4" class="form-control mt-4" id="comments" [(ngModel)]="appComments" [ngModelOptions]="{standalone: true}" placeholder={{app.appComment}}></textarea> 
+                        </div>
+                    </div>
+                    <button (click)="submitApp(app)" class="btn btn-primary mt-3">Submit</button>
+                    <h3>{{message2}}</h3>
                 </div>
             </div>
         </table>
