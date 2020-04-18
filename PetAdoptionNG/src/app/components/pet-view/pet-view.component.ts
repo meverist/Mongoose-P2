@@ -14,6 +14,7 @@ import { PetPic } from "../../models/PetPic";
   templateUrl: "./pet-view.component.html",
   styleUrls: ["./pet-view.component.css"],
 })
+
 export class PetViewComponent implements OnInit {
   constructor(
     private data: UserinfoService,
@@ -58,29 +59,9 @@ export class PetViewComponent implements OnInit {
 
   person:string;
 
-  nextPet() {
-    if (this.index == this.pets.length - 1) {
-      //this.hideNext=false;
-      this.index = 0;
-    } else {
-      ++this.index;
-      this.hidePrev = true;
-    }
-  }
-
   adoptMe() {
     this.data.changePetMessage(this.pets[this.index]);
     this.router.navigate(["/create-application"]);
-  }
-
-  prevPet() {
-    if (this.index == 0) {
-      //this.hidePrev=false;
-      this.index = this.pets.length - 1;
-    } else {
-      --this.index;
-      this.hideNext = true;
-    }
   }
 
   reject() {
@@ -98,8 +79,6 @@ export class PetViewComponent implements OnInit {
   popPetPics(pet: Pet[]) {
     //Pet Pics has to return an array of images per pet
     //Default pet pic if nothing is found, is put in the table.
-
-    
 
     for (let i = 0; i < pet.length; i++) {
       

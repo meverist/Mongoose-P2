@@ -28,12 +28,13 @@ import { PetPic } from "../models/PetPic";
 export class LogInService {
   url: string;
 
-  constructor(private http: HttpClient) {
-    this.url =
-      "http://ec2-18-219-236-61.us-east-2.compute.amazonaws.com:8080/PetAdoption";
+  constructor(private http :HttpClient) {
+    this.url = "http://ec2-18-219-236-61.us-east-2.compute.amazonaws.com:8080/PetAdoption";
+    //this.url = "http://localhost:8080";
 
     //Server URL
     //  http://ec2-18-219-236-61.us-east-2.compute.amazonaws.com:8080/
+    //http://localhost:8080/PetAdoption
   }
 
   private headers = new HttpHeaders({ "content-Type": "application/json" });
