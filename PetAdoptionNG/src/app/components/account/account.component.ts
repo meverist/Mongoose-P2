@@ -20,7 +20,13 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    this.person = JSON.parse(hold);
+    console.log(hold);
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.person = JSON.parse(data);
+    } else {
+      this.person = JSON.parse(hold);
+    }
   }
 
   person :Adopter;
@@ -39,8 +45,8 @@ export class AccountComponent implements OnInit {
   * their new password by makeing it type again.
   */
   updatePass() {
-    if (this.newPass != this.newPass2) {
-      this.message = "Confirmation password is not the same!";
+    if (this.valid()) {
+      
     } else if (this.currPass == this.person.userPassword) {
       this.person.userPassword = this.newPass;
       this.logService.addAdopter(this.person).subscribe(
@@ -56,6 +62,20 @@ export class AccountComponent implements OnInit {
       );
     } else {
       this.message = "Failed to confirm identity!";
+    }
+  }
+
+  valid() :boolean {
+    if(this.currPass == undefined || this.currPass == "" ||
+       this.newPass == undefined || this.newPass == "" ||
+       this.newPass2 == undefined || this.newPass2 == "") {
+      this.message = "Information not filled out properly";
+      return true;
+    } else if (this.newPass != this.newPass2) {
+      this.message ="Confirmation password no match";
+      return true;
+    } else {
+      return false;
     }
   }
 

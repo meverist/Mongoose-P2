@@ -31,7 +31,7 @@
         </li>                     
     </ul>                   
   </div>
-  <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}                             </a> 
+  <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}</a> 
 </nav>
 <div class="container-fluid d-flex shadow-none text-center" style="object-fit: cover; background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0.352113%, rgba(255, 255, 255, 0.28) 22.1831%, rgba(255, 255, 255, 0.55) 77.8169%, rgba(255, 255, 255, 0.3) 100%); background-size: cover; min-height: 675px;">
   <div class="card-group">
@@ -59,8 +59,8 @@
               </ul>                         
           </div>                     
           <div class="card-footer d-flex justify-content-center">
-              <button *ngIf=!isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="adoptMe()">Adopt Me</button>
-              <button *ngIf=isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="reject()">Remove</button>                         
+              <button *ngIf=!isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="adoptMe(p)">Adopt Me</button>
+              <button *ngIf=isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="reject(p)">Remove</button>                         
           </div>                     
       </div>                                                   
   </div>

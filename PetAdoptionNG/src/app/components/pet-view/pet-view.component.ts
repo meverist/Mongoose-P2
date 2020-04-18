@@ -24,10 +24,17 @@ export class PetViewComponent implements OnInit {
 
   ngOnInit(): void {
     var hold;
-    this.data.userCurrentMessage.subscribe((info) => (hold = info));
+    this.data.userCurrentMessage.subscribe(info => hold = info);
     console.log(hold);
-    this.user = JSON.parse(hold);
-    this.person = JSON.parse(hold).userName;
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.user = JSON.parse(data);
+      this.person = this.user.userName;
+    } else {
+      this.user = JSON.parse(hold);
+      this.person = this.user.userName;
+    }
+    
     if(this.user.userRole == 'Employee') {
       this.isEmployee = true;
     } else {
@@ -47,25 +54,17 @@ export class PetViewComponent implements OnInit {
   isEmployee: boolean;
   message: string;
 
-  //Code to populate pet pic array with null values
-  //That was you can implement a base picture if not imported correctly
-  // petPicx: PetPic[] = [];
-  // defaultPetPic: PetPic = new PetPic(
-  //   1,
-  //   "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png",
-  //   "comment",
-  //   null
-  // );
-
   person:string;
 
-  adoptMe() {
-    this.data.changePetMessage(this.pets[this.index]);
+  adoptMe(pet: Pet) {
+    localStorage.setItem('Pet', JSON.stringify(pet));
+    this.data.changePetMessage(pet);
     this.router.navigate(["/create-application"]);
   }
 
-  reject() {
-    this.serviceCaller.deletePet(this.pets[this.index].petId).subscribe(
+  reject(pet: Pet) {
+    //console.log(pet);
+    this.serviceCaller.deletePet(pet.petId).subscribe(
       (response) => {
         console.log(response);
         this.message = "Deletion successful";

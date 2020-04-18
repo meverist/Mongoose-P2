@@ -21,11 +21,26 @@ export class CreateApplicationComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.petCurrentMessage.subscribe(info => hold = info);
-    this.peti = JSON.parse(hold);
+    console.log(hold);
+    if (hold == "Pet message") {
+      var data = localStorage.getItem('Pet');
+      this.peti= JSON.parse(data);
+    } else {
+      this.peti = JSON.parse(hold);
+    }
     
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    this.user = JSON.parse(hold);
-    this.person = JSON.parse(hold);
+    console.log(hold);
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.user = JSON.parse(data);
+      this.person = JSON.parse(data).userName;
+    } else {
+      this.user = JSON.parse(hold);
+      this.person = JSON.parse(hold).userName;
+    }
+
+
   }
 
   userApp :Application ;
