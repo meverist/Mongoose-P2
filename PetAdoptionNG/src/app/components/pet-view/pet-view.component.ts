@@ -106,6 +106,7 @@ export class PetViewComponent implements OnInit {
       this.serviceCaller.retrievePetPics(pet[i].petId).subscribe(
         
         (result) => {
+          
           if (Object.keys(result).length === 0) {
             //This code is being saved for future use creating a pet picture array
             //Do not have the time to create an array now
@@ -124,7 +125,7 @@ export class PetViewComponent implements OnInit {
         }
       );
     }
-    console.log(this.petPics);
+    console.log(this.pets);
   }
   retrievePicByPet(pet: Pet): string {
     let index: number = this.pets.indexOf(pet);
