@@ -4,41 +4,40 @@
       <span class="navbar-toggler-icon"></span> 
   </button>
   <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink39"> 
-      <a class="dropdown-item" href="#">Account</a> 
-      <a class="dropdown-item" (click)="logOut()">Sign Out</a> 
+      <a class="dropdown-item" (click)="account()" style="cursor: pointer;">Account</a> 
+      <a class="dropdown-item" (click)="logOut()" style="cursor: pointer;">Sign Out</a> 
   </div>
   <div class="collapse font-weight-bold lead navbar-collapse text-monospace" id="navbarToggler38"> 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="!isEmployee"> 
           <li class="ml-3 mr-3 nav-item"> 
-              <a class="nav-link" (click)="viewPets()">View Pets</a> 
+              <a class="nav-link" style="cursor: pointer;" (click)="viewPets()">View Pets</a> 
           </li>
           <li class="mr-3 nav-item"> 
-              <a class="nav-link" (click)="createAppointment()" >My Appointments</a> 
+              <a class="nav-link" style="cursor: pointer;" (click)="createAppointment()" >My Appointments</a> 
           </li>
           <li class="mr-3 nav-item"> 
-              <a class="nav-link" (click)="viewApp()">My Applications</a> 
+              <a class="nav-link" style="cursor: pointer;" (click)="viewApp()">My Applications</a> 
           </li>                     
       </ul>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0" *ngIf="isEmployee"> 
         <li class="ml-3 mr-3 nav-item"> 
-            <a class="nav-link" (click)="addPet()">Add Pet</a> 
+            <a class="nav-link" style="cursor: pointer;" (click)="addPet()">Add Pet</a> 
         </li>
         <li class="mr-3 nav-item"> 
-            <a class="nav-link" (click)="viewPets()" >View Pets</a> 
+            <a class="nav-link" style="cursor: pointer;" (click)="viewPets()" >View Pets</a> 
         </li>
         <li class="mr-3 nav-item"> 
-            <a class="nav-link" (click)="viewApp()">View Applications</a> 
+            <a class="nav-link" style="cursor: pointer;" (click)="viewApp()">View Applications</a> 
         </li>                     
     </ul>                   
   </div>
-  <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}                             </a> 
+  <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}</a> 
 </nav>
 <div class="container-fluid d-flex shadow-none text-center" style="object-fit: cover; background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0.352113%, rgba(255, 255, 255, 0.28) 22.1831%, rgba(255, 255, 255, 0.55) 77.8169%, rgba(255, 255, 255, 0.3) 100%); background-size: cover; min-height: 675px;">
   <div class="card-group">
       <div class="card text-left" style="max-width: 425px; min-width: 400px;" *ngFor="let p of pets"> 
-        <!-- Stretches unlocked aspect ratio style="width: 100%; max-height: 240px;" -->
         <!-- Locked aspect ratio clipped photo style="object-fit: cover; max-height: 240px; height: 100%; width: auto;"--> 
-          <img class="card-img-top" src="{{p.petPic}}" alt="Error Displaying Picture" style="object-fit: cover; max-height: 240px; height: 100%; width: auto;"> 
+          <img class="card-img-top" src="{{p.petPic}}" alt="Error Displaying Picture" style="object-fit: cover; max-height: 350px; height: 100%; width: auto;"> 
           <div class="card-body"> 
               <ul class="list-group mt-n5 shadow"> 
                   <li class="font-weight-bolder lead list-group-item text-center text-monospace">{{p.petName}}
@@ -59,8 +58,8 @@
               </ul>                         
           </div>                     
           <div class="card-footer d-flex justify-content-center">
-              <button *ngIf=!isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="adoptMe()">Adopt Me</button>
-              <button *ngIf=isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="reject()">Remove</button>                         
+              <button *ngIf=!isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="adoptMe(p)">Adopt Me</button>
+              <button *ngIf=isEmployee type="button" class="btn btn-block btn-lg btn-primary" (click)="reject(p)">Remove</button>                         
           </div>                     
       </div>                                                   
   </div>

@@ -2,14 +2,15 @@
     <form class="form-signin">
         <img src="assets/images/logo.png" class="img-fluid" width="40">
         <a class="navbar-brand" href="#" style="font-family: 'Akronim', cursive; color: #ae7800; font-size: 25px;">Mongoose</a>
-        <h1 class="font-weight-normal h3 mb-1 mt-2" style="font-family: 'Adamina', serif; font-size: 25px;">Please Sign In</h1>
+        <h1 class="font-weight-normal h3 mb-1 mt-2" style="font-family: 'Adamina', serif; font-size: 20px;">Please Sign In</h1>
+        <hr/>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" [(ngModel)] = "useremail" [ngModelOptions]="{standalone: true}" id="inputEmail" class="form-control mt-3" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" [(ngModel)] = "userpassword" [ngModelOptions]="{standalone: true}" id="inputPassword" class="form-control mt-3" placeholder="Password" required>
         <p *ngIf="!invalid" style="margin-top: 10px;">{{result}}</p>
         <button class="btn btn-block btn-lg btn-primary mt-3" (click) = "logIn()">Sign In</button>
-        <a class="mt-3 nav-link"  (click)="userregister()">Create an account</a>
+        <a class="mt-3 nav-link" (click)="userregister()" style="color: blue;cursor: pointer;">Create an account</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2020 Mongoose</p>
     </form>
 </div>

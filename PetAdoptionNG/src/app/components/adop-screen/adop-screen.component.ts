@@ -20,9 +20,17 @@ export class AdopScreenComponent implements OnInit {
               private data :UserinfoService) { }
 
   ngOnInit(): void {
+
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    this.person = JSON.parse(hold).userName;
+    console.log(hold);
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.person = JSON.parse(data).userName;
+    } else {
+      this.person = JSON.parse(hold).userName;
+    }
+    
   }
 
   createApplication() {

@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   logIn() {
 
     if(!this.valid()) {
-      this.result = "Your email or password does not exist. Try again!";
+      this.result = "Email or password does not exist";
     } else {
       var adopter = new Adopter(this.useremail, "info", "hold", this.userpassword, "Adopter");
 
@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
           adopter = resp;
           
           if (adopter != null) {
+            localStorage.setItem('Pass', JSON.stringify(adopter));
+            
             this.data.changeUserMessage(adopter);
             if(adopter.userRole == 'Employee') {
               this.router.navigate(['/empl-screen']);
