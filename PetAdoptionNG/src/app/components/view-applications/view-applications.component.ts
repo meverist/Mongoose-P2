@@ -176,4 +176,8 @@ export class ViewApplicationsComponent implements OnInit {
     this.data.changePetMessage(null);
     this.router.navigate(['/welcome']);
   }
+
+  createAppointment() {
+    //WOP
+  }
 }
