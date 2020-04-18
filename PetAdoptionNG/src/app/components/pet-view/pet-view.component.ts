@@ -26,18 +26,13 @@ export class PetViewComponent implements OnInit {
     this.data.userCurrentMessage.subscribe((info) => (hold = info));
     console.log(hold);
     this.user = JSON.parse(hold);
-<<<<<<< HEAD
-
-    if (this.user.userRole == "Employee") {
-=======
     this.person = JSON.parse(hold).userName;
     if(this.user.userRole == 'Employee') {
->>>>>>> FrontendMaster
       this.isEmployee = true;
     } else {
       this.isEmployee = false;
     }
-    this.petPicx.push(this.defaultPetPic);
+    //this.petPicx.push(this.defaultPetPic);
     this.popPetArray();
   }
 
@@ -51,13 +46,15 @@ export class PetViewComponent implements OnInit {
   isEmployee: boolean;
   message: string;
 
-  petPicx: PetPic[] = [];
-  defaultPetPic: PetPic = new PetPic(
-    1,
-    "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png",
-    "comment",
-    null
-  );
+  //Code to populate pet pic array with null values
+  //That was you can implement a base picture if not imported correctly
+  // petPicx: PetPic[] = [];
+  // defaultPetPic: PetPic = new PetPic(
+  //   1,
+  //   "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png",
+  //   "comment",
+  //   null
+  // );
 
   person:string;
 
@@ -102,17 +99,24 @@ export class PetViewComponent implements OnInit {
     //Pet Pics has to return an array of images per pet
     //Default pet pic if nothing is found, is put in the table.
 
-    console.log(this.petPicx);
+    
 
     for (let i = 0; i < pet.length; i++) {
-      console.log(pet[i]);
+      
       this.serviceCaller.retrievePetPics(pet[i].petId).subscribe(
         
         (result) => {
           if (Object.keys(result).length === 0) {
-            this.petPics.unshift(this.petPicx);
+            //This code is being saved for future use creating a pet picture array
+            //Do not have the time to create an array now
+            //this.petPics.unshift(this.petPicx);
+            this.pets[i].petPic = "https://developers.google.com/maps/documentation/maps-static/images/error-image-generic.png"
+
+
           } else {
-            this.petPics.unshift(result);
+            //this.petPics.unshift(result);
+            this.pets[i].petPic = result[0].piclink;
+
           }
         },
         (result) => {
