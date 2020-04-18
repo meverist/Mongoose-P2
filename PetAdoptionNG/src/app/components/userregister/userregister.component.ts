@@ -35,9 +35,9 @@ export class UserregisterComponent implements OnInit {
   //Displays what the outcome of the input is.
   createAdopter() {
     if(this.validateInputFields() == 1) {
-      this.result = "You have invalid fields!";
+      this.result = "Missing Information!";
     } else if(this.validateInputFields() == 2) {
-      this.result = "You confirmation password does not match!";
+      this.result = "Passwords do not match!";
     } else if(this.validateInputFields() == 3) {
       let adopter = new Adopter(this.useremail, this.userinfo, this.username, this.userpassword, this.userrole);
       console.log(adopter);
@@ -48,7 +48,7 @@ export class UserregisterComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         (resp) => {
-          console.log("Failed to add Adopter");
+          this.result = "Failed to Register!";
           console.log(resp);
         }
       );
