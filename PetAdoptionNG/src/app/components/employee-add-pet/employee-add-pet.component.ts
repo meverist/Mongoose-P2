@@ -23,7 +23,13 @@ export class EmployeeAddPetComponent implements OnInit {
 
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    this.person = JSON.parse(hold).userName;
+    console.log(hold);
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.person = JSON.parse(data).userName;
+    } else {
+      this.person = JSON.parse(hold).userName;
+    }
   }
 
   petpicture: PetPic;
@@ -79,7 +85,12 @@ export class EmployeeAddPetComponent implements OnInit {
         (response) => {
           this.petRet = response;
           console.log(this.petRet);
-          this.uploadFile();
+          if(this.file == undefined) {
+            this.message = "Pet was added but no picture!";
+          } else {
+            this.uploadFile();
+          }
+          
         },
         (response) => {
           console.log(response);
@@ -130,8 +141,8 @@ export class EmployeeAddPetComponent implements OnInit {
       this.petAge == undefined ||
       this.petWeight == undefined ||
       this.petMedInfo == undefined || this.petMedInfo == "" ||
-      this.petAboutMe == undefined || this.petAboutMe == ""
-    ) {
+      this.petAboutMe == undefined || this.petAboutMe == "") {
+      this.message = "Not all fields filled!";
       console.log("Invalid Inputs");
       return false;
     } else {
