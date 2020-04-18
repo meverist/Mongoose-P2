@@ -4,7 +4,7 @@
         <span class="navbar-toggler-icon"></span> 
     </button>
     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink39"> 
-        <a class="dropdown-item">Account</a> 
+        <a class="dropdown-item" (click)="account()">Account</a> 
         <a class="dropdown-item" (click)="logOut()">Sign Out</a> 
     </div>
     <div class="collapse font-weight-bold lead navbar-collapse text-monospace" id="navbarToggler38"> 
@@ -28,37 +28,37 @@
             <h3 class="font-weight-bold text-uppercase">Applications</h3> 
         </div>
     </div>
-    <div class="bg-white d-block mb-5 mt-5 no-gutters row row-cols-1 shadow">
-        <table class="table" *ngFor="let a of applications"> 
+    <div class="bg-white mb-3 mt-3 no-gutters row shadow">
+        <table class="table" *ngFor="let app of applications"> 
             <thead style="background-color: #ececec;"> 
                 <tr class="text-uppercase" style="font-size: 20px;"> 
                     <th>Pet Name</th>
                     <th>Adopter</th>
-                    <th>Current Pets</th>
-                    <th>Children</th>
+                    <th *ngIf="isEmployee">Current Pets</th>
+                    <th *ngIf="isEmployee">Children</th>
                     <th>Status</th>
                 </tr>                         
             </thead>                     
             <tbody style="font-size: 20px; font-weight: bolder; line-height: 60px;"> 
                 <tr class=""> 
-                    <td>{{a.pet.petName}}</td>
-                    <td>{{a.user.userName}}</td>
-                    <td>{{a.appPetsOwned}}</td>
-                    <td>{{a.appChildren}}</td>
-                    <td>{{a.appstatus}}</td>
+                    <td>{{app.pet.petName}}</td>
+                    <td>{{app.user.userName}}</td>
+                    <td *ngIf="isEmployee">{{app.appPetsOwned}}</td>
+                    <td *ngIf="isEmployee">{{app.appChildren}}</td>
+                    <td>{{app.appstatus}}</td>
                 </tr>                         
             </tbody>
+            <div class="d-flex flex-fill mt-5 row row-cols-2" *ngIf="isEmployee">
+                <div class="col-lg-6 ml-4 text-left" style="font-size: 20px; font-weight: bold;">
+                    <p>References: {{app.appReference}}</p>
+                    <p>Comments: {{app.appComment}}</p>
+                </div>
+                <div class="col-lg-5">
+                    <button type="button" class="bg-primary btn btn-light font-weight-bold lead ml-3 mr-3 p-2 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="acceptApp(app)">Accept</button>
+                    <button type="button" class="bg-primary btn btn-light font-weight-bold ml-3 mr-3 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="rejectApp(app)">Reject</button>
+                </div>
+            </div>
         </table>
-        <div class="d-flex flex-fill mt-5 row row-cols-2" *ngIf="isEmployee">
-            <div class="col-lg-6 ml-4 text-left" style="font-size: 20px; font-weight: bold;">
-                <p>References: {{a.appReference}}</p>
-                <p>Comments: {{a.appComment}}</p>
-            </div>
-            <div class="col-lg-5">
-                <button type="button" class="bg-primary btn btn-light font-weight-bold lead ml-3 mr-3 p-2 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="acceptApp(a)">Accept</button>
-                <button type="button" class="bg-primary btn btn-light font-weight-bold ml-3 mr-3 pb-3 pl-5 pr-5 pt-3 shadow text-monospace text-uppercase text-white" (click)="rejectApp(a)">Reject</button>
-            </div>
-        </div>
     </div>
 </div>
 <p class="text-body text-center">&copy; Mongoose 2020</p>
