@@ -22,7 +22,7 @@ export class PetViewComponent implements OnInit {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.user = JSON.parse(hold);
-    
+    this.person = JSON.parse(hold).userName;
     if(this.user.userRole == 'Employee') {
       this.isEmployee = true;
     } else {
@@ -40,6 +40,7 @@ export class PetViewComponent implements OnInit {
   user :Adopter;
   isEmployee :boolean;
   message :string;
+  person:string;
 
   nextPet() {
    if(this.index==this.pets.length-1){
@@ -92,5 +93,24 @@ export class PetViewComponent implements OnInit {
       }
     );
    }
+   viewApp() {
+    this.router.navigate(['/view-applications']);
+  }
 
+  addPet() {
+    this.router.navigate(['/employee-add-pet']);
+  }
+
+  viewPets() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
+  createAppointment() {
+    //WOP
+  }
 }
