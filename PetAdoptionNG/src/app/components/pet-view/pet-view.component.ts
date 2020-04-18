@@ -6,7 +6,8 @@ import { Pet } from '../../models/Pet';
 
 import {LogInService} from '../../services/log-in.service';
 import { UserinfoService } from 'src/app/services/userinfo.service';
-import { Adopter } from 'src/app/models/Adoptor';
+import { Adopter } from '../../models/Adoptor';
+import { PetPic } from '../../models/PetPic';
 
 @Component({
   selector: 'app-pet-view',
@@ -21,6 +22,7 @@ export class PetViewComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
+    console.log(hold);
     this.user = JSON.parse(hold);
     
     if(this.user.userRole == 'Employee') {
@@ -35,6 +37,7 @@ export class PetViewComponent implements OnInit {
 
   index: number = 0;
   pets: Array<Pet> = [];
+  petPics: PetPic[][];
   hideNext = true;
   hidePrev = true;
 
@@ -79,12 +82,33 @@ export class PetViewComponent implements OnInit {
       }
     )
    }
+  //  popPetPics(pet :Pet[]){
+
+  //   for(let i = 0; i < this.pets.length; i++ ){
+  //   this.serviceCaller.retrievePetPics(pet[i].petId).subscribe(
+  //     (result) => {
+  //       this.petPics.push(result);
+  //     }
+
+  //   );
+
+  //   }
+  //  }
+  //  retrievePicByPet(pet: Pet) :string{
+  //  let index :number = this.pets.indexOf(pet);
+
+  //  return this.petPics[index][0].piclink;
+    
+
+  //  }
 
    popPetArray() {
     this.serviceCaller.retrieveAllPetsNoOwner().subscribe(
       (response) => {
         this.pets = response;
         console.log(this.pets);
+        //this.popPetPics(this.pets);
+        console.log(this.petPics);
       },
       (response) => {
         console.log("server error");

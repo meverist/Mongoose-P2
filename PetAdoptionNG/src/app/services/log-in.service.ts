@@ -31,6 +31,9 @@ export class LogInService {
 
   constructor(private http :HttpClient) {
     this.url = "http://localhost:8080";
+
+    //Server URL
+    //  http://ec2-18-219-236-61.us-east-2.compute.amazonaws.com:8080/
   }
 
   private headers = new HttpHeaders({'content-Type':'application/json'});
