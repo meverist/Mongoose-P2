@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
 
       this.logService.checkAdopter(adopter).subscribe(
         (resp) => {
-          console.log(resp);
+         
           adopter = resp;
           
           if (adopter != null) {
@@ -71,14 +71,14 @@ export class LoginComponent implements OnInit {
             }
           } else {
             this.invalid = false;
-            console.log("Invalid info");
+            
             this.result = "Invalid Email/Password!";
           }
         },
         (resp) => {
-          console.log("Failed to add Auzorithe the user!");
+          
           this.result = "Invalid Email/Password!";
-          console.log(resp);
+          
         }
       );
     }
@@ -91,8 +91,7 @@ export class LoginComponent implements OnInit {
   valid() :boolean {
     if(this.useremail == undefined || this.useremail == "" ||
     this.userpassword == undefined || this.userpassword == "") {
-      //console.log(this.userpassword);
-      //console.log(this.useremail);
+     
       this.invalid = false;
       return this.invalid;
     } else {

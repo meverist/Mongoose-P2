@@ -23,7 +23,7 @@ export class EmployeeAddPetComponent implements OnInit {
 
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+    
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.person = JSON.parse(data).userName;
@@ -84,7 +84,7 @@ export class EmployeeAddPetComponent implements OnInit {
       this.callService.createPet(p).subscribe(
         (response) => {
           this.petRet = response;
-          console.log(this.petRet);
+         
           if(this.file == undefined) {
             this.message = "Pet was added but no picture!";
           } else {
@@ -93,7 +93,7 @@ export class EmployeeAddPetComponent implements OnInit {
           
         },
         (response) => {
-          console.log(response);
+         
           
         }
       );
@@ -126,7 +126,7 @@ export class EmployeeAddPetComponent implements OnInit {
           (result) => {
             this.message = "Successfully added pet";
           },(result)=>{
-            console.log(result);
+            
             this.message = "Could not add pet";
           }
         );
@@ -143,10 +143,10 @@ export class EmployeeAddPetComponent implements OnInit {
       this.petMedInfo == undefined || this.petMedInfo == "" ||
       this.petAboutMe == undefined || this.petAboutMe == "") {
       this.message = "Not all fields filled!";
-      console.log("Invalid Inputs");
+      
       return false;
     } else {
-      console.log("valid Inputs");
+      
       return true;
     }
   }

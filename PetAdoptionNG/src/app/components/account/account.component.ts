@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+    
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.person = JSON.parse(data);
@@ -51,13 +51,13 @@ export class AccountComponent implements OnInit {
       this.person.userPassword = this.newPass;
       this.logService.addAdopter(this.person).subscribe(
         (resp) => {
-          console.log("Was updated");
+         
           this.message = "The password was changed!";
         },
         (resp) => {
-          console.log("Failed to add Adopter");
+          
           this.message = "Failed to change password!";
-          console.log(resp);
+          
         }
       );
     } else {
@@ -89,7 +89,7 @@ export class AccountComponent implements OnInit {
           this.message2 = "Successfully updated";
         },
         (resp) => {
-          console.log("Failed to update Adopter");
+          
         }
       );
     }

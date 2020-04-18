@@ -21,7 +21,7 @@ export class ViewApplicationsComponent implements OnInit {
 
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+    
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.user = JSON.parse(data);
@@ -61,7 +61,7 @@ export class ViewApplicationsComponent implements OnInit {
     this.callService.allApplication().subscribe(
       (response) => {
         this.applications = response;
-        //console.log(this.applications);
+        
       },
       (response) => {
         console.log("Cannot retrieve applications")
@@ -84,7 +84,7 @@ export class ViewApplicationsComponent implements OnInit {
   acceptApp(appAcc :Application){
     this.callService.deleteAllButApplication(appAcc.pet.petId, appAcc.user.userId).subscribe(
       (response) =>{
-        console.log("Successfully deleted");
+        
       },
       (response) => {
         console.log(response);
@@ -98,7 +98,7 @@ export class ViewApplicationsComponent implements OnInit {
 
     this.callService.updatePet(pet).subscribe(
       (response) =>{
-        console.log(response);
+        
       },
       (response) => {
         console.log(response);
@@ -110,7 +110,7 @@ export class ViewApplicationsComponent implements OnInit {
     this.callService.updateApp(appAcc).subscribe(
       (response) =>{
         this.message1 = "Application accepted!"
-        console.log(response);
+        
       },
       (response) => {
         console.log(response);
@@ -123,7 +123,7 @@ export class ViewApplicationsComponent implements OnInit {
     if(rejApp.appstatus != 'approved') {
      this.callService.deleteApplicaiton(rejApp.appId).subscribe(
       (response) =>{
-        console.log("Deletion was successful");
+        
 
         if(this.user.userRole == 'Employee') {
           this.message1 = "Application rejected!";
@@ -138,7 +138,7 @@ export class ViewApplicationsComponent implements OnInit {
     } else {
       this.message1 = "Can not remove!";
       this.message2 = "Can not remove!";
-      console.log("Cannot remove");
+      
     }
   }
 
@@ -157,15 +157,15 @@ export class ViewApplicationsComponent implements OnInit {
       upjApp.appReference = this.appReferences;
       upjApp.appComment = this.appComments; 
 
-      console.log(upjApp);
+      
 
       this.callService.makeApplication(upjApp).subscribe(
         (resp) => {
-          console.log("Application was sent");
+          
           this.message2 = "Application updated successfully!";
         },
         (resp) => {
-          console.log("Failed to add application");
+          
           this.message2 = "Failed to add application";
         }
       );

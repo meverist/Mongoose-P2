@@ -21,7 +21,7 @@ export class CreateApplicationComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.petCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+    
     if (hold == "Pet message") {
       var data = localStorage.getItem('Pet');
       this.peti= JSON.parse(data);
@@ -30,7 +30,7 @@ export class CreateApplicationComponent implements OnInit {
     }
     
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+   
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.user = JSON.parse(data);
@@ -64,11 +64,11 @@ export class CreateApplicationComponent implements OnInit {
                                    "pending",
                                    this.user,
                                    this.peti);
-    console.log(this.userApp);
+    
 
     this.logService.makeApplication(this.userApp).subscribe(
       (resp) => {
-        console.log("Application was sent");
+        
         if (this.user.userRole == 'Adopter') {
           this.router.navigate(['/adop-screen']);
         } else {
@@ -76,7 +76,7 @@ export class CreateApplicationComponent implements OnInit {
         }
       },
       (resp) => {
-        console.log("Failed to add application");
+        
         this.message = "Failed to add application";
       }
     );

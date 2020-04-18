@@ -143,7 +143,7 @@ export class LogInService {
 
   //2 test 1 successful 1 failed when a application is all ready connected to pet
   deletePet(petId: number): Observable<Object> {
-    console.log(this.url);
+   
     return this.http.delete(this.url + "/pet/" + petId);
   }
 
