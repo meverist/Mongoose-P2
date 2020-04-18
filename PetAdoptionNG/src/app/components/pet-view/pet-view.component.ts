@@ -92,4 +92,24 @@ export class PetViewComponent implements OnInit {
       }
     )
    }
+   viewApp() {
+    this.router.navigate(['/view-applications']);
+  }
+
+  addPet() {
+    this.router.navigate(['/employee-add-pet']);
+  }
+
+  viewPets() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
+  createAppointment() {
+    //WOP
+  }
 }
