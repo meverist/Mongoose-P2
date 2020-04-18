@@ -35,12 +35,14 @@ export class LogInService {
 
   private headers = new HttpHeaders({'content-Type':'application/json'});
   private headerImgur = new HttpHeaders({'Authorization': 'Client-ID 3c09ec7282cf370'}); 
+
   //Log in  -- Tested 4/13/2020
   checkAdopter(adop: Adopter) :Observable<Adopter> {
     return this.http.post<Adopter>(this.url+"/paduser/login", adop, {headers: this.headers});
   }
 
   //Register -- Tested 4/13/2020
+  //Will be using to update and change the user info
   addAdopter(adop: Adopter) :Observable<Adopter> {
     return this.http.post<Adopter>(this.url+"/paduser", adop, {headers: this.headers});
   }
@@ -77,10 +79,12 @@ export class LogInService {
   makeApplication(app: Application) :Observable<Application>{
     return this.http.post<Application>(this.url+'/padapplication',app,{headers: this.headers});
   }
+
   //Is calling the same thing as make app, Added by Mat, didnt come though in git pull for some reason
   updateApp(app: Application) :Observable<Application>{
     return this.http.post<Application>(this.url+"/padapplication",app,{headers: this.headers});
   }
+
   //Successful Test 4/14/2020
   createPet(pet: Pet) :Observable<Pet>{
     return this.http.post<Pet>(this.url+"/pet", pet, {headers: this.headers});
@@ -100,8 +104,8 @@ export class LogInService {
   retrieveAllPets() :Observable<Pet[]> {  
     return this.http.get<Pet[]>(this.url+"/pet");
   }
-  //Goal is to create a new pet album when creating a pet
 
+  //Goal is to create a new pet album when creating a pet
   createAlbum(petId :number) :Observable<Object> {
 
     let obj :string =  "{'title':"+petId+"}";
@@ -119,23 +123,21 @@ export class LogInService {
     console.log(this.url);
     return this.http.delete(this.url + "/pet/"+petId);
   }
+
   uploadImg(string :any) :Observable<Object>{
 
     return this.http.post<Object>("https://api.imgur.com/3/image/", string , {headers: this.headerImgur})
-
-
   }
+
   createPetPic(petpic :PetPic) :Observable<PetPic> {
 
     return this.http.post<PetPic>(this.url+"/petpic", petpic, {headers: this.headers})
 
 
   }
+
   retrievePetPics(petId :number) :Observable<PetPic[]> {
-
     return this.http.get<PetPic[]>(this.url+"/petpic/search/"+petId);
-
-
   }
 
 

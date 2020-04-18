@@ -24,7 +24,6 @@ export class PetViewComponent implements OnInit {
     this.user = JSON.parse(hold);
     this.person = JSON.parse(hold).userName;
     if(this.user.userRole == 'Employee') {
-      console.log("Yep employee");
       this.isEmployee = true;
     } else {
       this.isEmployee = false;
@@ -45,7 +44,8 @@ export class PetViewComponent implements OnInit {
 
   nextPet() {
    if(this.index==this.pets.length-1){
-     this.hideNext=false;
+     //this.hideNext=false;
+     this.index = 0;
    }else{
       ++this.index;
       this.hidePrev=true;
@@ -59,7 +59,8 @@ export class PetViewComponent implements OnInit {
 
   prevPet(){
     if(this.index==0){
-      this.hidePrev=false;
+      //this.hidePrev=false;
+      this.index = this.pets.length - 1;
     }else{
     --this.index;
       this.hideNext=true;
@@ -78,7 +79,7 @@ export class PetViewComponent implements OnInit {
         console.log("Deletion error");
         this.message = "Deletion Failed!";
       }
-    )
+    );
    }
 
    popPetArray() {
@@ -90,7 +91,7 @@ export class PetViewComponent implements OnInit {
       (response) => {
         console.log("server error");
       }
-    )
+    );
    }
    viewApp() {
     this.router.navigate(['/view-applications']);

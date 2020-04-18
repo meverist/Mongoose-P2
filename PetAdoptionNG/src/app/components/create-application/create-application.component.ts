@@ -82,6 +82,10 @@ export class CreateApplicationComponent implements OnInit {
     this.router.navigate(['/view-applications']);
   }
 
+  account() {
+    this.router.navigate(['/account']);
+  }
+
   logOut() {
     this.data.changeUserMessage(null);
     this.data.changePetMessage(null);
