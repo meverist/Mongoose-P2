@@ -59,11 +59,18 @@ export class LoginComponent implements OnInit {
         (resp) => {
           console.log(resp);
           adopter = resp;
-          this.data.changeUserMessage(adopter);
-          if(adopter.userRole == 'Employee') {
-            this.router.navigate(['/empl-screen']);
+          
+          if (adopter != null) {
+            this.data.changeUserMessage(adopter);
+            if(adopter.userRole == 'Employee') {
+              this.router.navigate(['/empl-screen']);
+            } else {
+              this.router.navigate(['/adop-screen']);
+            }
           } else {
-            this.router.navigate(['/adop-screen']);
+            this.invalid = false;
+            console.log("Invalid info");
+            this.result = "Invalid Email/Password!";
           }
         },
         (resp) => {
@@ -82,8 +89,8 @@ export class LoginComponent implements OnInit {
   valid() :boolean {
     if(this.useremail == undefined || this.useremail == "" ||
     this.userpassword == undefined || this.userpassword == "") {
-      console.log(this.userpassword);
-      console.log(this.useremail);
+      //console.log(this.userpassword);
+      //console.log(this.useremail);
       this.invalid = false;
       return this.invalid;
     } else {
