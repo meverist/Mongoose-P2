@@ -17,13 +17,11 @@ export class ViewApplicationsComponent implements OnInit {
               public router: Router,
               private callService: LogInService) { }
 
-  user :Adopter;
-  isEmployee :boolean;
-
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
     this.user = JSON.parse(hold);
+    this.person = JSON.parse(hold).name;
     
     if(this.user.userRole == 'Employee') {
       this.isEmployee = true;
@@ -32,20 +30,23 @@ export class ViewApplicationsComponent implements OnInit {
       this.isEmployee = false;
       this.viewAApps();
     }
-
-    
   }
-
+  user :Adopter;
+ 
   applications :Array<Application>=[];
+
+  isEmployee :boolean;
+  person :string;
 
   //Testing funciton, can remove once databse functionality has been brought in.
   viewEApps() {
     this.callService.allApplication().subscribe(
       (response) => {
         this.applications = response;
+        //console.log(this.applications);
       },
       (response) => {
-        console.log("Cannot retrieve applicaitons")
+        console.log("Cannot retrieve applications")
       }
     )
   }
@@ -56,7 +57,7 @@ export class ViewApplicationsComponent implements OnInit {
         this.applications = response;
       },
       (response) => {
-        console.log("Cannot retrieve applicaitons")
+        console.log("Cannot retrieve applications")
       }
     )
   }
@@ -110,7 +111,28 @@ export class ViewApplicationsComponent implements OnInit {
           console.log(response);
         }
      )
-
   }
 
+  //basic navigation functions
+  viewApp() {
+    this.router.navigate(['/view-applications']);
+  }
+
+  addPet() {
+    this.router.navigate(['/employee-add-pet']);
+  }
+
+  viewPets() {
+    this.router.navigate(['/pet-view']);
+  }
+
+  account() {
+    this.router.navigate(['/account']);
+  }
+
+  logOut() {
+    this.data.changeUserMessage(null);
+    this.data.changePetMessage(null);
+    this.router.navigate(['/welcome']);
+  }
 }

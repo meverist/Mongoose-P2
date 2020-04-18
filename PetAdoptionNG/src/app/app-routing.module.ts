@@ -9,6 +9,7 @@ import { ViewApplicationsComponent } from './components/view-applications/view-a
 import { AdopScreenComponent } from './components/adop-screen/adop-screen.component';
 import { EmplscreenComponent } from './components/empl-screen/emplscreen.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AccountComponent } from './components/account/account.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'adop-screen', component: AdopScreenComponent},
   {path: 'empl-screen', component: EmplscreenComponent},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'account', component: AccountComponent},
   {path: '', redirectTo: '/welcome', pathMatch:'full'}
 ];
 

@@ -16,6 +16,7 @@ import { EmplscreenComponent } from './components/empl-screen/emplscreen.compone
 import { HttpClientModule } from '@angular/common/http';
 import { LogInService } from './services/log-in.service';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
     LoginComponent,
     AdopScreenComponent,
     EmplscreenComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
