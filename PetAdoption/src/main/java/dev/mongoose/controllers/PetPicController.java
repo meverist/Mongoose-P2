@@ -30,7 +30,7 @@ public class PetPicController {
 
 
     @CrossOrigin
-    @GetMapping(value = "/petspic/search/{petId}")
+    @GetMapping(value = "/petpic/search/{petId}")
     public List<PetPic> getAllPetsPic(@PathVariable Integer petId) {
 
 	return pps.getAllPetsPic(petId);
