@@ -58,7 +58,7 @@ public class PadApplicationController {
 	@CrossOrigin
 	@DeleteMapping(value="/padapplication/excluding")
 	public boolean deleteApplicationsByPet(@RequestParam Integer petId, Integer userId) {
-		return pas.deleteAppByPetExceptUser(pas.getPadApplicationBypetIdAnduserId(petId, petId));
+		return pas.deleteAppByPetExceptUser(pas.getPadApplicationBypetIdAnduserId(petId, userId));
 		
 	}
 	@CrossOrigin
