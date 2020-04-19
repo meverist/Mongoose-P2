@@ -109,8 +109,8 @@ export class ViewApplicationsComponent implements OnInit {
 
     this.callService.updateApp(appAcc).subscribe(
       (response) =>{
-        this.message1 = "Application accepted!"
-        
+        //this.message1 = "Application accepted!";
+        alert("Application Accepted");
       },
       (response) => {
         console.log(response);
@@ -126,9 +126,11 @@ export class ViewApplicationsComponent implements OnInit {
         
 
         if(this.user.userRole == 'Employee') {
-          this.message1 = "Application rejected!";
+          //this.message1 = "Application rejected!";
+          alert("Application Rejected");
         } else {
-          this.message1 = "Application deleted!";
+          //this.message1 = "Application deleted!";
+          alert("Application Deleted");
         }
       },
       (response) => {
@@ -136,9 +138,10 @@ export class ViewApplicationsComponent implements OnInit {
       }
      );
     } else {
-      this.message1 = "Can not remove!";
-      this.message2 = "Can not remove!";
-      
+      alert("Can Not Remove");
+      //this.message1 = "Can not remove!";
+      //this.message2 = "Can not remove!";
+    
     }
   }
 
@@ -150,7 +153,8 @@ export class ViewApplicationsComponent implements OnInit {
   submitApp(upjApp :Application) {
     
     if(this.valid()) {
-      this.message2 = "Fields not filled!";
+      //this.message2 = "Fields not filled!";
+      alert("Fields Not Filled");
     } else {
       upjApp.appChildren = this.appChildren;
       upjApp.appPetsOwned = this.appPetsOwned;
@@ -161,12 +165,12 @@ export class ViewApplicationsComponent implements OnInit {
 
       this.callService.makeApplication(upjApp).subscribe(
         (resp) => {
-          
-          this.message2 = "Application updated successfully!";
+          alert("Application Updated Successfully");
+          //this.message2 = "Application updated successfully!";
         },
         (resp) => {
-          
-          this.message2 = "Failed to add application";
+          alert("Failed to Add Application");
+          //this.message2 = "Failed to add application";
         }
       );
     }
