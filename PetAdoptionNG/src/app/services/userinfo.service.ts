@@ -20,11 +20,11 @@ export class UserinfoService {
 
   changeUserMessage(info :Adopter) {
     this.userSource.next(JSON.stringify(info));
-    console.log("updated User");
+    
   }
 
   changePetMessage(info :Pet) {
     this.petSource.next(JSON.stringify(info));
-    console.log("updated Pet");
+    
   }
 }
