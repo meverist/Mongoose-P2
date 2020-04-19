@@ -13,9 +13,6 @@
               <a class="nav-link" style="cursor: pointer;" (click)="viewPets()">View Pets</a> 
           </li>
           <li class="mr-3 nav-item"> 
-              <a class="nav-link" style="cursor: pointer;" (click)="createAppointment()" >My Appointments</a> 
-          </li>
-          <li class="mr-3 nav-item"> 
               <a class="nav-link" style="cursor: pointer;" (click)="viewApp()">My Applications</a> 
           </li>                     
       </ul>
@@ -34,8 +31,8 @@
   <a class="dropdown-toggle font-weight-light nav-link text-body" href="#" id="navbarDropdownMenuLink39" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="letter-spacing: 2px; display: flex; align-items: baseline;">Welcome {{person}}</a> 
 </nav>
 <div class="container-fluid d-flex shadow-none text-center" style="object-fit: cover; background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0) 0.352113%, rgba(255, 255, 255, 0.28) 22.1831%, rgba(255, 255, 255, 0.55) 77.8169%, rgba(255, 255, 255, 0.3) 100%); background-size: cover; min-height: 675px;">
-  <div class="card-group">
-      <div class="card text-left" style="max-width: 425px; min-width: 400px;" *ngFor="let p of pets"> 
+  <div class="card-group" style="margin-top: 20px;">
+      <div class="card text-left" style="max-width: 425px; min-width: 400px; margin-top: 20px;" *ngFor="let p of pets"> 
         <!-- Locked aspect ratio clipped photo style="object-fit: cover; max-height: 240px; height: 100%; width: auto;"--> 
           <img class="card-img-top" src="{{p.petPic}}" alt="Error Displaying Picture" style="object-fit: cover; max-height: 350px; height: 100%; width: auto;"> 
           <div class="card-body"> 
