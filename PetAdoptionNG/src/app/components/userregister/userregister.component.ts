@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 export class UserregisterComponent implements OnInit {
 
   constructor(public router: Router,
-    private logService :LogInService) { }
+              private logService :LogInService) { }
 
   ngOnInit(): void {
   }
@@ -40,11 +40,11 @@ export class UserregisterComponent implements OnInit {
       this.result = "Passwords do not match!";
     } else if(this.validateInputFields() == 3) {
       let adopter = new Adopter(this.useremail, this.userinfo, this.username, this.userpassword, this.userrole);
-      console.log(adopter);
+      //console.log(adopter);
       this.logService.addAdopter(adopter).subscribe(
         (resp) => {
-          console.log("Was sent");
-          console.log(resp);
+          //console.log("Was sent");
+          //console.log(resp);
           this.router.navigate(['/login']);
         },
         (resp) => {
@@ -64,14 +64,14 @@ export class UserregisterComponent implements OnInit {
        this.password2 == undefined || this.password2 == "" 
        ) {
         this.invalid = false;
-        console.log("invalid");
+        //console.log("invalid");
         return 1;
        } else if (this.userpassword != this.password2){
-        console.log("pass no match");
+        //console.log("pass no match");
         this.invalid = false;
         return 2;
        } else {
-        console.log("good");
+        //console.log("good");
         this.invalid = true; 
         return 3;
        }

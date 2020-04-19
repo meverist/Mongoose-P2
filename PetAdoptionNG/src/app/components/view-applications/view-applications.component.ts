@@ -18,10 +18,18 @@ export class ViewApplicationsComponent implements OnInit {
               private callService: LogInService) { }
 
   ngOnInit(): void {
+
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    this.user = JSON.parse(hold);
-    this.person = JSON.parse(hold).name;
+    console.log(hold);
+    if (hold == "User message") {
+      var data = localStorage.getItem('Pass');
+      this.user = JSON.parse(data);
+      this.person = this.user.userName;
+    } else {
+      this.user = JSON.parse(hold);
+      this.person = this.user.userName;
+    }
     
     if(this.user.userRole == 'Employee') {
       this.isEmployee = true;
@@ -101,6 +109,7 @@ export class ViewApplicationsComponent implements OnInit {
 
     this.callService.updateApp(appAcc).subscribe(
       (response) =>{
+        this.message1 = "Application accepted!"
         console.log(response);
       },
       (response) => {
@@ -115,12 +124,16 @@ export class ViewApplicationsComponent implements OnInit {
      this.callService.deleteApplicaiton(rejApp.appId).subscribe(
       (response) =>{
         console.log("Deletion was successful");
-        this.message1 = "Application was successful deleted";
-        this.message2 = "Application was successful deleted";
-        },
-        (response) => {
-          console.log(response);
+
+        if(this.user.userRole == 'Employee') {
+          this.message1 = "Application rejected!";
+        } else {
+          this.message1 = "Application deleted!";
         }
+      },
+      (response) => {
+        console.log(response);
+      }
      );
     } else {
       this.message1 = "Can not remove!";
@@ -135,23 +148,40 @@ export class ViewApplicationsComponent implements OnInit {
   }
 
   submitApp(upjApp :Application) {
-    upjApp.appChildren = this.appChildren;
-    upjApp.appPetsOwned = this.appPetsOwned;
-    upjApp.appReference = this.appReferences;
-    upjApp.appComment = this.appComments; 
+    
+    if(this.valid()) {
+      this.message2 = "Fields not filled!";
+    } else {
+      upjApp.appChildren = this.appChildren;
+      upjApp.appPetsOwned = this.appPetsOwned;
+      upjApp.appReference = this.appReferences;
+      upjApp.appComment = this.appComments; 
 
-    console.log(upjApp);
+      console.log(upjApp);
 
-    this.callService.makeApplication(upjApp).subscribe(
-      (resp) => {
-        console.log("Application was sent");
-        this.message2 = "Application updated successfully!";
-      },
-      (resp) => {
-        console.log("Failed to add application");
-        this.message2 = "Failed to add application";
-      }
-    );
+      this.callService.makeApplication(upjApp).subscribe(
+        (resp) => {
+          console.log("Application was sent");
+          this.message2 = "Application updated successfully!";
+        },
+        (resp) => {
+          console.log("Failed to add application");
+          this.message2 = "Failed to add application";
+        }
+      );
+    }
+  }
+
+  valid() :boolean {
+    if(this.appChildren == undefined || this.appChildren == "" ||
+       this.appPetsOwned == undefined || this.appPetsOwned == "" ||
+       this.appReferences == undefined || this.appReferences == "" ||
+       this.appComments == undefined || this.appComments == "" ) {
+      
+      return true;
+    } else {
+      return false;
+    }
   }
 
   //basic navigation functions

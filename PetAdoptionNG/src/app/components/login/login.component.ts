@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
           adopter = resp;
           
           if (adopter != null) {
+            localStorage.setItem('Pass', JSON.stringify(adopter));
+            
             this.data.changeUserMessage(adopter);
             if(adopter.userRole == 'Employee') {
               this.router.navigate(['/empl-screen']);
