@@ -23,7 +23,7 @@ export class AdopScreenComponent implements OnInit {
 
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+   
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.person = JSON.parse(data).userName;

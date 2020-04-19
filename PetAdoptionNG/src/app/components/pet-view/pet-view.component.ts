@@ -25,7 +25,7 @@ export class PetViewComponent implements OnInit {
   ngOnInit(): void {
     var hold;
     this.data.userCurrentMessage.subscribe(info => hold = info);
-    console.log(hold);
+   
     if (hold == "User message") {
       var data = localStorage.getItem('Pass');
       this.user = JSON.parse(data);
@@ -63,14 +63,14 @@ export class PetViewComponent implements OnInit {
   }
 
   reject(pet: Pet) {
-    //console.log(pet);
+    
     this.serviceCaller.deletePet(pet.petId).subscribe(
       (response) => {
-        console.log(response);
+        
         this.message = "Deletion successful";
       },
       (response) => {
-        console.log("Deletion error");
+        
         this.message = "Deletion Failed!";
       }
     );
@@ -84,6 +84,7 @@ export class PetViewComponent implements OnInit {
       this.serviceCaller.retrievePetPics(pet[i].petId).subscribe(
         
         (result) => {
+          
           if (Object.keys(result).length === 0) {
             //This code is being saved for future use creating a pet picture array
             //Do not have the time to create an array now
@@ -98,11 +99,11 @@ export class PetViewComponent implements OnInit {
           }
         },
         (result) => {
-          console.log("system error");
+          
         }
       );
     }
-    console.log(this.petPics);
+    
   }
   retrievePicByPet(pet: Pet): string {
     let index: number = this.pets.indexOf(pet);
@@ -114,12 +115,12 @@ export class PetViewComponent implements OnInit {
     this.serviceCaller.retrieveAllPetsNoOwner().subscribe(
       (response) => {
         this.pets = response;
-        console.log(this.pets);
+        
         this.popPetPics(this.pets);
-        console.log(this.petPics);
+        
       },
       (response) => {
-        console.log("server error");
+        
       }
     );
    }
